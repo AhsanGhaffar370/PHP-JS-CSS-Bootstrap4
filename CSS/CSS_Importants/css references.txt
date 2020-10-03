@@ -1,0 +1,14 @@
+https://www.cssmatic.com/
+
+code snippets and free templates: https://bootsnipp.com/tags/4.1.1
+
+
+bootstrap animation https://mdbootstrap.com/docs/jquery/css/animations/
+
+flexbox concept  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+
+course
+
+https://www.bitdegree.org/course/learn-html5-and-css3
+https://www.tutorialspoint.com/css/css_images.htm

@@ -1,0 +1,1783 @@
+/*open sans font link  */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+
+/* 
+Defaults
+    Font family -->Open sans
+    text alignment --> justify
+    letter spacing --> 0.9
+    line height --> 2
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+*/
+
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    /* all things inside a box such as; margins,paddding are always be inside box */
+    margin: 0;
+    padding: 0;
+    /* border: 4px solid rgba(221, 16, 43, 0.2) !important; */
+}
+
+body {
+    font-family: "Open Sans", sans-serif !important;
+    text-align: justify !important;
+    letter-spacing: 0.9px !important;
+    line-height: 1.8 !important;
+}
+
+section {
+    display: flow-root;
+    /* content inside section remains always inside it */
+}
+
+
+/* 
+                                                    ======================== 
+                                                              Grids  
+                                                    ========================
+
+  Most Common Grid properties:
+
+  display: grid; 
+  display: inline-grid; for applying inline property on grid
+  grid-template-rows: 
+  grid-template-columns: 
+  grid-auto-flow: dense;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify content
+  align items
+
+  fr = fill up any available space
+  auto-fit= stretch the cards to fill up the screen 
+  auto-fill= create extra virtual cards to fill up the screen
+*/
+
+.grid {
+    /* Grid items are placed in rows by default and span the full width of the grid container. */
+    /* 
+  Number of ways to use grid-template-columns according to conditions
+  
+1:Create 3 columns of 300px on every screen size. To make it little responsive, we can use % instead of px
+  grid-template-columns: 300px 500px 200px;
+
+  If we want all three columns of same sizes then we can use repeat() function:
+  grid-template-columns: repeat(3, 300px); 
+
+2:Create 3 columns of same size throughout the screen. 
+  grid-template-columns: repeat(3, auto); 
+
+3:Create 3 columns of same size throughout the screen. It works like "auto" of point2
+  grid-template-columns: repeat(3, 1fr);  1fr = fill up any available space
+
+4:For more responsive we can use below method. It create number of columns according to screen size
+  grid-template-columns: repeat(auto-fit, 300px);     OR    grid-template-columns: repeat(auto-fit, 1fr); 
+  
+5:We can use minmax(min, max) function to make more responsive: 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));  
+
+6:If we want to fillout the remaining space then we can use fr inplace of maximum value
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+
+  grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
+    grid-template-rows: repeat(2, 200px);
+    grid-gap: 10px;
+    /* justify-content: center; */
+    /* align-items: baseline; */
+}
+
+.grid_col
+/* It's kind of like col span */
+
+{
+    /* It means start from 2 column and then span 4 columns
+  Note: It span 5 cols if there are 5 cols present otherwise it spans depends upon number of cols present*/
+    grid-column-start: 2;
+    grid-column-end: 4;
+    /* OR     grid-column: 2 / span 4;   OR     grid-column: 2 / 4;  */
+}
+
+.grid_row
+/* It's kind of like row span */
+
+{
+    /* It means start from 3 column and then span 5 columns 
+  Note: It span 5 rows if there are 5 rows present otherwise it spans depends upon number of rows present*/
+    grid-row-start: 3;
+    grid-row-end: 5;
+    /* OR   grid-row: 3 / span 5;   OR   grid-row: 3 / 5;*/
+}
+
+
+/* 
+======================== 
+  SECTION3  S3
+  Cards with Grid 
+======================== 
+*/
+
+.s3_grid {
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+    /* grid-template-rows: repeat(2, 200px); */
+    justify-content: space-around;
+}
+
+
+/*  
+========================  
+  SECTION2  S2 
+  Cards with Grid  
+========================  
+*/
+
+
+/* .s1_grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+} */
+
+.s2_grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(250px, 500px));
+    justify-content: space-around;
+}
+
+.s2_grid_child {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+/*  
+========================  
+  Footer 
+  Cards with Grid  
+========================  
+*/
+
+.footer_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 240px));
+    /* grid-template-columns: 1.4fr 1fr 1fr 1fr; */
+    justify-content: space-between;
+    margin: 70px 0px;
+}
+
+.footer2_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin: 10px 0px 20px 0px;
+}
+
+
+/* 
+======================== 
+Image Gallery Using Grid 
+======================== 
+*/
+
+.gallery_grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    /* grid-auto-rows: 250px; */
+    grid-auto-flow: dense;
+    /* height: 100%; */
+}
+
+.img_fluid2 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Prevent the image from stretching. So it crops the image to prevent from awkward stretching.  
+     Other Properties are
+      fill --> by default
+      contain --> content is scaled to maintain its aspect ratio
+      cover --> crop image to prevent from stretching
+
+  */
+}
+
+.grid_shape1 {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.grid_shape2 {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+
+/* 
+                                                      ======================== 
+                                                                Flexbox  
+                                                      ======================== 
+
+  Most Common Flexbox properties:
+
+    display: flex; 
+    flex-direction: row / column;     --> used to justify the direction of content
+    flex-wrap: wrap;                  --> holds the content inside flexbox container
+
+  These Properties are also part of flexbox and only apply on a container which contain flexbox property
+
+  Justify content:
+    center
+    start
+    end
+    baseline
+    space-around -->commonly used
+
+  Align items:
+    center  
+    baseline
+    
+
+  fr = fill up any available space
+
+
+
+======================== 
+    Cards  with Flexbox 
+======================== 
+*/
+
+.card_par {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* column-count: 2;
+  columns: 2; */
+}
+
+.cardd {
+    text-align: center;
+    padding: 20px 10px;
+    margin: 20px 5px 20px 5px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    height: auto;
+}
+
+.card_w400 {
+    width: 400px;
+}
+
+.card_w350 {
+    width: 350px;
+}
+
+.card_w330 {
+    width: 330px;
+}
+
+.card_w300 {
+    width: 300px;
+}
+
+.card_w275 {
+    width: 275px;
+}
+
+.card_w250 {
+    width: 250px;
+}
+
+.card_w200 {
+    width: 200px;
+}
+
+
+/* 
+========================
+SECTION0  S0
+Hosting Plan Cards using flexbox
+========================
+*/
+
+.host_card {
+    background-color: white;
+    padding: 0px;
+    margin: -80px 0px 150px 0px;
+    border: 10px solid #f2efe3ff;
+    width: 350px;
+    transition: 0.3s ease-in-out;
+}
+
+.host_card:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 20px 0px #1d3557ff;
+}
+
+
+/* 
+                                                                ========================
+                                                                      Transform 2D
+                                                                ========================
+
+========================
+      Rotate
+======================== 
+transform: rotate(10deg); --> clockwise rotation
+transform: rotate(-10deg); --> anticlockwise rotation
+
+In Transform 3D:
+transform: rotateX(20deg);
+transform: rotateY(20deg);
+transform: rotateZ(20deg);
+*/
+
+.trf_rot {
+    transition: transform 0.3s 0s ease-out;
+}
+
+.trf_rot:hover {
+    transform: rotate(360deg);
+}
+
+
+/* 
+========================
+      Scale
+======================== 
+The scale() method increases or decreases the size of an element
+
+transform: scale(x-axis, y-axis);
+transform: scaleX(x-axis); -->increases or decreases the width of an element.
+transform: scaleY(y-axis); -->increases or decreases the height of an element.
+
+transform: scale(2, 3); --> increase size
+transform: scale(0.5, 0.5); --> decrease size
+*/
+
+.trf_scale:hover {
+    transform: scale(1.05, 1.1);
+}
+
+
+/* 
+========================
+      Translate
+========================    
+transform: translate(x-axis, y-axis);
+transform: translateX(x-axis);
+transform: translateY(y-axis);
+
+Note: we can also give -ve values */
+
+.trf_trans:hover {
+    background-color: #f2efe3ff;
+    transform: translate(20px, 0px);
+}
+
+
+/* 
+                                                            ========================
+                                                                    Transition
+                                                            ========================
+
+To create a transition effect, you must specify three things:
+  transition: (transition-property) (transition-duration) (transition-delay) (transition-timing-function)
+  transition: all 0.5s ease-out
+
+  transition-property:
+    Specifies the name of the CSS property the transition effect is for, by default it's none
+    the property could be: width, height, background-color, color, font-size, opacity etc, by applying "all" keyword, it applies on all properties
+    transition-property: background-color; --> aply on background only
+    transition-property: all; --> apply on all
+
+  transition-duration:
+    Specifies how many seconds or milliseconds a transition effect takes to complete
+    
+  transition-delay:
+    Specifies a delay (in seconds) for the transition effect
+
+  transition-timing-function property
+    ease - specifies a transition effect with a slow start, then fast, then end slowly (this is default)
+    ease-in - specifies a transition effect with a slow start
+    ease-out - specifies a transition effect with a slow end
+    ease-in-out - specifies a transition effect with a slow start and end
+*/
+
+.trans_scale {
+    transition-delay: 0s;
+    transition-property: box-shadow, background-color, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    /* OR */
+    /* transition: all 0.3s 0s ease-out; */
+    /* transition: 0.3s;
+  /* transition: transform 0.5s; */
+}
+
+.trans_scale:hover {
+    transform: scale(1.02, 1.03);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    background-color: #f2efe3ff;
+}
+
+
+/* 
+        Image transition
+*/
+
+
+/* 1 */
+
+.trans_img {
+    transition: opacity 0.3s 0s ease-out;
+}
+
+.trans_img:hover {
+    opacity: 0.7;
+}
+
+
+/* 2 */
+
+.trans_img2 {
+    transition: transform 0.3s 0s ease-out;
+}
+
+.trans_img2:hover {
+    transform: scale(1.05, 1.05);
+}
+
+
+/* 
+                                                          ========================
+                                                                  Animation 
+                                                          ========================
+animation-name: We have to create our animation "example" etc.
+animation-duration:         4s;
+animation-delay:            1s;
+animation-iteration-count:  4;
+animation-direction:        normal/reverse/alternate/alternate-reverse;
+animation-timing-function:  ease/ease-in/ease-out/ease-in-out;
+animation-fill-mode:        forwards/backward;
+*/
+
+@keyframes example {
+    from {
+        color: #a8dadcff;
+    }
+    to {
+        color: #e63946ff;
+    }
+}
+
+.animation {
+    animation-name: "example";
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    /* animation-direction: reverse; */
+}
+
+
+/* 
+                                                    ==========================================
+                                                        Animation Using Animate.css Library
+                                                    ==========================================
+                  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
+We can use these styling to apply animate.css using css:
+  animation: bounce;            
+  animation-duration: 2s;       
+  animation-iteration-count:    
+  animation-delay: 1s;
+
+Utility classes: (Animate.css comes packed with a few utility classes to simplify its use)
+
+Always use "animate__animated" keyword to activate animation. Then we can use below classes to start animation.
+
+  animate__fadeIn               animate__slow 	  2s          animate__repeat-1 	1         animate__delay-2s     
+  animate__fadeInDown           animate__slower 	3s          animate__repeat-2 	2         animate__delay-3s
+  animate__fadeInLeft           animate__fast 	  800ms       animate__repeat-3 	3         animate__delay-4s
+  animate__fadeInRight          animate__faster 	500ms
+  animate__fadeInUp
+*/
+
+.animate_css {
+    display: inline-block;
+    /*animation is not worked with inline elements so why we apply inline-block*/
+    animation: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.ani_infinite {
+    animation-iteration-count: infinite;
+}
+
+
+/* 
+                                                    ==========================================
+                                                                Animation On Scroll
+                                                    ==========================================
+https://michalsnik.github.io/aos/ 
+
+Include all these in your project:
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script type="text/javascript">
+    AOS.init({
+      duration: 600,
+    });
+  </script>
+
+Add these properties in elements where we want animation on scroll
+  data-aos="fade-up"              --> compulsory
+  data-aos-offset="200"           -->  optional    
+  data-aos-delay="50"             -->  optional  
+  data-aos-duration="1000"        -->  optional  
+  data-aos-easing="ease-in-out"   -->  optional  
+  data-aos-mirror="true"          -->  optional  
+  data-aos-once="false"           -->  optional  
+*/
+
+
+/* 
+                                                          ==============================
+                                                              Anchor tags and Buttons 
+                                                          ==============================
+*/
+
+a {
+    color: #457b9dff !important;
+    transition: all 0.2s 0s ease-out;
+    text-decoration: none !important;
+    text-decoration-color: rgb(16, 206, 32);
+}
+
+a:hover {
+    color: #a8dadcff !important;
+}
+
+.button {
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 400 !important;
+    background-color: #e63946ff;
+    color: #fff;
+    padding: 23px 50px;
+    margin: auto;
+    text-align: center;
+    display: inline-block !important;
+    text-decoration: none;
+    border: 0px;
+    width: max-content;
+    cursor: pointer;
+    transition: all 0.3s 0s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.04, 1);
+    background-color: rgb(216, 10, 27);
+    text-decoration: none;
+}
+
+.btn_xxs {
+    padding: 10px 20px !important;
+}
+
+.btn_xs {
+    padding: 15px 20px !important;
+}
+
+.btn_sm {
+    padding: 17px 40px !important;
+}
+
+.btn_md {
+    padding: 20px 50px !important;
+}
+
+.btn_lg {
+    padding: 23px 60px !important;
+}
+
+.btn_xl {
+    padding: 23px 80px !important;
+}
+
+.btn_block {
+    width: 100% !important;
+    padding: 22px 30px !important;
+}
+
+
+/* 
+
+                                                            ========================
+                                                                    Lists
+                                                            ========================
+
+
+========================
+For Unordered Lists:
+========================
+none
+disc
+circle
+square
+
+========================
+For Ordered Lists:
+========================
+decimal               1 2 3
+decimal-leading-zero  01 02 03
+lower-alpha           a b c
+upper-alpha           A B C
+lower-roman           i. ii. iii.
+upper-roman           I  II  III
+
+*/
+
+ul {
+    /* Another way to write --> list-style: square inside circle;  */
+    list-style-type: circle;
+    /* list-style-image: url("Image/favicon.png"); */
+    list-style-position: outside;
+    padding: 0px 20px;
+    margin: 0px;
+}
+
+ol {
+    list-style-type: lower-roman;
+    list-style-image: url("images/star.png");
+}
+
+
+/* 
+
+========================
+        Navbar using( Flexbox and list)
+========================
+ */
+
+.nav_par {
+    /* background-color: rgba(29, 53, 87, 1); */
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    /* border-bottom: 2px solid #457b9dff; */
+}
+
+.nav {
+    list-style-type: none;
+    margin-left: auto;
+}
+
+.nav_logo {
+    display: flex;
+    align-items: center;
+    width: 210px;
+}
+
+.nav_l {
+    display: inline;
+    padding: 31px 10px;
+}
+
+.nav_l a {
+    color: #a8dadcff;
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+.nav_l a:hover {
+    color: #395a6f !important;
+    border-bottom: 2px solid #395a6f;
+}
+
+
+/* navigation dropdown */
+
+.dropdown:hover .nav_dropdown {
+    display: block;
+}
+
+.nav_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 150px;
+}
+
+.nav_dropdown a {
+    color: black;
+    padding: 8px 16px;
+    display: block;
+}
+
+.nav_dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* 
+                                                            ========================
+                                                                    Tables
+                                                            ========================
+*/
+
+.table_flow {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 2px 20px 2px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+th {
+    /* background-color: rgb(6, 83, 119); */
+    color: black;
+}
+
+
+/*
+tr:nth-child(even) {
+  background-color: #f2efe3ff;
+}
+ tr:hover {
+  background-color: #f2efe3ff;;
+} */
+
+
+/* 
+
+                                                                  ========================
+                                                                    Responsive Image
+                                                                  ========================
+*/
+
+.img_fluid {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Prevent the image from stretching. So it crops the image to prevent from awkward stretching */
+}
+
+
+/* 
+                                                                    ========================
+                                                                          Columns
+                                                                    ========================
+
+
+It used to break a paragraph into multiple columns horizontaly(row wise)
+
+*/
+
+.column2 {
+    column-count: 2;
+    column-width: 300px;
+    /* 
+  OR
+  columns: 2 300px; 
+  */
+    /* column-gap: normal; */
+    /* column-gap: 50px;  */
+    /* column-fill: auto;
+  column-fill: balance; */
+}
+
+
+/* 
+                                                    ======================== 
+                                                    ======================== 
+                                                    ======================== 
+                                                          Extra Features  
+                                                    ========================
+                                                    ======================== 
+                                                    ======================== 
+
+
+================================
+    Background Images section 
+================================
+*/
+
+.bg_img1 {
+    background-image: linear-gradient(/* rgba(29, 53, 87, 0.8),
+      rgba(29, 53, 87, 0.5) */
+    rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(Image/bg.jpg);
+    /* background-image: url(Image/bg.jpg); */
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.header_mp {
+    margin: 0px;
+    padding: 10% 10px 18% 10px;
+}
+
+.bg_img2 {
+    background-image: linear-gradient( rgba(242, 239, 227, 0.7), rgba(242, 239, 227, 0.7)), url(Image/3819287.jpg);
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    object-fit: contain;
+}
+
+
+/* 
+========================
+Section1 S1
+Two Section Area Using Grid
+========================
+*/
+
+.s1_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* grid-auto-columns: min-content; */
+    /* grid-auto-columns: minmax(200px, 400px); */
+    margin-bottom: 40px;
+}
+
+.s1_cirImg {
+    padding: 50px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.s1_card1 {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 4px 20px;
+    margin-left: -100px;
+    margin-right: 0px;
+    /* to center the div  */
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+}
+
+.s1_card2 {
+    margin-right: -100px;
+    margin-left: 0px;
+}
+
+
+/* End of Two Section Area Using Grid */
+
+
+/* 
+==========================
+        Forms
+==========================    
+*/
+
+.form_grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(300px, 600px));
+    margin: auto;
+    padding: 50px;
+}
+
+.form_grid1 {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(300px, 300px));
+    margin: auto;
+    padding: 50px;
+}
+
+
+/* 
+                                        ================================================
+                                                        TYPOGRAPHY 
+                                        ================================================
+
+========================
+    Font family
+    text alignment
+    letter spacing
+    line height
+========================
+*/
+
+.font_times {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.tl {
+    text-align: left !important;
+}
+
+.tj {
+    text-align: justify !important;
+}
+
+.tc {
+    text-align: center !important;
+}
+
+.lh_1p2 {
+    line-height: 1.2 !important;
+}
+
+.lh_1p4 {
+    line-height: 1.4 !important;
+}
+
+.lh_1p6 {
+    line-height: 1.6 !important;
+}
+
+
+/* 
+========================
+    Text-transform
+========================
+    Upper 
+    Lower 
+    Camel 
+
+    First letter
+    first line
+*/
+
+.t_uCase {
+    text-transform: uppercase;
+}
+
+.t_lCase {
+    text-transform: lowercase;
+}
+
+.t_cap {
+    text-transform: capitalize;
+}
+
+.t_fLett:first-letter {
+    font-size: 200%;
+}
+
+.t_fLine:first-line {
+    font-weight: bold;
+}
+
+
+/* 
+========================
+Font weight
+
+font-weight: ( 300 == light )
+font-weight: ( 400 == normal )
+font-weight: ( 700 == bold )
+========================
+*/
+
+.b3 {
+    font-weight: 300 !important;
+}
+
+.b4 {
+    font-weight: 400 !important;
+}
+
+.b6 {
+    font-weight: 600 !important;
+}
+
+.b7 {
+    font-weight: 700 !important;
+}
+
+.b8 {
+    font-weight: 800 !important;
+}
+
+
+/*
+========================
+    COLORS
+========================
+
+FOREGROUND
+*/
+
+.cl_bd {
+    color: #1d3557ff !important;
+}
+
+.cl_bl {
+    color: #457b9dff !important;
+}
+
+.cl_bp {
+    color: #a8dadcff !important;
+}
+
+.cl_r {
+    color: #e63946ff !important;
+}
+
+.cl_c {
+    color: #f2efe3ff !important;
+}
+
+.cl_g {
+    color: #6c757d !important;
+}
+
+.cl_b {
+    color: black !important;
+}
+
+.cl_w {
+    color: white !important;
+}
+
+
+/* 
+BACKGROUND
+*/
+
+.bg_bd {
+    background-color: #1d3557ff;
+}
+
+.bg_bl {
+    background-color: #457b9dff;
+}
+
+.bg_bp {
+    background-color: #a8dadcff;
+}
+
+.bg_r {
+    background-color: #e63946ff;
+}
+
+.bg_c {
+    background-color: #f2efe3ff;
+}
+
+.bg_g {
+    background-color: #6c757d;
+}
+
+.bg_b {
+    background-color: black;
+}
+
+.bg_w {
+    background-color: white;
+}
+
+
+/* 
+================================================
+    headings and paragraph tags styling
+================================================
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    color: #000000;
+    padding: 0px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    color: #6c757d;
+    margin: 10px 0px 10px 0px;
+    padding: 0px;
+}
+
+
+/* 
+
+========================
+    Font sizes
+========================
+*/
+
+.size48 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.size46 {
+    font-size: 46px;
+    font-weight: 600;
+}
+
+.size42 {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.size38 {
+    font-size: 38px;
+    font-weight: 600;
+}
+
+.size36 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.size34 {
+    font-size: 34px;
+    font-weight: 600;
+}
+
+.size32 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.size30 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.size28 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.size26 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.size25 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.size24 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.size22 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.size20 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.size18 {
+    font-size: 18px;
+}
+
+.size17 {
+    font-size: 17px;
+}
+
+.size16 {
+    font-size: 16px;
+}
+
+.size15 {
+    font-size: 15px;
+}
+
+.size14 {
+    font-size: 14px;
+}
+
+.size13 {
+    font-size: 13px;
+}
+
+
+/* 
+END OF TYPOGRAPHY 
+*/
+
+
+/* 
+                                                      ================================================
+                                                      ================================================
+                                                      ================================================
+                                                                          Extra Concepts
+                                                      ================================================
+                                                      ================================================
+                                                      ================================================
+*/
+
+
+/*
+                                                    ===========================================
+                                                        Centre (horizontally + vertically)
+                                                    ===========================================
+*/
+
+.centre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* it center the item vertically */
+    justify-content: center;
+    /* it center the item horizontally */
+}
+
+.tl2c {
+    text-align: left !important;
+}
+
+.verCen {
+    margin: auto;
+    /* margin-top: auto;
+  margin-bottom: auto; */
+    /* vertical-align: middle !important; */
+}
+
+.verAuto {
+    vertical-align: baseline !important;
+}
+
+
+/* 
+                                                                    ========================
+                                                                            Container
+                                                                    ========================
+*/
+
+.con {
+    width: 98%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+}
+
+.con95 {
+    width: 95%;
+}
+
+.con90 {
+    width: 90%;
+}
+
+.con85 {
+    width: 85%;
+}
+
+.con85 {
+    width: 85%;
+}
+
+.con70 {
+    width: 70%;
+}
+
+
+/* 
+                                                                  ========================
+                                                                      Float property
+                                                                  ========================
+*/
+
+.clear {
+    clear: both;
+}
+
+.flot_r {
+    float: right;
+}
+
+.flot_l {
+    float: left;
+}
+
+
+/* 
+                                                                  ========================
+                                                                          Box Shadow
+                                                                  ========================
+
+box-shadow:   horizontal-offset    vertical-offset     blur-distance     spread-of-shadow     color
+
+Horizontal offset:  Negative values position the shadow to the left of the box.
+Vertical offset:    Negative values position the shadow to the top of the box.
+Blur distance:      If omitted, the shadow is a solid line like a border.
+Spread of shadow:   Positive value will cause shadow to expand in all directions, and negative value will make it contract.
+ */
+
+.sh_lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.sh_md {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.sh_sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+
+/* .shadows {
+  box-shadow: 0px 0px 20px 0px #cccccc;
+} */
+
+
+/*
+                                                    ===============================
+                                                            Display Inline 
+                                                                block
+                                                            inline-block 
+                                                                none  
+                                                    ===============================
+*/
+
+.d_in {
+    display: inline;
+    /* This causes a block-level element to act like an inline element. */
+}
+
+.d_b {
+    display: block;
+    /* This causes an inline element to act like a block-level element. */
+}
+
+.d_in_b {
+    display: inline-block;
+    /* This causes a block-level element to flow like an inline element */
+}
+
+.d_n {
+    display: none;
+    /* This hides an element from the page. */
+}
+
+
+/* 
+                                                                    ========================
+                                                                          border-radius
+                                                                    ========================
+*/
+
+.rad5 {
+    border-radius: 5px;
+}
+
+.rad10 {
+    border-radius: 10px;
+}
+
+.rad50 {
+    border-radius: 50px;
+}
+
+
+/*  
+                                                                    ========================
+                                                                        Position property
+                                                                    ========================
+*/
+
+.pos_abs {
+    position: absolute;
+}
+
+.pos_rel {
+    position: relative;
+}
+
+.pos_fix {
+    position: fixed;
+}
+
+.pos_stky {
+    position: sticky;
+}
+
+.pos_stat {
+    position: static;
+    /* by default*/
+}
+
+.pos_inh {
+    position: inherit;
+}
+
+
+/* 
+                                                                ========================
+                                                                        CURSORS
+                                                                ========================
+auto
+crosshair
+default
+pointer
+move
+text
+wait
+help
+url("cursor.gif"); */
+
+.cursor1 {
+    cursor: help;
+}
+
+
+/* 
+                                                                ========================
+                                                                        Z-Index
+                                                                ========================
+In z-index the number doesn't matter.
+The number just suggest that which portion comes on top or bottom of other one. 
+We cann put anything in parameter such as; 10, 20 , 100, 43 etc
+
+*/
+
+.z_ind_1 {
+    z-index: -1;
+}
+
+.z_ind1 {
+    z-index: 1;
+}
+
+.z_ind2 {
+    z-index: 2;
+}
+
+.z_ind3 {
+    z-index: 3;
+}
+
+
+/* 
+                                                                    ========================
+                                                                      Padding and Margins
+                                                                    ========================
+*/
+
+.pt_0 {
+    padding-top: 0rem !important;
+}
+
+.pt_1 {
+    padding-top: 1rem !important;
+}
+
+.pt_2 {
+    padding-top: 2rem !important;
+}
+
+.pb_0 {
+    padding-bottom: 0rem !important;
+}
+
+.pb_1 {
+    padding-bottom: 1rem !important;
+}
+
+.pb_2 {
+    padding-bottom: 2rem !important;
+}
+
+.pl_0 {
+    padding-left: 0rem !important;
+}
+
+.pl_1 {
+    padding-left: 1rem !important;
+}
+
+.pl_2 {
+    padding-left: 2rem !important;
+}
+
+.pr_0 {
+    padding-right: 0rem !important;
+}
+
+.pr_1 {
+    padding-right: 1rem !important;
+}
+
+.pr_2 {
+    padding-right: 2rem !important;
+}
+
+.mt_0 {
+    margin-top: 0rem !important;
+}
+
+.mt_1 {
+    margin-top: 1rem !important;
+}
+
+.mt_2 {
+    margin-top: 2rem !important;
+}
+
+.mb_0 {
+    margin-bottom: 0rem !important;
+}
+
+.mb_1 {
+    margin-bottom: 1rem !important;
+}
+
+.mb_2 {
+    margin-bottom: 2rem !important;
+}
+
+.ml_1 {
+    margin-left: 1rem !important;
+}
+
+.ml_2 {
+    margin-left: 2rem !important;
+}
+
+.mr_1 {
+    margin-right: 1rem !important;
+}
+
+.mr_2 {
+    margin-right: 2rem !important;
+}
+
+
+/*
+========================
+Padding between sections and hr color
+========================
+*/
+
+.padd {
+    padding: 100px 0px !important;
+}
+
+hr {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* 
+                                                                ========================
+                                                                ========================
+                                                                      Media Queries
+                                                                ========================
+                                                                ========================
+*/
+
+
+/* Extra large devices (large laptops and desktops, 993px and up) */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* 
+Large devices (laptops/desktops, 992px and up) 
+
+
+  800
+  1024
+  1280
+  1366
+  1440
+  1920
+*/
+
+@media (min-width: 769px) and (max-width: 991px) {
+    .s1_cirImg {
+        padding: 0px;
+    }
+}
+
+
+/* 
+Medium devices (Between 600-768) 
+
+Popular screen sizes:
+  600
+  768
+
+*/
+
+@media (min-width: 576px) and (max-width: 768px) {
+    /* 
+  Two Section Area Using Grid */
+    .s1_grid {
+        grid-template-columns: repeat(auto-fit, minmax(min-content, 768px));
+    }
+    .s1_cirImg {
+        padding: 0px;
+        order: 1;
+    }
+    .s1_card1 {
+        order: 2;
+        padding: 20px 20px;
+        margin-top: -70px;
+        margin-bottom: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .s1_card2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    /* End of Two Section Area Using Grid */
+    .size48 {
+        font-size: 36px;
+    }
+    .size46 {
+        font-size: 42px;
+    }
+    .size42 {
+        font-size: 38px;
+    }
+    .size38 {
+        font-size: 36px;
+    }
+}
+
+
+/* 
+Small devices (599px and down) 
+
+Normally phones screen are between 320px to 480px max;
+Popular mobile screen sizes are ; 
+  320
+  360 
+  375 
+  393
+  (411, 412, 414)
+  480
+
+Note:
+  1-here we have to adjust our font sizes because of small screen size;
+  2-also we have to convert our column based elements into rows;
+  3-also we have to rewrite the code written in above two media queries;
+*/
+
+@media only screen and (max-width: 575px) {
+    /* 
+  Two Section Area Using Grid */
+    .s1_grid {
+        grid-template-columns: repeat(auto-fit, minmax(min-content, 575px));
+    }
+    .s1_cirImg {
+        padding: 0px;
+        order: 1;
+    }
+    .s1_card1 {
+        order: 2;
+        padding: 20px 20px;
+        margin-top: -70px;
+        margin-bottom: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .s1_card2 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    /* End of Two Section Area Using Grid */
+    .tl2c {
+        padding-top: 10px;
+        text-align: center !important;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+    }
+    .card_w400 {
+        width: 350px;
+    }
+    .card_w350 {
+        width: 320px;
+    }
+    .con95 {
+        width: 95%;
+    }
+    .con90 {
+        width: 95%;
+    }
+    .con85 {
+        width: 95%;
+    }
+    .con70 {
+        width: 95%;
+    }
+    .size48 {
+        font-size: 28px;
+    }
+    .size46 {
+        font-size: 38px;
+    }
+    .size42 {
+        font-size: 36px;
+    }
+    .size38 {
+        font-size: 34px;
+    }
+    .size36 {
+        font-size: 33px;
+    }
+    .size34 {
+        font-size: 31px;
+    }
+    .size32 {
+        font-size: 30px;
+    }
+    .size30 {
+        font-size: 28px;
+    }
+    .size28 {
+        font-size: 26px;
+    }
+    .size26 {
+        font-size: 24px;
+    }
+    .size25 {
+        font-size: 23px;
+    }
+}

@@ -1,0 +1,55 @@
+/* Coolors Exported Palette - https://coolors.co/1d3557-457b9d-e63946-a8dadc-f1faee */
+
+text color: 		#6c757d
+extra dark blue:	#0f2142
+button hover color:	rgb(216, 10, 27)
+
+
+$color1: dark blue --> primary
+$color2: light blue --> secondary
+$color3: red --> buttons
+$color4: powder --> background
+$color5: cream  --> background
+
+
+
+
+/* HEX */
+$color1: #1d3557ff
+$color2: #457b9dff
+$color3: #e63946ff
+$color4: #a8dadcff
+$color5: #f2efe3ff
+
+/* RGB */
+$color1: rgba(29, 53, 87, 1)
+$color2: rgba(69, 123, 157, 1)
+$color3: rgba(230, 57, 70, 1)
+$color4: rgba(168, 218, 220, 1)
+$color5: rgba(242, 239, 227, 1)
+
+
+
+
+
+
+
+/* HSL */
+$color1: hsla(215%, 67%, 34%, 1)
+$color2: hsla(203%, 56%, 62%, 1)
+$color3: hsla(355%, 75%, 90%, 1)
+$color4: hsla(182%, 24%, 86%, 1)
+$color5: hsla(48%, 6%, 95%, 1)
+
+
+/* GRADIENT */
+$gradient-top: linear-gradient(0deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-right: linear-gradient(90deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-bottom: linear-gradient(180deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-left: linear-gradient(270deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-top-right: linear-gradient(45deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-bottom-right: linear-gradient(135deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-top-left: linear-gradient(225deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-bottom-left: linear-gradient(315deg, #1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f1faeeff);
+$gradient-radial: radial-gradient(#1d3557ff, #457b9dff, #e63946ff, #a8dadcff, #f2efe3ff);
+

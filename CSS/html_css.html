@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Information About Your Pages</title>
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" /> -->
+
+    <meta name="description" content="An Essay on Installation Art" />
+    <meta name="keywords" content="installation, art, opinion" />
+
+    <!-- <meta name="robots" content="nofollow" /> -->
+    <!-- <meta http-equiv="author" content="Jon Duckett" /> -->
+    <!-- <meta http-equiv="pragma" content="no-cache" /> -->
+    <!-- <meta http-equiv="expires" content="Fri, 04 Apr 2014 23:59:59 GMT" /> -->
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes" />
+
+    <!--
+      Always put in header
+      For ajax and jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="css_prac.css" type="text/css" rel="stylesheet" media="screen" />
+
+    <!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script>
+
+    <!-- For animations:  https://animate.style/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
+    <!-- Animation on Scroll:   https://michalsnik.github.io/aos/ -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+
+<body>
+    <!-- <iframe
+    src="http://maps.google.co.uk/maps?q=moma+new+york
+    &amp;output=embed"
+    width="450"
+    height="350"
+    frameborder="0"
+    scrolling="no">
+    </iframe>
+
+    <iframe width="560" height="315" frameborder="0" 
+        src="https://www.youtube.com/embed/pmKyG3NBY_k" 
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe> 
+
+    <video src="desktop_app.mp4"
+    poster="serbg.jpg"
+    width="400" height="300"
+    preload
+    controls
+    loop>
+    -->
+
+    <section class="bg_img1">
+        <!-- Navbar -->
+        <div class="nav_par">
+            <img class="nav_logo trans_img2" src="Image/logos-and-favicon/logo5.png" alt="affordable" />
+
+            <ul class="nav pr_0">
+                <li class="nav_l verCen">
+                    <a class="trans_navLink" href="#">Home</a>
+                </li>
+                <li class="dropdown nav_l verCen">
+                    <a href="javascript:void(0)" class="dropbtn">Service</a>
+                    <div class="nav_dropdown">
+                        <a href="#" class="size15">Service A</a>
+                        <a href="#" class="size15">Service B</a>
+                        <a href="#" class="size15">Service C</a>
+                    </div>
+                </li>
+                <li class="nav_l verCen"><a href="#contact_1">Contact Us</a></li>
+                <li class="nav_l verCen"><a href="#about_1">About Us</a></li>
+                <li class="nav_l verCen">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="button btn_xxs" data-toggle="modal" data-target="#id32">
+              Login
+            </button>
+                </li>
+            </ul>
+        </div>
+
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="id32" tabindex="-1" role="dialog" aria-labelledby="signin11" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title size38 cl_b lh_1p4 b8" style="margin-left: auto;">
+                                Sign In
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                        </div>
+                        <div class="modal-body mt_2 ml_2 mr_2 mb_2">
+                            <!-- Start of form -->
+                            <form action="/action.php" method="post">
+                                <div class="input-group mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text rounded-0"><i class="fas fa-user fa-1x"></i
+                      ></span>
+                                    </div>
+                                    <input type="text" class="form-control rounded-0 p-4" placeholder="Email" required />
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text rounded-0"><i class="fas fa-lock"></i
+                      ></span>
+                                    </div>
+                                    <input type="password" class="form-control rounded-0 p-4" placeholder="Password" required />
+                                </div>
+
+                                <div class="form-check-inline">
+                                    <label class="form-check-label" for="rememberMe">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="rememberMe"
+                        required
+                      />
+                      Remember me
+                    </label>
+                                    <div class="valid-feedback"></div>
+                                    <div class="invalid-feedback">
+                                        Please check this checkbox.
+                                    </div>
+                                </div>
+
+                                <div class="centre">
+                                    <input type="submit" value="Submit" class="button btn_block d_in b7 mt_2" />
+                                </div>
+                            </form>
+                            <!-- End of form2 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Header Section -->
+        <div class="con con85 header_mp tc pr_0 pl_0">
+            <!-- <h1 class="size48 b8 cl_w pl_0 pr_0 animation"> -->
+            <h1 class="size48 b8 cl_w">
+                Find Affordable Web Hosting Service
+            </h1>
+            <h4 class="size17 cl_w">
+                Keep your website running smoothly with a business hosting company that guarantees you good uptime, fast load times and easy setup.
+            </h4>
+            <input type="button" value="Get Started" class="button btn_lg size22 b8 rad50 mt_2 mb_2 ani_infinite animate__animated animate__pulse animate__slow" onclick="window.location.href='www.google.com'" />
+            <!-- class="button btn_lg size22 b8 rad50 mt_2 mb_2 ani_infinite animate__animated animate__pulse animate__slow" -->
+        </div>
+    </section>
+
+    <!-- SECTION0  S0  Using Flexbox-->
+    <section class="bg_c pt_2">
+        <div class="con con90">
+            <div class="card_par">
+                <div class="cardd host_card bg" data-aos="fade-up">
+                    <h3 class="size25 cl_w bg_bl b8 pt_1 pb_1 mb-0">
+                        Hatchling Plan
+                    </h3>
+                    <h4 class="size20 cl_w bg_bd b7 pt_1 pb_1">Now 60% off!</h4>
+
+                    <p class="size48 b8 cl_bd">
+                        2 <span class="size18 cl_b b7">$ /mo</span>
+                    </p>
+
+                    <input type="button" value="Add to cart" class="button btn_xl bg_r d_b b7" />
+
+                    <ul class="size15 tl cl_b pt_2 pl_2 ml_1">
+                        <li>Unlimited Domains</li>
+                        <li>One Click WordPress Installs</li>
+                        <li>Free WordPress/cPanel</li>
+                        <li>Website Transfer</li>
+                        <li>Bandwidth</li>
+                        <li>Free SSL Certificate</li>
+                        <li>Free Domain Included</li>
+                    </ul>
+
+                    <a href="#" class="tc cl_w bg_bd d_b pt_1 pb_1 mt_2">
+              click here to see all features
+            </a>
+                </div>
+
+                <div class="cardd host_card" data-aos="fade-up">
+                    <h3 class="size25 cl_w bg_bl b8 pt_1 pb_1 mb-0">
+                        Hatchling Plan
+                    </h3>
+                    <h4 class="size20 cl_w bg_bd b7 pt_1 pb_1">Now 60% off!</h4>
+
+                    <p class="size48 b8 cl_bd">
+                        2 <span class="size18 cl_b b7">$ /mo</span>
+                    </p>
+
+                    <input type="button" value="Add to cart" class="button btn_xl bg_r d_b b7" />
+
+                    <ul class="size15 tl cl_b pt_2 pl_2 ml_1">
+                        <li>Unlimited Domains</li>
+                        <li>One Click WordPress Installs</li>
+                        <li>Free WordPress/cPanel</li>
+                        <li>Website Transfer</li>
+                        <li>Bandwidth</li>
+                        <li>Free SSL Certificate</li>
+                        <li>Free Domain Included</li>
+                    </ul>
+
+                    <a href="#" class="tc cl_w bg_bd d_b pt_1 pb_1 mt_2">
+              click here to see all features
+            </a>
+                </div>
+
+                <div class="cardd host_card" data-aos="fade-up">
+                    <h3 class="size25 cl_w bg_bl b8 pt_1 pb_1 mb-0">
+                        Hatchling Plan
+                    </h3>
+                    <h4 class="size20 cl_w bg_bd b7 pt_1 pb_1">Now 60% off!</h4>
+
+                    <p class="size48 b8 cl_bd">
+                        2 <span class="size18 cl_b b7">$ /mo</span>
+                    </p>
+
+                    <input type="button" value="Add to cart" class="button btn_xl bg_r d_b b7" />
+
+                    <ul class="size15 tl cl_b pt_2 pl_2 ml_1">
+                        <li>Unlimited Domains</li>
+                        <li>One Click WordPress Installs</li>
+                        <li>Free WordPress/cPanel</li>
+                        <li>Website Transfer</li>
+                        <li>Bandwidth</li>
+                        <li>Free SSL Certificate</li>
+                        <li>Free Domain Included</li>
+                    </ul>
+
+                    <a href="#" class="tc cl_w bg_bd d_b pt_1 pb_1 mt_2">
+              click here to see all features
+            </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="con con85 padd">
+        <div class="table_flow">
+            <h1 class="size42 b8 pb_2 tc">
+                Compare All Hosting Plans
+            </h1>
+            <table>
+                <tr>
+                    <th></th>
+                    <th class="size25 tc t_fLett b8">Single</th>
+                    <th class="size25 tc t_fLett b8">Premium</th>
+                    <th class="size25 tc t_fLett b8">Business</th>
+                </tr>
+                <tr>
+                    <td class="size24 tl">Processing Power & Memory</td>
+                    <td>1X</td>
+                    <td>2X</td>
+                    <td>3X</td>
+                </tr>
+                <tr>
+                    <td class="size24 tl">Websites</td>
+                    <td>1</td>
+                    <td>Unlimited*</td>
+                    <td>Unlimited*</td>
+                </tr>
+                <tr>
+                    <td class="size24 tl">Disk Space</td>
+                    <td>10GB</td>
+                    <td>20GB</td>
+                    <td>100GB</td>
+                </tr>
+                <tr>
+                    <td class="size24 tl">Bandwidth</td>
+                    <td>1</td>
+                    <td>Unlimited*</td>
+                    <td>Unlimited*</td>
+                </tr>
+                <tr>
+                    <td class="size24 tl">MYSQL Database</td>
+                    <td>1</td>
+                    <td>Unlimited*</td>
+                    <td>Unlimited*</td>
+                </tr>
+                <tr>
+                    <td class="size24 tl">Free Domain Registration</td>
+                    <td><i class="fas fa-times fa-2x"></i></td>
+                    <td><i class="fas fa-check fa-2x"></i></td>
+                    <td><i class="fas fa-check fa-2x"></i></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Add to cart" class="button btn_xs rad_5 size13" />
+                    </td>
+                    <td>
+                        <input type="button" value="Add to cart" class="button btn_xs rad_5 size13" />
+                    </td>
+                    <td>
+                        <input type="button" value="Add to cart" class="button btn_xs rad_5 size13" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION2 S2  using grids-->
+    <section class="bg_c pt_2 pb_2">
+        <div class="con con95">
+            <div class="s1_grid">
+                <div class="">
+                    <img src="Image/hosting.png" alt="how" class="img_fluid" style="width: auto; height: 260px;" />
+                    <p class="size34 lh_1p4 tl mt_0 cl_b b7">
+                        How to Choose Best Hosting Company?
+                    </p>
+                    <p class="size14 tl b4 mb_0 lh_1p6">
+                        Without the best hosting, your ability to run successful website is going to be seriously hindered. There are dizzying array of hosting providers. How can you pinpoint the best one? Start by keeping following points in mind:
+                    </p>
+                    <input type="button" value="Learn More" class="button btn_lg rad_5 size15 d_b b6 mt_2 mb_2" />
+                </div>
+
+                <div class="s2_grid">
+                    <div class="s2_grid_child">
+                        <i class="fas fa-sd-card fa-5x cl_bd verCen"></i>
+                        <div class="verCen ml_1">
+                            <p class="size26 lh_1p4 tl b7 cl_b mb_0">
+                                SSD persistent storage
+                            </p>
+                            <p class="size16 tl mt_0">
+                                Distributed storage running on SSD disks for an optimal speed and a high-level of redundancy.
+                            </p>
+                        </div>
+
+                        <i class="fas fa-cloud fa-5x cl_bd verCen"></i>
+                        <div class="verCen ml_1">
+                            <p class="size26 lh_1p4 tl b7 cl_b mb_0">
+                                Ultra-fast network
+                            </p>
+                            <p class="size16 tl mt_0">
+                                Google is known for maintaining one of the fastest and best connected networks.
+                            </p>
+                        </div>
+
+                        <i class="fas fa-tachometer-alt fa-5x cl_bd verCen"></i>
+                        <div class="verCen ml_1">
+                            <p class="size26 lh_1p4 tl b7 cl_b mb_0">
+                                100% renewable energy match
+                            </p>
+                            <p class="size16 tl mt_0">
+                                Google matches 100% the energy consumed by their operations with renewable energy.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION1 S1 Using Grid-->
+    <section class="con con95 padd" id="about_1">
+        <h1 class="size42 b8 tc d_b pb_2 mb_2">
+            Why Choose Affordable as Your Web Hosting Provider?
+        </h1>
+
+        <div class="s1_grid">
+            <div class="" data-aos="fade-up">
+                <!-- data-aos="fade-up" -->
+                <img src="Image/vector/3075838.jpg" alt="no worry" class="img_fluid s1_cirImg" />
+            </div>
+            <div class="s1_card1 sh_md bg_w rad10">
+                <p class="size28 cl_b b7">
+                    We are with you at every step of the way.
+                </p>
+                <p class="size14">
+                    Whether you are looking for a personal website hosting plan or a business website hosting plan, HostGator is the perfect solution for you. Our powerful website hosting services will not only help you achieve your overall website goals, but will also provide
+                    you with the confidence you need in knowing that you are partnered with a reliable and secure website hosting platform.
+                </p>
+            </div>
+        </div>
+
+        <div class="s1_grid" data-aos="fade-up">
+            <div class="s1_card1 s1_card2 sh_md bg_w rad10">
+                <p class="size28 cl_b b7">
+                    Let us transfer your existing Website for you.
+                </p>
+                <p class="size14">
+                    Our migrations team is standing by to transfer your existing content from your prior host and configure it to perform optimally on our platform. We are happy to transfer domain registrations as well, so you can manage your entire online portfolio in one
+                    convenient place!
+                </p>
+            </div>
+            <div class="">
+                <img src="Image/3066886.jpg" alt="no worry" class="img_fluid s1_cirImg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION3  S3  Using Grids and Flexbox-->
+    <section class="bg_img2 padd">
+        <div class="con con95">
+            <h1 class="size42 b8 tc d_b pb_2 mb_2">
+                Didn’t find what you were looking for?
+            </h1>
+            <div class="s3_grid mb_2">
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fas fa-server fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                Web Hosting
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $0.99/mo
+            </a>
+                </div>
+
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fas fa-cloud fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                Cloud Hosting
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $7.45/mo
+            </a>
+                </div>
+
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fas fa-hdd fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                VPS Hosting
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $3.95/mo
+            </a>
+                </div>
+
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fab fa-wordpress fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                WordPress Hosting
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $2.15/mo
+            </a>
+                </div>
+
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fas fa-globe-europe fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                Domains
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $0.99/mo
+            </a>
+                </div>
+
+                <div class="bg_w sh_md" data-aos="fade-up">
+                    <div class="card_par tl2c">
+                        <i class="fas fa-envelope fa-4x cl_bp verCen"></i>
+                        <div class="card_w250">
+                            <p class="size20 b8 cl_bd mb_0">
+                                Email Hosting
+                            </p>
+                            <p class="size14 mt_0">
+                                At Hostinger you pay the lowest for the highest quality.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#" class="tc cl_w bg_r d_b pt_1 pb_1 mt_0 b8">
+              Only at $0.99/mo
+            </a>
+                </div>
+            </div>
+            <input type="button" value="Learn More" class="button btn_xl b8 mt_2" />
+        </div>
+    </section>
+
+    <section class="con con85 padd">
+        <h1 class="size42 b8 tc pb_2">
+            What people are saying
+        </h1>
+        <div class="card_par">
+            <!-- <div class="cardd card_w330 sh_sm trans_scale"> -->
+            <div class="cardd card_w330 sh_md trans_img2">
+                <img src="Image/people/success-story-120x120.png" alt="testimonial1" class="trf_rot" />
+                <p class="cl_bd size18 b6 pt_1">Sean Williams</p>
+                <p class="size14">
+                    "This company rocks. Before them I was quoted over $3000.00 to take my case. "Affordable Legal Help" offered me a couple different programs where I ended up saving about $1000. Thank you for your help in finalizing my divorce."
+                </p>
+            </div>
+
+            <div class="cardd card_w330 sh_md trans_img2">
+                <img src="Image/people/Success-Stories-120x120.png" alt="testimonial1" class="trf_rot" />
+                <p class="cl_bd size18 b6 pt_1">Michael Mitch</p>
+                <p class="size14">
+                    "This experience with Affordable Legal Help Experts was great. They truly care about your needs. They know how to get you the proper help you need. They really helped put me at ease. Thank you so much for everything!!!!"
+                </p>
+            </div>
+
+            <div class="cardd card_w330 sh_md trans_img2">
+                <img src="Image/people/Testimonial-Client-120x120.png" alt="testimonial1" class="trf_rot" />
+                <p class="cl_bd size18 b6 pt_1">Rudolph Jackson</p>
+                <p class="size14">
+                    "I have been a client of Affordable legal Help for some time. I found this Family law firm to be most professional and efficient. I would highly recommend them to my family, friends or anyone seeking legal services."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="padd bg_c">
+        <div class="con con85">
+            <p class="size42 b8 cl_b tc mb_0">
+                Our Great Team Members
+            </p>
+            <p class="tc mb_2 pb_2 mt_0">
+                Without the best web hosting, your ability to run a successful website is going to be seriously hindered. There is a dizzying array of web hosting providers competing for your business.
+            </p>
+
+            <div class="gallery_grid">
+                <div class="grid_shape1">
+                    <!-- 1 -->
+                    <img src="Image/people/law1.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="">
+                    <!-- 2 -->
+                    <img src="Image/people/law2.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="grid_shape2">
+                    <!-- 3 -->
+                    <img src="Image/people/law10.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+
+                <div class="">
+                    <!-- 5 -->
+                    <img src="Image/people/law9.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="grid_shape2">
+                    <!-- 6 -->
+                    <img src="Image/people/547457456.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="">
+                    <!-- 7 -->
+                    <img src="Image/people/law11.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="grid_shape2">
+                    <!-- 8 -->
+                    <img src="Image/people/woman-in-brown.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="">
+                    <!-- 10 -->
+                    <img src="Image/people/meninblack.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="">
+                    <!-- 11 -->
+                    <img src="Image/people/law12.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="">
+                    <!-- 12 -->
+                    <img src="Image/people/law13.jpg" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+                <div class="grid_shape2">
+                    <!-- 13 -->
+                    <img src="Image/people/default.PNG" alt="img gallery" class="img_fluid2 trans_img" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="padd con con85" id="contact_1">
+        <p class="size42 cl_b tc lh_1p4 b8 mb_2">
+            For Free Consultation
+        </p>
+
+        <div class="bg_w sh_md form_grid mt_2">
+            <p class="size38 cl_b tl lh_1p4 b8 mb_2">
+                Contact Us
+            </p>
+            <form id="form1" method="post" action="/action_page.php" class="needs-validation" novalidate>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <!-- <label for="fname">Email</label> -->
+                        <input type="text" class="form-control rounded-0 p-4" id="fname" placeholder="First Name" required />
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control rounded-0 p-4" id="lname" placeholder="Last Name" required />
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control rounded-0 p-4" id="email" placeholder="Email" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <input type="tel" class="form-control rounded-0 p-4" id="phoneNo" placeholder="Phone No" required />
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <input type="text" class="form-control rounded-0 p-4" id="zipcode" placeholder="Zipcode" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control rounded-0 p-4" id="address" placeholder="Address" required />
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <select id="state" class="form-control rounded-0" required>
+                <option value="-1" disabled selected>Select State</option>
+                <option value="Sindh">Sindh</option>
+                <option value="Panjab">Panjab</option>
+                <option value="KPK">KPK</option>
+              </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select any option.</div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <select id="city" class="form-control rounded-0" required>
+                <option value="-1" disabled selected>Select City</option>
+                <option value="karachi">karachi</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Hyderabad">Hyderabad</option>
+              </select>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please select any option.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="msg" class="form-control rounded-0" id="msg" cols="20" rows="10" placeholder="Describe your issue" required></textarea>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="rememberMe">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="rememberMe"
+                  required
+                />
+                Remember me
+              </label>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Please check this checkbox.</div>
+                    </div>
+                </div>
+
+                <div class="centre">
+                    <input type="submit" value="Submit" class="button btn_sm d_in b7" />
+                </div>
+            </form>
+            <!-- End of form -->
+        </div>
+    </section>
+
+    <footer>
+        <section class="bg_bp">
+            <div class="con con90">
+                <div class="s1_grid mt_2">
+                    <p class="size30 tc cl_bd b8 verCen">
+                        Sign up for web hosting today!
+                    </p>
+
+                    <input type="button" value="Get Started" class="button btn_lg bg_r size22 b8 rad5 flot_r verCen" onclick="window.location.href='www.google.com'" />
+                </div>
+            </div>
+        </section>
+        <!-- End of footer section 1 -->
+
+        <section class="bg_bd">
+            <div class="con con90">
+                <div class="footer_grid pl_1">
+                    <div class="mt_2">
+                        <p class="size15 b7 cl_w">CONTACT US</p>
+
+                        <p class="size14 tl">
+                            <span class="b7">Address:</span> 2182 Hewitt Kettering, Ohio
+                            <br />
+                            <span class="b7">Email:</span>
+                            <a href="mailto: ahsan@gmail.com">
+                  info@affordablelegalhelp.com
+                </a>
+                            <span class="b7">Phone:</span> 844 944 5342
+                        </p>
+                    </div>
+
+                    <div class="mt_2">
+                        <p class="size15 b7 cl_w">OUR SERVICES</p>
+
+                        <ul class="fa-ul">
+                            <li class="">
+                                <span class="fa-li">
+                    <i class="fas fa-angle-double-right cl_g"></i>
+                  </span>
+                                <a href="#" class="size15 cl_g">Service A</a>
+                            </li>
+                            <li class="">
+                                <span class="fa-li">
+                    <i class="fas fa-angle-double-right cl_g"></i>
+                  </span>
+                                <a href="#" class="size15 cl_g">Service A</a>
+                            </li>
+                            <li class="">
+                                <span class="fa-li">
+                    <i class="fas fa-angle-double-right cl_g"></i>
+                  </span>
+                                <a href="#" class="size15 cl_g">Service A</a>
+                            </li>
+                            <li class="">
+                                <span class="fa-li">
+                    <i class="fas fa-angle-double-right cl_g"></i>
+                  </span>
+                                <a href="#" class="size15 cl_g">Service A</a>
+                            </li>
+                            <li class="">
+                                <span class="fa-li">
+                    <i class="fas fa-angle-double-right cl_g"></i>
+                  </span>
+                                <a href="#" class="size15 cl_g">Service A</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt_2">
+                        <p class="size15 b7 cl_w">FOLLOW US</p>
+                        <a href="" class="fab fa-facebook-f fa-2x pr_1"></a>
+                        <a href="" class="fab fa-twitter fa-2x pr_1"></a>
+                        <a href="" class="fab fa-instagram fa-2x pr_1"></a>
+                        <a href="" class="fab fa-youtube fa-2x pr_1"></a>
+                    </div>
+
+                    <div class="mt_2">
+                        <p class="size15 b7 cl_w">BUSINESS HOURS</p>
+                        <p class="size14 tl">
+                            Monday-Friday: 9am to 9pm <br /> Saturday: 10am to 4pm <br /> Sunday: Closed
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of footer section 2 -->
+
+        <section class="bg_c" style="background-color: #0b1b33;">
+            <div class="con con90">
+                <div class="footer2_grid pl_1">
+                    <div class="mt_1">
+                        <a href="about-us" class="size13 pl_0">ABOUT US</a> |
+                        <a href="our-blog" class="size13">OUR BLOG</a> |
+                        <a href="contact-us" class="size13">CONTACT US</a> |
+                        <a href="privacy-policy" class="size13">PRIVACY POLICY</a>
+                        <p class="size13 tl mb_0 pl_0">
+                            COPYRIGHT©2006-2019, ALL RIGHTS RESERVED.
+                        </p>
+                    </div>
+
+                    <div class="verCen mt_2">
+                        <a href="" class="fab fa-facebook-f fa-2x pr_1"></a>
+                        <a href="" class="fab fa-twitter fa-2x pr_1"></a>
+                        <a href="" class="fab fa-instagram fa-2x pr_1"></a>
+                        <a href="" class="fab fa-youtube fa-2x pr_1"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of footer section 3 -->
+    </footer>
+    <!-- End Of Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+    <!-- Animation on Scroll -->
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+
+    <script type="text/javascript">
+        AOS.init({
+            // duration: 2000,
+            // delay: 300,
+            // offset: 160,
+            // Global settings: default settings      https://michalsnik.github.io/aos/
+            // offset: 120, // offset (in px) from the original trigger point
+            // delay: 200, // values from 0 to 3000, with step 50ms
+            // duration: 400, // values from 0 to 3000, with step 50ms
+            // easing: "ease", // default easing for AOS animations
+            // once: false, // whether animation should happen only once - while scrolling down
+            // mirror: false, // whether elements should animate out while scrolling past them
+            // anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+        });
+    </script>
+
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+            "use strict";
+            window.addEventListener(
+                "load",
+                function() {
+                    // Get the forms we want to add validation styles to
+                    var forms = document.getElementsByClassName("needs-validation");
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function(
+                        form
+                    ) {
+                        form.addEventListener(
+                            "submit",
+                            function(event) {
+                                if (form.checkValidity() === false) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
+                                form.classList.add("was-validated");
+                            },
+                            false
+                        );
+                    });
+                },
+                false
+            );
+        })();
+    </script>
+</body>
+
+</html>

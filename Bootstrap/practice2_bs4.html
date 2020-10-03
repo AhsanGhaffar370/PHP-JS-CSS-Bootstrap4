@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My complete bootstrap practice</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <meta name="description" content="Enjoy Fast Access To Top Family Lawyers Across The US.">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+
+.img_jumbo{
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("contactus1.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+</style>
+
+<body>
+<!-- 
+  // Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { ... }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... } -->
+
+  <p  class="bg-warning mt-5">nav bar</p>
+  <div class="container">
+
+    <nav class="navbar navbar-expand-lg  fixed-top animated slideInDown navbar-light" style="background-color: #e3f2fd;">
+      
+      <a class="navbar-brand" href="#">
+        <img src="favicon.png" width="50" height="50" alt="">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+      </div>
+    </nav>
+
+  </div><!-- End of naav container -->
+
+
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5">Bootstrap Forms and input groups</h1>
+  <h3>
+    <a href="https://getbootstrap.com/docs/4.4/components/forms/" target="_blank"  class="text-decoration-none">all about bootstrap forms a to z everything is here</a>
+    <br>
+    <a href="https://getbootstrap.com/docs/4.4/components/input-group/" target="_blank"  class="text-decoration-none">all about bootstrap input groups a to z everything is here</a>
+  </h3><!-- End of forms and input groups -->
+
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5">Containers</h1>
+  <div class="container-sm border">100% wide until small breakpoint</div>
+  <div class="container-md border">100% wide until medium breakpoint</div>
+  <div class="container-lg border">100% wide until large breakpoint</div>
+  <div class="container-xl border">100% wide until extra large breakpoint</div>
+  <div class="container border">100% wide until small breakpoint</div>
+  <div class="container-fluid border">100% wide until small breakpoint</div>     
+  <!-- End of container -->
+
+
+
+ 
+
+  <h1 class="bg-warning mt-5 mb-2">Clolumns</h1>
+  <div class="container">
+    
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4  mb-2">
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+    </div>
+
+    <div class="row row-cols-3  mb-2">
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+    </div>
+
+    <div class="row row-cols-4  mb-2">
+      <div class="col border">Column</div>
+      <div class="col border">Column</div>
+      <div class="col-6 border">Column</div>
+      <div class="col  border">Column</div>
+    </div>
+  </div><!-- End of column container -->
+
+
+
+  <h1 class="bg-warning mt-5 mb-2">Clolumns alignment</h1>
+  <div class="container">
+    <div class="row align-items-start">
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+    </div>
+    <div class="row align-items-end">
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+      <div class="col border">
+        One of three columns
+      </div>
+    </div>
+  </div><!-- End of column alignment container -->
+
+
+
+  <h1 class="bg-warning mt-5 mb-2">Clolumns Ordering</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col border">
+        First in DOM, no order applied
+      </div>
+      <div class="col order-12 border">
+        Second in DOM, with a larger order
+      </div>
+      <div class="col order-1 border">
+        Third in DOM, with an order of 1
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col order-last border">
+        First in DOM, ordered last
+      </div>
+      <div class="col border">
+        Second in DOM, unordered
+      </div>
+      <div class="col order-first border">
+        Third in DOM, ordered first
+      </div>
+    </div>
+  </div><!-- End of columns ordering container -->
+
+
+
+
+
+
+
+
+    
+  <h1 class="bg-warning mt-5 mb-2">Bootstrap heading and texts</h1>
+  <div class="container">
+    <p class="h1">h1. Bootstrap heading</p>
+    <p class="h2">h2. Bootstrap heading</p>
+    <p class="h3">h3. Bootstrap heading</p>
+    <p class="h4">h4. Bootstrap heading</p>
+    <p class="h5">h5. Bootstrap heading</p>
+    <p class="h6">h6. Bootstrap heading</p>
+
+    <h1 class="display-1 mt-5">Display 1</h1>
+    <h1 class="display-2">Display 2</h1>
+    <h1 class="display-3">Display 3</h1>
+    <h1 class="display-4">Display 4</h1>
+
+    <p class="lead">
+      Make a paragraph stand out by adding "lead".. Duis mollis, est non commodo luctus.
+    </p>
+
+    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+    <p><u>This line of text will render as underlined</u></p>
+    <p><small>This line of text is meant to be treated as fine print.</small></p>
+    <p><strong>This line rendered as bold text.</strong></p>
+    <p><em>This line rendered as italicized text.</em></p>
+  </div><!-- End of bootstrap heading and texts  -->
+
+
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5 mb-2">display inline and block</h1>
+  <div class="container ">
+
+    <div class="d-inline p-2 bg-primary text-white">d-inline</div>
+    <div class="d-inline p-2 bg-dark text-white">d-inline</div>
+
+    <span class="d-block p-2 bg-primary text-white mt-4">d-block</span>
+    <span class="d-block p-2 bg-dark text-white">d-block</span>
+
+    <div class="d-sm-none border mt-3">hide on sm and wider screens</div>
+    <div class="d-none d-md-block border mt-3">hide on screens smaller than md</div>
+
+    <div class="d-print-none border mt-3">Screen Only (Hide on print only)</div>
+    <div class="d-none d-print-block border mt-3">Print Only (Hide on screen only)</div>
+    <div class="d-none d-lg-block d-print-block border mt-3">Hide up to large on screen, but always show on print</div>
+
+  </div><!--End of display inline and block container -->
+ 
+ 
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5 mb-0">Responsive images</h1>
+  <p class="bg-warning mb-2">Images in Bootstrap are made responsive with .img-fluid. max-width: 100%; and height: auto; are applied to the image so that it scales with the parent element.</p>
+  <div class="container border">
+    <img src="default.PNG" class="img-fluid" alt="Responsive image">
+  </div><!-- End of responsive images -->
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5 mb-3">Badges</h1>
+  <div class="container border">
+
+    <h1>Example heading <span class="badge badge-secondary">New</span></h1>
+
+
+    <button type="button" class="btn btn-primary">
+      Notifications <span class="badge badge-light">4</span>
+    </button>
+    
+    <h4>Badge colors</h4>
+    <span class="badge badge-primary">Primary</span>
+    <span class="badge badge-secondary">Secondary</span>
+    <span class="badge badge-success">Success</span>
+    
+    <h4>Badge rounded</h4>
+    <span class="badge badge-pill badge-primary">Primary</span>
+    <span class="badge badge-pill badge-secondary">Secondary</span>
+    <span class="badge badge-pill badge-success">Success</span>
+
+    <h4>Badge links</h4>
+    <a href="#" class="badge badge-primary">Primary</a>
+    <a href="#" class="badge badge-secondary">Secondary</a>
+    <a href="#" class="badge badge-success">Success</a>
+
+  </div><!-- End of badges container -->
+
+
+
+
+  
+
+
+  <h1  class="bg-warning mt-5">Modal</h1>
+  <div class="container">
+
+
+    <h3 class="mt-4">Live demo of Modal</h3>
+    <p>Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.</p>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+    <!-- Modal -->
+
+    <!-- 
+    data-backdrop="static": When backdrop = static, the modal will not close when clicking outside it. 
+    <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> 
+    -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     
+      <!-- <div class="modal-dialog modal-dialog-scrollable" role="document">  to put scroll bar inside model body-->
+      <!-- <div class="modal-dialog modal-dialog-centered " role="document">  to make your modal centered-->
+      <!-- <div class="modal-dialog modal-xl" role="document">  for variable model size we use xl, lg, md, sm-->
+      <!-- <div class="modal-dialog modal-lg" role="document">  for variable model size we use xl, lg, md, sm-->
+      <!-- <div class="modal-dialog modal-sm" role="document">  for variable model size we use xl, lg, md, sm-->
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Modal body text goes here.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- End of modal container -->
+
+
+
+
+
+
+
+  
+
+  <h1 class="bg-warning mt-5 mb-2">List Gourps</h1>
+  <div class="container">
+    
+    <ul class="list-group">
+      <li class="list-group-item active" aria-disabled="true">Active list item</li>
+      <li class="list-group-item">use badge with list item<span class="badge badge-primary badge-pill">14</span></li>
+      <a href="#" class="list-group-item list-group-item-action">anchor  list item</a>
+      <li class="list-group-item disabled">disable list item</li>
+    </ul>
+
+    <ul class="list-group list-group-flush mt-4">
+      <li class="list-group-item"> list-group-flush</li>
+      <li class="list-group-item"> list-group-flush</li>
+    </ul>
+
+    
+    <p class="mt-4"> list-group-horizontal</p>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+    </ul>
+
+    
+    <p class="mt-4">list-group-horizontal-sm --> Turns into column form when screen size becomes small</p>
+    <ul class="list-group list-group-horizontal-sm">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+    </ul>
+
+    
+    <p class="mt-4">list-group-horizontal-md --> Turns into column form when screen size becomes medium</p>
+    <ul class="list-group list-group-horizontal-md">
+      <li class="list-group-item"> des top fs tesf</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+    </ul>
+
+    <div class="list-group mt-5">
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">List group item heading</h5>
+          <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small>Donec id elit non mi porta.</small>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">List group item heading</h5>
+          <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small class="text-muted">Donec id elit non mi porta.</small>
+      </a>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+          <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+          <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</div>
+          <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">Donec id elit non miDonec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. diam eget risus varius blandit.</div>
+          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Donec Donec idDonec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit. eget risus varius blandit.</div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End of  list group container -->
+
+
+
+
+
+
+
+  
+  <h1  class="bg-warning mt-5">Accordian</h1>
+  <div class="container">
+
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Collapsible Group Item #1
+          </button>
+        </h2>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Collapsible Group Item #2
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Collapsible Group Item #3
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!-- End of accordian container -->
+
+
+  
+  <h1 class="bg-warning mt-5 mb-2">Collapse Button</h1>
+  <div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+    <!-- <div id="demo" class="collapse show"> If we want to show the content by default -->
+    <div id="demo" class="collapse"><!-- If we don't want to show the content by default -->
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+  </div>
+
+
+
+
+
+  <h1 class="bg-warning mt-5 mb-2">Scrollspy</h1>
+  <div class="container row">
+    <div id="list-example" class="list-group col-4">
+      <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+      <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+    </div>
+    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example col-4"  style="height: 250px; overflow-y: scroll;">
+      <h4 id="list-item-1">Item 1</h4>
+      <p>
+        Item 1
+        Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.
+      </p>
+      <h4 id="list-item-2">Item 2</h4>
+      <p>
+        Item 2
+        Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.
+      </p>
+      <h4 id="list-item-3">Item 3</h4>
+      <p>
+        Item 3
+        Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.
+      </p>
+      <h4 id="list-item-4">Item 4</h4>
+      <p>
+        Item 4
+        Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.
+      </p>
+    </div>
+
+  </div><!--End of Scrollspy container -->
+
+
+
+  
+
+
+
+
+
+  <h1  class="bg-warning mt-5">Nav Links</h1>
+  <div class="container">
+
+    <h3 class="bg-success mt-4">Simple nav</h3>
+    <ul class="nav border mt-1">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </li>
+    </ul>
+    OR
+    <nav class="nav border mt-3">
+      <a class="nav-link active" href="#">Active</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </nav>
+
+
+    
+    <h3 class="bg-success mt-4">Vertical nav</h3>
+    <ul class="nav flex-column border">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+
+    
+    <h3 class="bg-success mt-4">Tabs nav</h3>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Link 1</a>
+          <a class="dropdown-item" href="#">Link 2</a>
+          <a class="dropdown-item" href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+
+
+    <h3 class="bg-success mt-4">Pills nav</h3>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Link 1</a>
+          <a class="dropdown-item" href="#">Link 2</a>
+          <a class="dropdown-item" href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+    </ul>
+
+    
+
+
+    <h3 class="bg-success mt-4">toggleable tab</h3>
+    <div class="container border p-2">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+          <h3>HOME</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="menu1" class="container tab-pane fade"><br>
+          <h3>Menu 1</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="menu2" class="container tab-pane fade"><br>
+          <h3>Menu 2</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    <h3 class="bg-success mt-4">toggleable pills</h3>
+    <div class="container border p-2">
+      <!-- Nav pills -->
+      <ul class="nav nav-pills" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="pill" href="#home1">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#menu11">Menu 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#menu22">Menu 2</a>
+        </li>
+      </ul>
+    
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="home1" class="container tab-pane active"><br>
+          <h3>HOME</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="menu11" class="container tab-pane fade"><br>
+          <h3>Menu 1</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="menu22" class="container tab-pane fade"><br>
+          <h3>Menu 2</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+    <h3 class="bg-success mt-4">vertical toggleable pills</h3>
+    <div class="container row border p-2">
+      <div class="col-4">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Some text 1</div>
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Some text 12</div>
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">Some text 13</div>
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">Some text 14</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- End of naav container -->
+
+
+
+
+
+
+
+
+
+  <h1 class="bg-warning mt-5 mb-2">Flex, justify, align, order, float</h1>
+  <div class="container ">
+
+
+    <h3 class="bg-success mt-4">flex (we can also use sm, md, lg element with it)</h3>
+    <!-- .d-flex
+    .d-inline-flex
+    .d-sm-flex
+    .d-sm-inline-flex
+    .d-md-flex
+    .d-md-inline-flex
+    .d-lg-flex
+    .d-lg-inline-flex
+    .d-xl-flex
+    .d-xl-inline-flex -->
+    <div class="d-flex p-2 bd-highlight border">I'm a flexbox container!</div>
+
+    <div class="d-inline-flex p-2 bd-highlight border">I'm an inline flexbox container!</div>
+
+    <div class="d-flex flex-row bd-highlight mb-3">
+      <div class="p-2 bd-highlight border">Flex item 1</div>
+      <div class="p-2 bd-highlight border">Flex item 2</div>
+      <div class="p-2 bd-highlight border">Flex item 3</div>
+    </div>
+
+
+
+    <h3 class="bg-success mt-4">Justify content  --> it means to align items horizontally</h3>
+
+    <div class="d-flex p-3 justify-content-start border">item 1</div>
+    <div class="d-flex p-3 justify-content-end border">item 12</div>
+    <div class="d-flex p-3 justify-content-center border">item 13</div>
+    <div class="d-flex p-3 justify-content-between border">item 14</div>
+    <div class="d-flex p-3 justify-content-around border">item 15</div>
+
+
+
+    <h3 class="bg-success mt-4">Align items --> it means to align items vertically</h3>
+
+    <div class="d-flex w-100 align-items-start border">item 1</div>
+    <div class="d-flex align-items-end border">item 12</div>
+    <div class="d-flex align-items-center border">item 13</div>
+    <div class="d-flex align-items-baseline border">item 14</div>
+    <div class="d-flex align-items-stretch border">item 15</div>
+
+
+    <h3 class="bg-success mt-4">Order</h3>
+
+    <div class="d-flex flex-nowrap bd-highlight">
+      <div class="order-3 p-2 bd-highlight border">First flex item</div>
+      <div class="order-2 p-2 bd-highlight border">Second flex item</div>
+      <div class="order-1 p-2 bd-highlight border">Third flex item</div>
+    </div>
+
+
+    <h3 class="bg-success mt-4">Float</h3>
+
+    <div class="float-left">Float left on all viewport sizes</div><br>
+    <div class="float-right">Float right on all viewport sizes</div><br>
+    <div class="float-none">Don't float on all viewport sizes</div>
+
+  </div><!--End of container -->
+
+
+
+
+
+
+<h1 class="bg-warning mt-5 mb-2">Width and height</h1>
+<div class="container ">
+
+  <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
+  <div class="w-50 p-3" style="background-color: #eee;">Width 50%</div>
+  <div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
+  <div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
+  <div class="w-auto p-3" style="background-color: #eee;">Width auto</div>
+  <div class="mw-100 p-3" style="background-color: #eee;">mw-100</div>
+
+  <div style="height: 100px; background-color: rgba(255,0,0,0.1);">
+    <div class="h-25 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 25%</div>
+    <div class="h-50 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 50%</div>
+    <div class="h-75 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 75%</div>
+    <div class="h-100 d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height 100%</div>
+    <div class="h-auto d-inline-block" style="width: 120px; background-color: rgba(0,0,255,.1)">Height auto</div>
+    <div class="mh-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,0.1);">Max-height 100%</div>
+  </div>
+
+</div><!--End of shadow container -->
+
+
+
+
+
+</body>
+</html>

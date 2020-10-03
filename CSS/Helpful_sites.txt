@@ -1,0 +1,19 @@
+https://www.w3schools.com/css/default.asp
+https://www.w3schools.com/cssref/
+https://css-tricks.com/
+https://devdocs.io/css/
+https://www.cssmatic.com/
+
+
+code snippets and free templates: https://bootsnipp.com/tags/4.1.1
+
+free themes for web projects:  https://www.creative-tim.com/templates/free
+
+bootstrap animation https://mdbootstrap.com/docs/jquery/css/animations/
+
+flexbox concept  https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+images https://www.tutorialspoint.com/css/css_images.htm
+
+course
+https://www.bitdegree.org/course/learn-html5-and-css3
