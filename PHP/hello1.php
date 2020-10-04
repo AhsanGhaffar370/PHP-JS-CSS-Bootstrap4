@@ -1,3 +1,8 @@
+<?php 
+// The strict declaration forces things to be used in the intended way.
+//declare(strict_types=1); // strict requirement 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +53,7 @@
 
 
 
-    <?php
-
+    <?php 
     
     ////////////////////////////////////////////////////////
     // DATA TYPES
@@ -157,13 +161,29 @@
     $float2 = 4.23;
     $int2= 3;
 
-    echo "String length of str0 is: $str1";
+    echo "<b>strlen()</b> function return the length of string ";
+    echo "<br/>String length of str0 is: $str1";
+
+    echo "<br/><br/><b>str_word_count()</b> function return the number of words present in a string ";
     echo "<br> Total words in str0 is: $str2";
+
+    echo "<br/><br/><b>strrev()</b> function reverse the string";
     echo "<br> The reverse of str0 is: $str3";
+
+    echo "<br/><br/><b>strpos()</b> function find the position of a word in a string ";
     echo "<br> The position of 'bhai' in str0 is: $str4";
-    echo "<br> The replacement of 'bhai' in str0 is: $str5";  
+
+    echo "<br/><br/><b>str_replace()</b> function replace the  ";
+    echo "<br> The replacement of 'bhai' in str0 is: $str5";
+
+    echo "<br/><br/><b>is_numeric()</b> function return the length of string ";
     echo "<br> The str6 variable is numeric? ", var_dump(is_numeric($str6));
+
+    echo "<br/><br/><b>strlen()</b> function return the length of string ";
     echo "<br> sum of string numeric and numeric value is: ",$str6+$int2; 
+
+    echo "<br/><br/><b>TypeCasting</b>";
+    echo "<br/><img src='PHP_Importants/typecast.PNG' />";
     echo "<br> Convert string numeric to int: ", (int)$str6; 
     echo "<br> Convert float to int: ", (int)$float2; 
    
@@ -183,24 +203,24 @@
 
     echo "<h2 class='b6 mt_2 size32'><u> MATH FUNCTIONS </u></h2>";
 
-    echo "Pi function: ", pi();
+    echo "<b>pi()</b> function: ", pi();
     
-    echo "<br/><br/>min() function return lowest value from array: ";
+    echo "<br/><br/> <b>min()</b> function return lowest value from array: ";
     echo "<br/> Lowest value in array(150, 20, -8, -200) is: ", $min_func; 
     
-    echo "<br/><br/>max() function return highest value from array: $max_func";
+    echo "<br/><br/><b>max()</b> function return highest value from array: $max_func";
     echo "<br/> Highest value in array(150, 20, -8, -200) is: $max_func";
 
-    echo "<br/><br/>abs() function return absolute(positive) value of a number: ";
+    echo "<br/><br/><b>abs()</b> function return absolute(positive) value of a number: ";
     echo "<br/>Absolute value of $int3 is: $abs_func";
 
-    echo "<br/><br/>sqrt() function return square root of a number: ";
+    echo "<br/><br/><b>sqrt()</b> function return square root of a number: ";
     echo "<br/>SquareRoot value of 4 is: $sqrt_func";
 
-    echo "<br/><br/>round() function rounds a floating-point number to its nearest integer: ";
+    echo "<br/><br/><b>round()</b> function rounds a floating-point number to its nearest integer: ";
     echo "<br/>Round value of 0.49 is: $round_func";
 
-    echo "<br/><br/>rand() function generates a random number";
+    echo "<br/><br/><b>rand()</b> function generates a random number";
     echo "<br/>Random number: ", rand();
     echo "<br/>We can also add limit: ", rand(10, 100);
 
@@ -250,6 +270,186 @@
         </li>
     </ul>
     ';
+
+        ////////////////////////////////////////////////////////
+    // LOOPS
+    ////////////////////////////////////////////////////////
+
+
+    echo "<h2 class='b6 mt_2 size32'><u> LOOPS </u></h2>";
+
+    echo '<h2 class="size22 b6 cl_b mt_2 mb_0 "> Advance For Loop </h2>';
+
+
+    for ($i = 0, $j = 0 ; $i + $j < 10 ; $i++ , $j++)
+    {
+        echo "i=$i and j=$j <br/>";
+    }
+
+    
+    
+    echo '<h2 class="size22 b6 cl_b mt_2 mb_0 "> Foreach Loop </h2>';
+
+    $array3 = array(125, 43, 65, 10);
+
+    $key_value_array = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+    $multi_array2 = array( array('1', '2', '3'),
+                            array('4', '5', '6','22'),
+                            array('7', '8', '9'));
+
+
+    echo "value of array3 is: <br/>";
+    foreach ($array3 as $i){
+        echo "| $i |";
+    }
+
+    echo "<br/><br/>value of key_value_array is: <br/>";
+    foreach($key_value_array as $x => $val) {
+        echo "|  $x = $val  |";
+    }
+
+    echo "<br/><br/>value of multi_array2 is: <br/>";
+    foreach ($multi_array2 as $i){
+        foreach($i as $j){
+            echo "| $j |";
+        }
+    }
+
+
+
+
+    ////////////////////////////////////////////////////////
+    // FUNCTIONS
+    ////////////////////////////////////////////////////////
+
+
+    echo "<h2 class='b6 mt_2 size32'><u> FUNCTIONS </u></h2>";
+
+
+
+
+    // agr arguments ke saath koi datatype use nhi krenge to iska mtlb input ke tor pr kch 
+    // bhi de skte he
+    function printNumber($a) {
+        return $a;
+    }
+    echo addNumbers(2), "<br/><br/>";
+
+
+
+
+    // PHP is a Loosely Typed Language
+    // agr arguments ke saath uski datatype bhi initialize krenge to iska mtlb input ke 
+    // tor pr jo hm data provide krenge use php pehle typecast kregi or agr typecast nhi 
+    // hoska to error show kregi
+    function addNumbers(int $a, int $b=20) {
+        return $a + $b;
+    }
+    // since strict is NOT enabled string "5" is changed to int(5), and it will return 10
+    echo printNumber(2.65), "<br/>";
+    echo addNumbers(5, "10"), "<br/><br/>";
+
+
+
+
+    // hm function ki return type bhi define krskte he:
+    function return_float(float $a, float $b) : float {
+        return $a/$b;
+    }
+    echo return_float(2.3, 1), "<br/><br/>";
+
+
+
+
+    // In PHP, arguments are usually passed by value, which means that a copy of the value is 
+    // used in the function and the variable that was passed into the function can't be changed.
+    
+    // When a function argument is passed by reference, changes to the argument also change the 
+    // variable that was passed in. 
+    function add_five(&$value) {
+        $value += 2;
+        return $value;
+    }
+
+    $num = 2;
+    echo add_five($num), "<br/>";
+    echo $num, "<br/>";
+
+
+
+
+    
+
+
+    ////////////////////////////////////////////////////////
+    // ARRAYS
+    ////////////////////////////////////////////////////////
+
+
+    echo "<h2 class='b6 mt_2 size32'><u> ARRAYS </u></h2>";
+
+
+
+    $array3 = array(125, 43, 65, 10);
+
+    $key_value_array = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+    $multi_array2 = array( array('1', '2', '3'),
+                            array('4', '5', '6','22'),
+                            array('7', '8', '9'));
+
+
+                            
+    // Find length of array
+    count($array3);
+
+    // Find length of multidimensional array
+
+    $c1=0;
+    foreach($multi_array2 as $s)// 1st way 
+        $c1+=count($s);
+
+    $c2 = sizeof($multi_array2,1) - sizeof($multi_array2); // 2nd way
+
+    
+
+    echo "value of array3 is: <br/>";
+    foreach ($array3 as $i){
+        echo "| $i |";
+    }
+
+    echo "<br/><br/>value of key_value_array is: <br/>";
+    foreach($key_value_array as $x => $val) {
+        echo "|  $x = $val  |";
+    }
+
+    echo "<br/><br/>value of multi_array2 is: <br/>";
+    foreach ($multi_array2 as $i){
+        foreach($i as $j){
+            echo "| $j |";
+        }
+    }
+
+
+    
+    echo "<br/><br/><b>sort()</b> function sort arrays in ascending order";
+    echo "<br/> After Sorting, array(125, 43, 65, 10) become:: ";
+    sort($array3);
+    foreach ($array3 as $i){
+        echo " $i, ";
+    }
+
+
+    echo "<br/><br/><b>rsort()</b> function sort arrays in descending  order";
+    echo "<br/> After Sorting, array(125, 43, 65, 10) become:: ";
+    rsort($array3);
+    foreach ($array3 as $i){
+        echo " $i, ";
+    }
+
+
+    echo "<br/><br/><b>rsort()</b> function sort arrays in descending  order";
 
 
 
