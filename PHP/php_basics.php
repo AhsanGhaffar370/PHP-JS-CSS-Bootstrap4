@@ -53,6 +53,22 @@
 
 
 
+    <!-- Form $_REQUEST -->
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+        <!-- $_SERVER['PHP_SELF'] = It returns the url (http://localhost/Web_development_Git/PHP/php_basics.php) of current page, It means, when we click on submit button, it remains on same page -->
+        Name: <input type="text" name="fname" placeholder="Form $_REQUEST">
+        <input type="submit">
+    </form>
+
+
+    <!-- Form $_POST -->
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+        Name: <input type="text" name="fname" placeholder="Form $_POST">
+        <input type="submit">
+    </form>
+
+
+
     <?php 
     
     ////////////////////////////////////////////////////////
@@ -121,26 +137,27 @@
         static
     */
 
-    $x = 5; // global scope
-    $z = 6; // global scope
+    $global_x = 5; // global scope
+    $global_z = 6; // global scope
     
     function myTest() {
-        $y = 4; // local scope
+        $local_y = 4; // local scope
 
         // now we'll use a global varible z inside function:
-        global $z;
-        $z=66;
+        global $global_z; // --> this way is better
+        // OR 
+        // $GLOBALS['global_z'];
      
-        echo "Variable x inside function: $x";// using x outside function will generate error
-        echo "<br/>Variable y inside function: $y";
-        echo "<br/>Variable z inside function: $z";
+        echo "Variable global_x inside function: $global_x";// using x outside function will generate error
+        echo "<br/>Variable local_y inside function: $local_y";
+        echo "<br/>Variable global_z inside function after using global keyword: $global_z";
     } 
 
     myTest();
 
-    echo "<br/>Variable x outside function: $x";
-    echo "Variable y outside function: $y";// using y outside function will generate error
-    echo "<br/>Variable z outside function: $z";
+    echo "<br/>Variable global_x outside function: $global_x";
+    echo "Variable local_y outside function: $local_y";// using y outside function will generate error
+    echo "<br/>Variable global_z outside function: $global_z";
 
 
 
@@ -433,7 +450,7 @@
 
 
     
-    echo "<br/><br/><b>sort()</b> function sort arrays in ascending order";
+    echo "<br/><br/><b>sort()</b> - sort arrays in ascending order";
     echo "<br/> After Sorting, array(125, 43, 65, 10) become:: ";
     sort($array3);
     foreach ($array3 as $i){
@@ -441,7 +458,7 @@
     }
 
 
-    echo "<br/><br/><b>rsort()</b> function sort arrays in descending  order";
+    echo "<br/><br/><b>rsort()</b> - sort arrays in descending  order";
     echo "<br/> After Sorting, array(125, 43, 65, 10) become:: ";
     rsort($array3);
     foreach ($array3 as $i){
@@ -449,7 +466,200 @@
     }
 
 
-    echo "<br/><br/><b>rsort()</b> function sort arrays in descending  order";
+    echo "<br/><br/><b>asort()</b> - sort associative arrays in ascending order, according to the value";
+    echo "<br/><br/><b>arsort()</b> - sort associative arrays in descending order, according to the value";
+    echo "<br/><br/><b>ksort()</b> - sort associative arrays in ascending order, according to the key";
+    echo "<br/><br/><b>krsort()</b> - sort associative arrays in descending order, according to the key";
+
+
+
+    
+
+
+    ////////////////////////////////////////////////////////
+    // SUPER GLOBALS
+    ////////////////////////////////////////////////////////
+
+
+    echo "<h2 class='b6 mt_2 size32'><u> Superglobals </u></h2>";
+
+    echo '<p class="size17">Some predefined variables in PHP are "superglobals", which means that they are always accessible, regardless of scope - and you can access them from any function, class or file without having to do anything special.</p>';
+    
+    echo '
+    <ul class="b6 size24">
+        <li>$GLOBALS</li>
+    </ul>
+    ';
+
+    $x = 75; // global
+    $y = 25; // global
+    // PHP stores all global variables in an array called $GLOBALS[index]. The index holds the name of the variable.
+
+    function addition() {
+        // since z is a variable present within the $GLOBALS array, it can also accessible from outside the function!
+        $GLOBALS['z'] = $GLOBALS['x'] + $GLOBALS['y']; // In this way, we can use globals (x and y) inside function 
+    }
+ 
+    addition();
+    echo $z;
+
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$_SERVER</li>
+    </ul>
+    ';
+
+    echo $_SERVER['PHP_SELF']; // Returns the filename of the currently executing script
+    echo "<br>";
+    echo $_SERVER['SERVER_NAME']; // Returns the name of the host server (such as www.w3schools.com)
+    echo "<br>";
+    echo $_SERVER['HTTP_HOST']; // Returns the Host header from the current request
+    echo "<br>";
+    //echo $_SERVER['HTTP_REFERER']; // Returns the complete URL of the current page
+    // echo "<br>";
+    echo $_SERVER['SCRIPT_NAME']; // Returns the path of the current script
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$_REQUEST</li>
+    </ul>
+    PHP $_REQUEST is a PHP super global variable which is used to collect data after submitting an HTML form.
+    ';
+
+    // Form $_REQUEST
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // collect value of input field
+        $name = htmlspecialchars($_REQUEST['fname']);
+        if (empty($name)) {
+            echo "<br>Name is empty";
+        } else {
+            echo "<br><br>$name";
+        }
+    }
+
+
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$_POST</li>
+    </ul>
+    PHP $_POST is a PHP super global variable which is used to collect form data after submitting an HTML form with method="post". 
+    $_POST is also widely used to pass variables.
+    ';
+
+    // Form $_POST
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // collect value of input field
+        $name = $_POST['fname'];
+        if (empty($name)) {
+            echo "Name is empty";
+        } else {
+            echo "<br><br>$name";
+        }
+    }
+
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$_GET</li>
+    </ul>
+    PHP $_GET is a PHP super global variable which is used to collect form data after submitting an HTML 
+    form with method="get".
+    $_GET can also collect data sent in the URL.
+    <br><br>
+    ';
+    // http://localhost/Web_development_Git/PHP/test_get.php?subject=PHP&web=W3schools.com 
+    // Now from above URL we're trying to get the "subject" and "web" value
+    echo 'CLICK --> <a href="http://localhost/Web_development_Git/PHP/test_get.php?subject=PHP&web=W3schools.com">Test $GET</a>';
+    
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$_FILES</li>
+    </ul>
+    ';
+
+    echo '
+    <ul class="b6 size24">
+        <li>$_ENV</li>
+    </ul>
+    ';
+
+    echo '
+    <ul class="b6 size24">
+        <li>$_COOKIE</li>
+    </ul>
+    ';
+
+    echo '
+    <ul class="b6 size24">
+        <li>$_SESSION</li>
+    </ul>
+    <br>
+    ';
+
+    
+
+    
+
+
+    ////////////////////////////////////////////////////////
+    // PHP Regular Expressions
+    ////////////////////////////////////////////////////////
+
+
+    echo "<h2 class='b6 mt_2 size32'><u> PHP Regular Expressions </u></h2>";
+
+    echo '
+    <ul class="b6 size24">
+        <li>preg_match()</li>
+    </ul>
+    The preg_match() function will tell you whether a string contains matches of a pattern.
+    <br>
+    ';
+
+    $str = "Visit W3Schools";
+    $pattern = "/w3schools/i";
+    echo preg_match($pattern, $str); // Outputs 1
+
+
+
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>preg_match_all()</li>
+    </ul>
+    The preg_match_all() function will tell you how many matches were found for a pattern in a string.
+    <br>
+    ';
+
+    $str = "The rain in SPAIN falls mainly on the plains.";
+    $pattern = "/ain/i";
+    echo preg_match_all($pattern, $str); // Outputs 4
+
+
+
+
+    echo '
+    <br><br><br>
+    <ul class="b6 size24">
+        <li>$preg_replace()</li>
+    </ul>
+    The preg_replace() function will replace all of the matches of the pattern in a string with another string.
+    <br>
+    ';
+
+    $str = "Visit Microsoft!";
+    $pattern = "/microsoft/i";
+    echo preg_replace($pattern, "W3Schools", $str); // Outputs "Visit W3Schools!"
+    
 
 
 

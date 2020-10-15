@@ -74,7 +74,7 @@ section {
   grid-template-columns: repeat(3, auto); 
 
 3:Create 3 columns of same size throughout the screen. It works like "auto" of point2
-  grid-template-columns: repeat(3, 1fr);  1fr = fill up any available space
+  grid-template-columns: repeat(3, 1fr);  fr = fill up any available space
 
 4:For more responsive we can use below method. It create number of columns according to screen size
   grid-template-columns: repeat(auto-fit, 300px);     OR    grid-template-columns: repeat(auto-fit, 1fr); 
@@ -582,11 +582,9 @@ a:hover {
     border: 0px;
     width: max-content;
     cursor: pointer;
-    transition: all 0.3s 0s ease-in-out;
 }
 
 .button:hover {
-    transform: scale(1.04, 1);
     background-color: rgb(216, 10, 27);
     text-decoration: none;
 }
@@ -741,24 +739,23 @@ ol {
     overflow-x: auto;
 }
 
-table {
+.table1 {
     border-collapse: collapse;
-    width: 100%;
+    /* width: 100%; */
 }
 
 th,
 td {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
-    padding: 20px 2px 20px 2px;
+    padding: 2px 2px 2px 2px;
     text-align: center;
     vertical-align: middle;
-    border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 th {
-    /* background-color: rgb(6, 83, 119); */
+    background-color: rgb(125, 179, 204);
     color: black;
 }
 
@@ -903,7 +900,7 @@ Two Section Area Using Grid
 
 .form_grid {
     display: grid;
-    grid-template-columns: repeat(1, minmax(300px, 600px));
+    grid-template-columns: repeat(2, minmax(300px, 600px));
     margin: auto;
     padding: 50px;
 }
