@@ -75,9 +75,8 @@
 
                     if ($_SERVER["REQUEST_METHOD"] == "POST") //check whether the form has been submitted using $_SERVER["REQUEST_METHOD"].
                     {
-                        if ( empty($_POST["fname"]) ){
+                        if ( empty($_POST["fname"]) )
                             $nameErr = "Full Name is required";
-                        }
                         else {
                             $fname = test_input($_POST["fname"]);
                             // check if name only contains letters and whitespace
@@ -88,9 +87,8 @@
                         }
                         
                         
-                        if (empty($_POST["email"])) {
+                        if (empty($_POST["email"])) 
                             $emailErr = "Email is required";
-                        } 
                         else {
                             $email = test_input($_POST["email"]);
                             // check if e-mail address is well-formed
@@ -108,7 +106,6 @@
                             echo "gender: $gender <br>";
                         }
                             
-                        
                         // $phoneNo = test_input($_POST["phoneNo"]);
                         // $zipcode = test_input($_POST["zipcode"]);
                         // $address = test_input($_POST["address"]);
@@ -139,7 +136,6 @@
                             echo "3rd Reason to Contact Us: Disable <br>";
                         }
                         
-
                         // $msg = test_input($_POST["msg"]);
 
                         // echo "phoneNo: $phoneNo <br>";
@@ -156,7 +152,7 @@
                         $data = stripslashes($data); 
                         /* The htmlspecialchars() function converts special characters to HTML entities. It replaces HTML characters like 
                         < and > with &lt; and &gt;. It prevents attackers from  exploiting the code by injecting HTML or JS code in forms.*/
-                        $data = htmlspecialchars($data); // 
+                        $data = htmlspecialchars($data);
                         return $data;
                     }
                 ?>

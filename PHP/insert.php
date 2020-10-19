@@ -1,23 +1,26 @@
 <?php
 include 'connect_db.php';
 ?>
+
 <?php
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = md5($_POST['pass']);
     $sex = $_POST['sex'];
-    $service = "";
+    $date = trim(date("Y-m-d"));
+    
     foreach($_POST['service'] as $i) {
-        $service.=$i.',';
+        $service.=$i.', ';
     }
-    $date = trim(date('F d , Y h:i:s A'));
+    
     $image = $_FILES['image']['name'];
+
     $fileext = pathinfo($image, PATHINFO_EXTENSION);
     if (!($fileext == 'jpg' || $fileext == 'jpeg' || $fileext == 'png' || $fileext == 'PNG')) {
         echo "Incorrect File Format";
-    } else {
-
+    } 
+    else {
         if ($stmt = $conn->prepare("insert into users set name=?,email=?,password=?,sex=?,profile=?,DoJ=?,service=?")) {
             $stmt->bind_param('sssssss', $name, $email, $password, $sex, $image, $date,$service);
             $stmt->execute();
@@ -101,17 +104,15 @@ if (isset($_POST['submit'])) {
         <?php
         if($stmt=$conn->query("select * from users"))
         {
-            
             while($r=$stmt->fetch_array(MYSQLI_ASSOC))
             {
-                
         ?>
 
         <tr>
             <td><?php echo $r['name']  ?></td>
             <td><?php echo $r['email']  ?></td>
             <td><?php echo $r['sex']  ?></td>
-            <td><img src="userpics/<?php echo $r['profile']  ?>" width="200" height="100"></td>
+            <td><img src="user_pics/<?php echo $r['profile']  ?>" width="200" height="100"></td>
             <td><?php echo $r['service']  ?></td>
             <td><a href="">Delete</a></td>
             <td><a href="">update</a></td>
