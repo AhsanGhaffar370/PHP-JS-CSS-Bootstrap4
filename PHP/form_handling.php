@@ -75,6 +75,7 @@
 
                     if ($_SERVER["REQUEST_METHOD"] == "POST") //check whether the form has been submitted using $_SERVER["REQUEST_METHOD"].
                     {
+                        
                         if ( empty($_POST["fname"]) )
                             $nameErr = "Full Name is required";
                         else {
@@ -118,8 +119,10 @@
                         }
                             
 
-                        if(empty($_POST['reason1']) && empty($_POST['reason2']))
+                        if(empty($_POST['reason1']) && empty($_POST['reason2'])){
+
                             $reasonErr= "Select Any one reason";
+                        }
                         else{
                             if (!empty($_POST["reason1"]))
                                 $reason1 = test_input($_POST["reason1"]);
@@ -265,7 +268,9 @@
 
 
                     <div class="">
-                        <input type="submit" value="save" class="button btn_sm d_in b7" />
+                        <input type="reset" value="Reset" class="button btn_sm d_in b7 bg_bp" />
+                        <input type="submit" value="Save" class="button btn_sm d_in b7" />
+
                     </div>
                 </form>
                 <!-- End of form -->

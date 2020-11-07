@@ -1,30 +1,38 @@
 <?php
 include 'connect_db.php';
+$database=new database();
+$db = $database->connect_mysqli();
 ?>
 
 <?php
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = md5($_POST['pass']);
+    // $email = $_POST['email'];
+    $email = NULL;
+    $password = md5($_POST['pass']); // md5() function convert pass into hash code
     $sex = $_POST['sex'];
     $date = trim(date("Y-m-d"));
-    
+    $service="";
     foreach($_POST['service'] as $i) {
         $service.=$i.', ';
     }
-    
     $image = $_FILES['image']['name'];
-
     $fileext = pathinfo($image, PATHINFO_EXTENSION);
+
     if (!($fileext == 'jpg' || $fileext == 'jpeg' || $fileext == 'png' || $fileext == 'PNG')) {
         echo "Incorrect File Format";
     } 
     else {
-        if ($stmt = $conn->prepare("insert into users set name=?,email=?,password=?,sex=?,profile=?,DoJ=?,service=?")) {
-            $stmt->bind_param('sssssss', $name, $email, $password, $sex, $image, $date,$service);
-            $stmt->execute();
-            if ($stmt->affected_rows == 1) {
+
+        // Insertion Process
+        $query1="insert into users set name=?,email=?,password=?,sex=?,profile=?,DoJ=?,service=?";
+        $stmt1 = $db->prepare($query1);
+        
+        if ($stmt1) {
+            $stmt1->bind_param('sssssss', $name, $email, $password, $sex, $image, $date,$service);
+            $stmt1->execute();
+            
+            if ($stmt1->affected_rows == 1) {
                 move_uploaded_file($_FILES['image']['tmp_name'],'user_pics/'.$image);
                 echo "Insert succesfully";
             } else {
@@ -33,6 +41,7 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
 ?>
 
 
@@ -74,7 +83,7 @@ if (isset($_POST['submit'])) {
                 </tr>
                 <tr>
                     <td> <label>Profile Pic</label></td>
-                    <td> <input name="image" type="file"></td>
+                    <td> <input type="file" name="image"></td>
 
                 </tr>
                 <tr>
@@ -102,7 +111,7 @@ if (isset($_POST['submit'])) {
             <td>update</td>
         </tr>
         <?php
-        if($stmt=$conn->query("select * from users"))
+        if($stmt=$db->query("SELECT * from users"))
         {
             while($r=$stmt->fetch_array(MYSQLI_ASSOC))
             {
@@ -121,6 +130,7 @@ if (isset($_POST['submit'])) {
             }
         } ?>
     </table>
+
 </body>
 
 </html>
