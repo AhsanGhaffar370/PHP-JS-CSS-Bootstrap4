@@ -572,7 +572,7 @@ a:hover {
     font-size: 16px;
     letter-spacing: 2px;
     font-weight: 400 !important;
-    background-color: #e63946ff;
+    /* background-color: #e63946ff; */
     color: #fff;
     padding: 23px 50px;
     margin: auto;
@@ -585,7 +585,7 @@ a:hover {
 }
 
 .button:hover {
-    background-color: rgb(216, 10, 27);
+    /* background-color: rgb(216, 10, 27); */
     text-decoration: none;
 }
 
