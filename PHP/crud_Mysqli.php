@@ -78,6 +78,8 @@ if(isset($_GET['update_id'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body class="ml_2 mr_2 ">
@@ -220,6 +222,8 @@ if(isset($_GET['update_id'])){
                     }
                 } 
                 mysqli_free_result($stmt2);
+                // OR
+                // $stmt2->close()
                 ?>
             </tbody>
         </table>

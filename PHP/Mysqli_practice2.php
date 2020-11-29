@@ -63,6 +63,12 @@ if (isset($_POST['save'])) {
         $email = $_POST['email'];
         $gender = $_POST['gender'];
         
+        //1st way 
+        // $query1="insert into user1 set name=:name1 ,email=:email1 ,gender=:gender1";
+        // $stmt1->bindParam(':name1', $name);
+        // $stmt1->bindParam(':email1', $email);
+        // $stmt1->bindParam(':gender1', $gender);
+        
         // Second Way
         $query1="insert into user1 set name=?,email=?,gender=?";
     
