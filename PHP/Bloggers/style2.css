@@ -24,7 +24,7 @@ Defaults
 
 body {
     font-family: "Open Sans", sans-serif !important;
-    text-align: justify !important;
+    /* text-align: justify !important; */
     letter-spacing: 0.9px !important;
     line-height: 1.8 !important;
 }
@@ -74,7 +74,7 @@ section {
   grid-template-columns: repeat(3, auto); 
 
 3:Create 3 columns of same size throughout the screen. It works like "auto" of point2
-  grid-template-columns: repeat(3, 1fr);  fr = fill up any available space
+  grid-template-columns: repeat(3, 1fr);  1fr = fill up any available space
 
 4:For more responsive we can use below method. It create number of columns according to screen size
   grid-template-columns: repeat(auto-fit, 300px);     OR    grid-template-columns: repeat(auto-fit, 1fr); 
@@ -572,7 +572,7 @@ a:hover {
     font-size: 16px;
     letter-spacing: 2px;
     font-weight: 400 !important;
-    /* background-color: #e63946ff; */
+    background-color: #e63946ff;
     color: #fff;
     padding: 23px 50px;
     margin: auto;
@@ -582,10 +582,12 @@ a:hover {
     border: 0px;
     width: max-content;
     cursor: pointer;
+    transition: all 0.3s 0s ease-in-out;
 }
 
 .button:hover {
-    /* background-color: rgb(216, 10, 27); */
+    transform: scale(1.04, 1);
+    background-color: rgb(216, 10, 27);
     text-decoration: none;
 }
 
@@ -649,7 +651,7 @@ upper-roman           I  II  III
 ul {
     /* Another way to write --> list-style: square inside circle;  */
     list-style-type: circle;
-    /* list-style-image: url("Image/favicon.png"); */
+    /* list-style-image: url("../Image/favicon.png"); */
     list-style-position: outside;
     padding: 0px 20px;
     margin: 0px;
@@ -670,10 +672,10 @@ ol {
 
 .nav_par {
     /* background-color: rgba(29, 53, 87, 1); */
-    background-color: #a8dadcff;
+    background-color: transparent;
     display: flex;
     align-items: center;
-    padding: 1px 30px;
+    padding: 15px 30px;
     /* border-bottom: 2px solid #457b9dff; */
 }
 
@@ -739,23 +741,24 @@ ol {
     overflow-x: auto;
 }
 
-.table1 {
+table {
     border-collapse: collapse;
-    /* width: 100%; */
+    width: 100%;
 }
 
 th,
 td {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 400;
-    padding: 2px 2px 2px 2px;
+    padding: 20px 2px 20px 2px;
     text-align: center;
     vertical-align: middle;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 th {
-    background-color: rgb(125, 179, 204);
+    /* background-color: rgb(6, 83, 119); */
     color: black;
 }
 
@@ -826,8 +829,8 @@ It used to break a paragraph into multiple columns horizontaly(row wise)
 .bg_img1 {
     background-image: linear-gradient(/* rgba(29, 53, 87, 0.8),
       rgba(29, 53, 87, 0.5) */
-    rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(Image/bg.jpg);
-    /* background-image: url(Image/bg.jpg); */
+    rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url(../Image/bg.jpg);
+    /* background-image: url(../Image/bg.jpg); */
     width: 100%;
     height: auto;
     background-repeat: no-repeat !important;
@@ -841,7 +844,7 @@ It used to break a paragraph into multiple columns horizontaly(row wise)
 }
 
 .bg_img2 {
-    background-image: linear-gradient( rgba(242, 239, 227, 0.7), rgba(242, 239, 227, 0.7)), url(Image/3819287.jpg);
+    background-image: linear-gradient( rgba(242, 239, 227, 0.7), rgba(242, 239, 227, 0.7)), url(../Image/3819287.jpg);
     width: 100%;
     height: auto;
     background-repeat: no-repeat !important;
@@ -909,7 +912,7 @@ Two Section Area Using Grid
     display: grid;
     grid-template-columns: repeat(1, minmax(300px, 300px));
     margin: auto;
-    padding: 20px;
+    padding: 50px;
 }
 
 
@@ -1132,6 +1135,10 @@ p {
     Font sizes
 ========================
 */
+.size55 {
+    font-size: 54px !important;
+    font-weight: 600;
+}
 
 .size48 {
     font-size: 48px;
@@ -1272,11 +1279,6 @@ END OF TYPOGRAPHY
 
 .verAuto {
     vertical-align: baseline !important;
-}
-
-.verCen1 {
-    margin-left: 50% !important;
-    margin-right: 50% !important;
 }
 
 
