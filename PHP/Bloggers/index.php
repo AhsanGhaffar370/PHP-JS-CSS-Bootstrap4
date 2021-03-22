@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   
     <title>Our Blogs | Find Affordable Legal Help with us </title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 
     <meta name="description" content="Enjoy Fast Access To Top Family Lawyers Across The US. Connect Now With An Attorney In Your Local Area And Get Your Questions Answered Now.">
 

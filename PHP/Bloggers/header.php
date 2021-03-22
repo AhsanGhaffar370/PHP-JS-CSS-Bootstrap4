@@ -30,8 +30,8 @@
                 </li>
                 </ul>
 
-                <input type="button" name="submitbtn" class="btn btn-primary size15 font-weight-bold mr-2 rounded-0" value="Sign in">
-                <input type="button" name="submitbtn" class="btn btn-primary size15 font-weight-bold  rounded-0" value="Sign up">
+                <input type="button" name="submitbtn" class="btn btn-primary size15 font-weight-bold mr-2 rounded-0" onclick="window.location.href='admin/dashboard.php'" value="Sign in">
+                <input type="button" name="submitbtn" class="btn btn-primary size15 font-weight-bold  rounded-0" onclick="window.location.href='signup.php'" value="Sign up">
 
             </div>
         </nav>
