@@ -558,14 +558,14 @@ Add these properties in elements where we want animation on scroll
 */
 
 a {
-    color: #457b9dff !important;
+    color: #D9D9DA !important;
     transition: all 0.2s 0s ease-out;
     text-decoration: none !important;
     text-decoration-color: rgb(16, 206, 32);
 }
 
 a:hover {
-    color: #a8dadcff !important;
+    color: #0073aa !important;
 }
 
 .button {
@@ -1135,6 +1135,7 @@ p {
     Font sizes
 ========================
 */
+
 .size55 {
     font-size: 54px !important;
     font-weight: 600;

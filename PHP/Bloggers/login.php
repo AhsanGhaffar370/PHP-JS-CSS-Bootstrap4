@@ -1,39 +1,32 @@
 <?php
 session_start();
+error_reporting(0);
 
 include 'connect_db.php';
 $database=new database();
 $db = $database->connect_pdo();
+
+if(isset($_SESSION['username']))
+	{	
+header('location: admin/dashboard.php');
+}
+
 ?>
-
-
 
 <html lang="en-US">
 
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
+
     <title>Our Blogs | Find Affordable Legal Help with us </title>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 
-    <meta name="description" content="Enjoy Fast Access To Top Family Lawyers Across The US.">
-
-
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Hello bloggers">
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
-
+    <?php include("head_libs.php"); ?>
 
     <link  href="login_form_css.css" type="text/css" rel="stylesheet" media="screen">
-
-    <link href='https://fonts.googleapis.com/css?family=Open Sans&display=swap' rel='stylesheet'>
-
-
 
 </head>
 
@@ -44,7 +37,7 @@ $db = $database->connect_pdo();
 if (isset($_POST['login'])) {
 
     $email = $_POST['email'];
-    $password = $_POST['pass'];
+    $password = md5($_POST['pass']);
    
     $query1="select * from user where email=:email and pass=:pass";
     $stmt1 = $db->prepare($query1);
@@ -55,13 +48,28 @@ if (isset($_POST['login'])) {
         
         // PDO
         $stmt1->bindParam(':email', $email); 
-        $stmt1->bindParam(':pass', md5($password)); 
+        $stmt1->bindParam(':pass', $password); 
         // $stmt1->bindParam(':pass', $password); 
         $stmt1->execute();
         
-        if ($stmt1->rowCount() == 1)  // PDO 
+        if ($stmt1->rowCount() > 0)  // PDO 
         {
-            $_SESSION['email']= $email;
+            
+            $results=$stmt1->fetchAll(PDO::FETCH_OBJ);
+            foreach($results as $res)
+            {
+                $_SESSION['id']= $res->id;
+                $_SESSION['username']= $res->username;
+                $_SESSION['avatar']= $res->avatar;
+                $_SESSION['niche']= $res->niche;
+                $_SESSION['email']= $res->email;
+                $_SESSION['pass']= $res->pass;
+                $_SESSION['country']= $res->country;
+
+            }
+            
+            $_SESSION["login_time_stamp"] = time();  
+
             header("location: admin/dashboard.php");
         } else {
             // header("location: crud_pdo.php");
@@ -108,10 +116,7 @@ if (isset($_POST['login'])) {
     <?php //include("footer.php"); ?>
 
 
-
-    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <?php include("footer_libs.php"); ?>
 
 
 

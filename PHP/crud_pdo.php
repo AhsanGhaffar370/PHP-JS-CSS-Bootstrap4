@@ -222,7 +222,8 @@ if(isset($_GET['update_id'])){
                 // select id,name,sex,profile,service, count(email) e from users group by email having e = 1
                 // SELECT id,name,email,sex,profile,service FROM users GROUP BY email HAVING COUNT(email) = 1
                 // SELECT * FROM users WHERE EXISTS (SELECT DISTINCT email);
-                if($stmt2=$db->query("SELECT UNIQUE(email) FROM users"))
+                // SELECT UNIQUE(email) FROM users")
+                if($stmt2=$db->query("SELECT * FROM users"))
                 {
                     //if($stmt2->num_rows > 0) // Mysqli
                     if($stmt2->rowCount() > 0) // PDO
