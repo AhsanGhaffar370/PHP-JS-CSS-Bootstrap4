@@ -22,7 +22,6 @@
     <?PHP 
 
 if(isset($_POST['addpost'])){
-
     $title= $_POST['title'];
     $permalink= $_POST['permalink'];
     $permalink= str_replace(" ","-",$permalink);
@@ -37,46 +36,49 @@ if(isset($_POST['addpost'])){
     $image_ext=pathinfo($image,PATHINFO_EXTENSION);
 
 
-
     if (!($image_ext == 'jpg' || $image_ext == 'jpeg' || $image_ext == 'png' || $image_ext == 'PNG')) {
-        echo "Incorrect File Format";
+        echo "<script>alert('Incorrect Image Format')</script>";
     } 
     else {
+        $query='insert into posts set title=:title, permalink=:permalink, categories=:category, date=:date, image=:image, tags=:tags, content=:content, author_id=:author_id';
+        $stmt= $db->prepare($query);
 
-    $query='insert into posts set title=:title, permalink=:permalink, categories=:category, date=:date, image=:image, tags=:tags, content=:content, author_id=:author_id';
-    $stmt= $db->prepare($query);
+        if($stmt){
+
+            $stmt->bindParam(':title',$title);
+            $stmt->bindParam(':permalink',$permalink);
+            $stmt->bindParam(':category',$category);
+            $stmt->bindParam(':date',$date);
+            $stmt->bindParam(':tags',$tags);
+            $stmt->bindParam(':image',$image);
+            $stmt->bindParam(':content',$content);
+            $stmt->bindParam(':author_id',$author_id);
+
+            $stmt->execute();
+
+            if ($stmt->rowCount() == 1)  // PDO 
+            {
+                move_uploaded_file($_FILES['image']['tmp_name'],'post_images/'.$image);
+                // echo "Insert succesfully";
+
+                echo "<script>alert('Post Inserted Successfully')</script>";
+                header("location: view_posts.php");
+
+            } else {
+                
+                echo "<script>alert('Image not inserted in database')</script>";
+            }
+
+            unset($stmt); //PDO
 
 
-    if($stmt){
+            
 
-        $stmt->bindParam(':title',$title);
-        $stmt->bindParam(':permalink',$permalink);
-        $stmt->bindParam(':category',$category);
-        $stmt->bindParam(':date',$date);
-        $stmt->bindParam(':tags',$tags);
-        $stmt->bindParam(':image',$image);
-        $stmt->bindParam(':content',$content);
-        $stmt->bindParam(':author_id',$author_id);
-
-        $stmt->execute();
-
-        if ($stmt->rowCount() == 1)  // PDO 
-        {
-            move_uploaded_file($_FILES['image']['tmp_name'],'post_images/'.$image);
-            // echo "Insert succesfully";
-        } else {
-            echo "Not Insert";
+        }else{
+            
+            echo "<script>alert('query not prepared')</script>";
         }
-
-        unset($stmt); //PDO
-
-
-        // header("location: dashboard.php");
-
-    }else{
-        echo "something went wrong";
     }
-}
 
 }
 
@@ -99,8 +101,7 @@ if(isset($_POST['addpost'])){
 
                     <div class="p-5">
 
-                        <form id="form1" method="post" action="view_posts.php" class="needs-validation" novalidate
-                            enctype="multipart/form-data">
+                        <form id="form41" action="" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <label class="size20 b7 pt-2 m-0">TITLE</label>

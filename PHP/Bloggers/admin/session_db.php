@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 
 include '../connect_db.php';
 $database=new database();
@@ -9,7 +9,7 @@ $db = $database->connect_pdo();
 if(isset($_SESSION['username']))
 {
     if(isset($_SESSION['timer'])){
-        if(time()-$_SESSION['timer']>10){
+        if(time()-$_SESSION['timer']>(180 * 60)){
             header('location:logout.php');
         }
     }

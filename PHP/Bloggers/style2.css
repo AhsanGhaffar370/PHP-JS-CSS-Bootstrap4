@@ -34,6 +34,18 @@ section {
     /* content inside section remains always inside it */
 }
 
+.centre_sec21 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12%;
+}
+
+.bg_212 {
+    background-color: #52a0d6;
+}
+
 
 /* 
                                                     ======================== 
@@ -1233,6 +1245,10 @@ p {
 
 .size13 {
     font-size: 13px;
+}
+
+.size11 {
+    font-size: 11px;
 }
 
 

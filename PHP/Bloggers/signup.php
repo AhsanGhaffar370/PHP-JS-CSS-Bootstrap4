@@ -1,3 +1,18 @@
+<?php
+session_start();
+error_reporting(0);
+
+include 'connect_db.php';
+$database=new database();
+$db = $database->connect_pdo();
+
+if(isset($_SESSION['username']))
+	{	
+header('location: admin/dashboard.php');
+}
+
+?>
+
 <html lang="en-US">
 
 <head>
@@ -15,108 +30,89 @@
 
 </head>
 
-<body class="fontb bg33">
+<body class="bg_212">
     <?php //include "header.php";?>
+
+    <?php
+
+//insert reocrd
+if (isset($_POST['signup'])) {
+
+    $uname = $_POST['uname'];
+    $email = $_POST['email'];
+    $password = md5($_POST['pass']);
+   
+    $query1="insert into user set username=:username, email=:email, pass=:pass";
+    $stmt1 = $db->prepare($query1);
+
+    if ($stmt1) {
+        // PDO
+        $stmt1->bindParam(':username', $uname); 
+        $stmt1->bindParam(':email', $email); 
+        $stmt1->bindParam(':pass', $password); 
+        // $stmt1->bindParam(':avatar', "law9.jpg"); 
+        $stmt1->execute();
+        
+        if ($stmt1->rowCount() == 1)  // PDO 
+        {
+            echo "<script>alert('Account Created Successfully final')</script>";
+            header("location: login.php");
+        } else {
+            echo "<script>alert('Something went wrong')</script>";
+        }
+        
+        unset($stmt1); //PDO
+    }
+
+}
+
+
+?>
     
 
-    <section class="padd con con85" id="contact_1">
-        <p class="size42 cl_b tc lh_1p4 b8 mb_2">Sign Up</p>
+    <section class="centre_sec21 pl-5 pr-5">
 
-        <div class="bg_w sh_md form_grid mt_2">
-            <form id="form1" method="post" action="/action_page.php" class="needs-validation" novalidate>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <!-- <label for="fname">Email</label> -->
-                        <input type="text" class="form-control rounded-0 p-4" id="fname" placeholder="First Name" required />
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+        <div class="col-12 col-lg-2 col-md-4 col-sm-6 p-0 rounded bg-white text-center shadow">
+            <div class="border-bottom rounded-top bg-primary pt-3 pb-3">
+            <a href="index.php"><i class="fab fa-blogger-b fa-4x text-white "></i></a>
+                <!-- <p class="size24 text-secondary text-center b4 pt-0">Sign in to Bloggers</p> -->
+            </div>
+
+            <!-- Form Starts -->
+            <form id="form41" action="" method="POST" class="needs-validation pt-4 pl-4 pr-4 pb-2" novalidate enctype="multipart/form-data">
+            
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-user"></i></div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control rounded-0 p-4" id="lname" placeholder="Last Name" required />
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
+                    <input type="text" class="form-control" id="uname1" name="uname" placeholder="Username" required />
                 </div>
 
-                <div class="form-group">
-                    <input type="email" class="form-control rounded-0 p-4" id="email" placeholder="Email" required />
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-8">
-                        <input type="tel" class="form-control rounded-0 p-4" id="phoneNo" placeholder="Phone No" required />
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-at"></i></div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <input type="text" class="form-control rounded-0 p-4" id="zipcode" placeholder="Zipcode" required />
+                    <input type="email" class="form-control" id="email1" name="email" placeholder="Email" required />
+                </div>
+
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
                     </div>
+                    <input type="password" class="form-control " id="pass1" name="pass" placeholder="Password"
+                        required />
                 </div>
 
-                <div class="form-group">
-                    <input type="text" class="form-control rounded-0 p-4" id="address" placeholder="Address" required />
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <select id="state" class="form-control rounded-0" required>
-                <option value="-1" disabled selected>Select State</option>
-                <option value="Sindh">Sindh</option>
-                <option value="Panjab">Panjab</option>
-                <option value="KPK">KPK</option>
-              </select>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please select any option.</div>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <select id="city" class="form-control rounded-0" required>
-                <option value="-1" disabled selected>Select City</option>
-                <option value="karachi">karachi</option>
-                <option value="Lahore">Lahore</option>
-                <option value="Hyderabad">Hyderabad</option>
-              </select>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Please select any option.</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <textarea name="msg" class="form-control rounded-0" id="msg" cols="20" rows="10" placeholder="Describe your issue" required></textarea>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-check-inline">
-                        <label class="form-check-label" for="rememberMe">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="rememberMe"
-                  required
-                />
-                Remember me
-              </label>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Please check this checkbox.</div>
-                    </div>
-                </div>
-
-                <div class="centre">
-                    <input type="submit" value="Submit" class="button btn_sm d_in b7" />
+                <div class="">
+                    <input type="submit" value="Sign up" name="signup" class="btn btn-primary btn-block btn-lg" />
                 </div>
             </form>
-            <!-- End of form -->
+            <p class="size11 text-dark text-center pb-2">Already have an account? <a href="login.php" class="b4 text-primary">Login</a></p>
         </div>
+
+        <!-- End of form -->
     </section>
 
-
-    
     <?php //include("footer.php"); ?>
 
 

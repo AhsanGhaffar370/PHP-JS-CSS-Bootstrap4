@@ -26,12 +26,10 @@ header('location: admin/dashboard.php');
 
     <?php include("head_libs.php"); ?>
 
-    <link  href="login_form_css.css" type="text/css" rel="stylesheet" media="screen">
-
 </head>
 
-<body class="bg_2">
-<?php
+<body class="bg_212">
+    <?php
 
 //insert reocrd
 if (isset($_POST['login'])) {
@@ -43,13 +41,9 @@ if (isset($_POST['login'])) {
     $stmt1 = $db->prepare($query1);
     
     if ($stmt1) {
-        // MYSQLI
-        // $stmt1->bind_param('sssssss', $name, $email, $password, $sex, $image, $date,$service); 
-        
         // PDO
         $stmt1->bindParam(':email', $email); 
         $stmt1->bindParam(':pass', $password); 
-        // $stmt1->bindParam(':pass', $password); 
         $stmt1->execute();
         
         if ($stmt1->rowCount() > 0)  // PDO 
@@ -68,7 +62,7 @@ if (isset($_POST['login'])) {
 
             }
             
-            $_SESSION["login_time_stamp"] = time();  
+            // $_SESSION["login_time_stamp"] = time();  
 
             header("location: admin/dashboard.php");
         } else {
@@ -83,35 +77,47 @@ if (isset($_POST['login'])) {
 
 ?>
 
-    <section class="centre_sec">
+    <section class="centre_sec21 pl-5 pr-5">
 
-        <i class="fab fa-weibo fa-5x cl_w"></i>
-        <p class="size24 cl_w b8">Welcome</p>
-
-        <!-- Form Starts -->
-        <form name="form52" id="form1" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF'])  ?>">
-
-            <div class="form-group mb-0">
-                <input type="email" class="form-control field1 p-4" id="email1" name="email" placeholder="Email" required/>
+        <div class="col-12 col-lg-2 col-md-4 col-sm-6 p-0 rounded bg-white text-center shadow">
+            <div class="border-bottom rounded-top bg-primary pt-3 pb-3">
+            <a href="index.php"><i class="fab fa-blogger-b fa-4x text-white "></i></a>
+                <!-- <p class="size24 text-secondary text-center b4 pt-0">Sign in to Bloggers</p> -->
             </div>
 
-            <div class="form-group mb-2">
-                <input type="password" class="form-control field2 border-top-0 p-4" id="pass1" name="pass" placeholder="Password" required/>
-            </div>
+            <!-- Form Starts -->
+            <form name="form52" id="form1" class="pt-4 pl-4 pr-4 pb-2" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF'])  ?>">
 
-            <div class="">
-                <input type="submit" value="Log in" name="login" class="fbutton btn_lg btn_block b7 p-2" />
-            </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-at"></i></div>
+                    </div>
+                    <input type="email" class="form-control" id="email1" name="email" placeholder="Email" required />
+                </div>
 
-            <div>
-                <p class="tc cl_w m-2"><a href="#" class="b8">Signup</a> for new account</p>
-            </div>
-        </form>
+                <div class="input-group mb-0">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <input type="password" class="form-control " id="pass1" name="pass" placeholder="Password"
+                        required />
+
+                </div>
+                <div class="text-right mt-0 mb-3">
+                    <a href="#" class="b6 size13 text-right text-primary">Forgot Passowrd</a>
+                </div>
+                <div class="">
+                    <input type="submit" value="Log in" name="login" class="btn btn-primary btn-block btn-lg" />
+                </div>
+            </form>
+            <p class="size11 text-dark text-center pb-2">New to Bloggers? <a href="signup.php" class="b4 text-primary">Create an account</a></p>
+        </div>
+
         <!-- End of form -->
     </section>
 
 
-    
+
 
     <?php //include("footer.php"); ?>
 

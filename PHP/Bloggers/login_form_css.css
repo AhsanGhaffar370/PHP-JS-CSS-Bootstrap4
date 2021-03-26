@@ -1,41 +1,13 @@
 /*open sans font link  */
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
-* {
-    scroll-behavior: smooth;
-    box-sizing: border-box;
-    /* all things inside a box such as; margins,paddding are always be inside box */
-    margin: 0;
-    padding: 0;
-    /* border: 4px solid rgba(221, 16, 43, 0.2) !important; */
-}
 
-body {
-    font-family: "Open Sans", sans-serif !important;
-    text-align: justify !important;
-    letter-spacing: 0.9px !important;
-    line-height: 1.8 !important;
-}
-
-.bg_2 {
-    background-color: #52a0d6;
-}
-
-.centre_sec {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10%;
-}
-
+/* 
 .fbutton {
     font-size: 19px;
     letter-spacing: 2px;
     font-weight: 400 !important;
-    background-color: #e63946ff;
     color: #fff;
-    padding: 23px 50px;
+    padding: 19px 50px;
     margin: auto;
     text-align: center;
     display: inline-block !important;
@@ -43,13 +15,17 @@ body {
     border: 0px;
     width: max-content;
     cursor: pointe;
-}
+} */
 
+
+/* 
 .fbutton:hover {
     background-color: rgb(216, 10, 27);
     text-decoration: none;
-}
+} */
 
+
+/* 
 .btn_lg {
     padding: 14px 60px !important;
     border-radius: 3px;
@@ -57,17 +33,20 @@ body {
 
 .btn_block {
     width: 100% !important;
-    /* padding: 22px 30px !important; */
-}
+} */
 
+
+/* 
 .field1 {
     border-radius: 5px 5px 0px 0px !important;
 }
 
 .field2 {
     border-radius: 0px 0px 5px 5px !important;
-}
+} */
 
+
+/* 
 a {
     color: white !important;
     transition: all 0.2s 0s ease-out;
@@ -106,4 +85,4 @@ a:hover {
 
 .tc {
     text-align: center !important;
-}
+} */
