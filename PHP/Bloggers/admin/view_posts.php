@@ -81,7 +81,7 @@
                                 <!-- <td class="size13 text-left"><?php //echo $r['status']  ?></td> -->
                                 <td>
                                     <?php 
-                            echo '<a href="dashboard.php?update_id='.$r['id'].'" class="btn btn-warning d-inline cl_w">Update</a> &nbsp &nbsp &nbsp ';
+                            echo '<a href="add_post.php?update_id='.$r['id'].'" class="btn btn-warning d-inline cl_w">Update</a> &nbsp &nbsp &nbsp ';
                             echo '<a href="dashboard.php?delete_id='.$r['id'].'" class="btn btn-danger d-inline cl_w">Delete</a> &nbsp &nbsp &nbsp';
                         ?>
                                 </td>

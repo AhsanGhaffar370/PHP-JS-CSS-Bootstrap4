@@ -53,6 +53,7 @@ if (isset($_POST['signup'])) {
         // $stmt1->bindParam(':avatar', "law9.jpg"); 
         $stmt1->execute();
         
+        echo "<script>alert('Account Created Successfully final')</script>";
         if ($stmt1->rowCount() == 1)  // PDO 
         {
             echo "<script>alert('Account Created Successfully final')</script>";
@@ -66,7 +67,6 @@ if (isset($_POST['signup'])) {
 
 }
 
-
 ?>
     
 
@@ -79,7 +79,8 @@ if (isset($_POST['signup'])) {
             </div>
 
             <!-- Form Starts -->
-            <form id="form41" action="" method="POST" class="needs-validation pt-4 pl-4 pr-4 pb-2" novalidate enctype="multipart/form-data">
+            <!-- <form id="form41" action=login.php method="POST" class="needs-validation pt-4 pl-4 pr-4 pb-2"> -->
+            <form id="form1" method="post" action=signup.php class="needs-validation1 pt-4 pl-4 pr-4 pb-2" enctype="multipart/form-data">
             
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -119,5 +120,5 @@ if (isset($_POST['signup'])) {
     <?php include("footer_libs.php"); ?>
 
 
-
+</body>
 </html>

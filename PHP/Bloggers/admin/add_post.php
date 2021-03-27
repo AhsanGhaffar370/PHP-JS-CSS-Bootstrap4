@@ -17,10 +17,7 @@
 
 <body class="fontb bg33">
 
-
-
-    <?PHP 
-
+<?PHP 
 if(isset($_POST['addpost'])){
     $title= $_POST['title'];
     $permalink= $_POST['permalink'];
@@ -35,7 +32,6 @@ if(isset($_POST['addpost'])){
 
     $image_ext=pathinfo($image,PATHINFO_EXTENSION);
 
-
     if (!($image_ext == 'jpg' || $image_ext == 'jpeg' || $image_ext == 'png' || $image_ext == 'PNG')) {
         echo "<script>alert('Incorrect Image Format')</script>";
     } 
@@ -44,7 +40,6 @@ if(isset($_POST['addpost'])){
         $stmt= $db->prepare($query);
 
         if($stmt){
-
             $stmt->bindParam(':title',$title);
             $stmt->bindParam(':permalink',$permalink);
             $stmt->bindParam(':category',$category);
@@ -59,27 +54,23 @@ if(isset($_POST['addpost'])){
             if ($stmt->rowCount() == 1)  // PDO 
             {
                 move_uploaded_file($_FILES['image']['tmp_name'],'post_images/'.$image);
-                // echo "Insert succesfully";
-
                 echo "<script>alert('Post Inserted Successfully')</script>";
                 header("location: view_posts.php");
 
             } else {
-                
                 echo "<script>alert('Image not inserted in database')</script>";
             }
-
             unset($stmt); //PDO
-
-
-            
-
         }else{
-            
             echo "<script>alert('query not prepared')</script>";
         }
     }
+}
 
+
+if(isset($_GET['update_id']))
+{
+    
 }
 
 ?>
