@@ -178,6 +178,7 @@ if(isset($_GET['update_id'])){
                             <?php  if($service=="html, ") {echo 'Checked';} elseif ($service=="html, php, ") {echo 'checked';}  ?> />
                         <label class="form-check-label" for="service1"> html </label>
                     </div>
+
                     <div class="form-check-inline">
                         <input class="form-check-input" type="checkbox" id="service2" name="service[]" value="php"
                             <?php  if($service=="php, ") {echo 'Checked';} elseif ($service=="html, php, ") {echo 'checked';}  ?> />
@@ -195,7 +196,6 @@ if(isset($_GET['update_id'])){
                     <?PHP else:?>
                     <input type="submit" name="insert" value="Save" class="button btn_xxs btn-info d_in b7" />
                     <?PHP endif; ?>
-
                 </div>
             </form>
             <!-- End of form -->
