@@ -14,7 +14,6 @@
 
     </style>
 
-
 </head>
 
 <body class="fontb bg33">
@@ -54,10 +53,10 @@
                 // SELECT * FROM users WHERE EXISTS (SELECT DISTINCT email);
 
                 // $query='SELECT * FROM posts where author_id=:author_id';
-                $query='SELECT * FROM posts inner join user on posts.author_id=user.id and posts.author_id=:author_id';
+                // $query2='SELECT news.id AS newsId, user.id AS userId FROM posts JOIN user ON posts.user = user.id';
+                $query='SELECT posts.id AS post_id,user.id AS user_id,posts.title,user.username,posts.categories,posts.date,posts.image,posts.tags,posts.author_id FROM posts inner join user on posts.author_id=user.id and posts.author_id=:author_id';
                 $stmt2=$db->prepare($query);
 
-                
                 if($stmt2)
                 {
                     $stmt2->bindParam('author_id',$_SESSION['id']);
@@ -73,16 +72,16 @@
                             <tr>
                                 <td class="size13 text-left"><?php echo $r['title']  ?></td>
                                 <td class="size13 p-0"><?php echo $r['username']  ?></td>
-                                <td class="size13 text-left"><img src="post_images/<?php echo $r['image']  ?>" class="img-responsive" width="100" height="70"></td>
-                                <?PHP // if fatch type is (PDO::FETCH_OBJ) then we have to access values, something like this $r->name ?>
                                 <td class="size13 text-left"><?php echo $r['categories']  ?></td>
                                 <td class="size13 text-left"><?php echo $r['date']  ?></td>
+                                <td class="size13 text-left"><img src="post_images/<?php echo $r['image']  ?>" class="img-responsive" width="100" height="70"></td>
+                                <?PHP // if fatch type is (PDO::FETCH_OBJ) then we have to access values, something like this $r->name ?>
                                 <td class="size13 text-left"><?php echo $r['tags']  ?></td>
                                 <!-- <td class="size13 text-left"><?php //echo $r['status']  ?></td> -->
                                 <td>
                                     <?php 
-                            echo '<a href="add_post.php?update_id='.$r['id'].'" class="btn btn-warning d-inline cl_w">Update</a> &nbsp &nbsp &nbsp ';
-                            echo '<a href="dashboard.php?delete_id='.$r['id'].'" class="btn btn-danger d-inline cl_w">Delete</a> &nbsp &nbsp &nbsp';
+                            echo '<a href="add_post.php?update_id='.$r['post_id'].'" class="btn btn-warning d-inline cl_w">Update</a> &nbsp &nbsp &nbsp ';
+                            echo '<a href="dashboard.php?delete_id='.$r['post_id'].'" class="btn btn-danger d-inline cl_w">Delete</a> &nbsp &nbsp &nbsp';
                         ?>
                                 </td>
                             </tr>
@@ -90,7 +89,6 @@
                         }
                     }else
                         echo "<p class='lead'><em>No records were found.</em></p>";
-                    
                 } else
                     echo "ERROR: Could not able to execute query.";
                 
