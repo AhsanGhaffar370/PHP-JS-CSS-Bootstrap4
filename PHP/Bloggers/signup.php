@@ -23,12 +23,7 @@ header('location: admin/dashboard.php');
 
     <meta name="description" content="Hello bloggers">
 
-
-
     <?php include("head_libs.php"); ?>
-
-   
-
 
 </head>
 
@@ -99,7 +94,7 @@ if (isset($_POST['signup'])) {
                     <br/>
                    
                 </div>
-                <p class="text-left size13 text-danger b6 mt-1 mb-3"><span id="ema"></span></p>
+                <!-- <p class="text-left size13 text-danger b6 mt-1 mb-3"><span id="ema"></span></p> -->
 
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
@@ -109,8 +104,15 @@ if (isset($_POST['signup'])) {
                         required />
                 </div>
 
+                <div class="mb-3">
+                    <input type="text" class="form-control rounded-0" id="country1" name="country" placeholder="country" autocomplete="off" required />
+                    <ul class="text-left size13 list-group rounded-0 p-0 " id='ema'></ul>
+                </div>
+                
+
                 <div class="">
-                    <input type="submit" value="Sign up" name="signup" class="btn btn-primary btn-block btn-lg" />
+                    <input type="submit" value="Sign up" name="signup"  id="sign12" class="btn btn-primary btn-block btn-lg"  />
+                    <!-- <p  >abcd</p> -->
                 </div>
             </form>
             <p class="size11 text-center pb-2" style="color: black;">Already have an account? <a href="login.php" class="b6 size13 text-primary">Login</a></p>
@@ -125,6 +127,34 @@ if (isset($_POST['signup'])) {
     <?php include("footer_libs.php"); ?>
 
     <script>
+
+        function itemDone(e) {
+            var target, elParent, elGrandParent;
+
+            //Remove Item From the list
+            target = e.target;
+            // alert(e.target.value);
+            // elParent = target.parentNode;
+            // elGrandParent = elParent.parentNode;
+            document.getElementById("country1").value = target.innerHTML;
+            document.getElementById("ema").innerHTML="";
+            // alert(target.innerHTML + " Removed From Cart")
+            // elGrandParent.removeChild(elParent);
+
+            //prevent the link from taking you elsewhere
+            e.preventDefault();
+        }
+
+        // Set up event listeners to call itemDone() on click
+        document.getElementById("ema").addEventListener('click', function(e) {
+            itemDone(e);
+
+        }, false);
+
+
+
+
+
         function showUser(e) {
             let str=e.target.value;
             if (str == "") {
@@ -136,12 +166,32 @@ if (isset($_POST['signup'])) {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("ema").innerHTML = this.responseText;
                 }
+
                 };
                 xmlhttp.open("GET","checkmail.php?q="+str,true);
                 xmlhttp.send();
-            }
+            } 
         }
-        document.getElementById('email1').addEventListener('blur',function(e){showUser(e)},false);
+        document.getElementById('country1').addEventListener('keyup',function(e){showUser(e)},false);
+
+        // function showUser(e) {
+        //     let str=e.target.value;
+        //     if (str == "") {
+        //         document.getElementById("ema").innerHTML = "";
+        //         return;
+        //     } else {
+        //         var xmlhttp = new XMLHttpRequest();
+        //         xmlhttp.onreadystatechange = function() {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             document.getElementById("ema").innerHTML = this.responseText;
+        //         }
+                
+        //         };
+        //         xmlhttp.open("GET","checkmail.php?q="+str,true);
+        //         xmlhttp.send();
+        //     } 
+        // }
+        // document.getElementById('email1').addEventListener('blur',function(e){showUser(e)},false);
     
     </script>
 </body>

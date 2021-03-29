@@ -104,7 +104,7 @@ $db = $database->connect_pdo();
                                 ?>
                             </p>
 
-                            <a href="?sp=<?php echo $permalink; ?>"
+                            <a href="index.php?sp=<?php echo $permalink; ?>"
                                 class="nav-link size14 text-primary font-weight-bold mt-2 p-0">
                                 Read More <i class="fas fa-angle-double-right fa-1x"></i>
                             </a>

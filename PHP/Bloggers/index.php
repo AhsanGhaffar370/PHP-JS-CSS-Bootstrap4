@@ -53,7 +53,7 @@ $db = $database->connect_pdo();
 
                     if(isset($_GET['sp'])){
 
-                    $query='SELECT posts.id AS pid,user.id AS uid,posts.title,posts.permalink,user.username,posts.date,posts.content,posts.image,posts.author_id FROM posts inner join user on posts.author_id=user.id and posts.permalink=:permalink';
+                    $query='SELECT posts.id AS pid,user.id AS uid,posts.title,posts.permalink,user.username,user.avatar,posts.date,posts.content,posts.image,posts.author_id FROM posts inner join user on posts.author_id=user.id and posts.permalink=:permalink';
                     // $query='SELECT * FROM posts';
                     $stmt=$db->prepare($query);
 
@@ -68,38 +68,48 @@ $db = $database->connect_pdo();
                     <div
                         class="col-xl-11 col-lg-11 col-md-12 col-sm-12 mb-5 rounded-0 p-0">
 
+                        <p class="text-black-50 text-left font-weight-bold mt-1 mb-3">
+                            <!-- <span class="text-dark">Published Date: </span> -->
+                            <span class="size15 b7">
+                                <?php 
+                                $arr = explode('-', $r['date']);
+                                $post_date = $arr[2] . '-' . $arr[0] . '-' . $arr[1];
+                                echo date("M d, Y", strtotime($post_date));
+                                ?>
+                            </span>
+                        </p>
+
+                        <p class="blog_hov1 nav-link p-0">
+                            <h3 class="font_meri jl_heading">
+                                <?php echo $r['title']; ?>
+                            </h3>
+                        </p>
+
+                        <p class="text-black-50 text-left font-weight-bold mb-2 p-0">
+                            <?PHP if($r['avatar']=="") {?>
+                            <img src="admin/profile_images/law9.jpg" width=50 height=50 class="img-responsive rounded-circle" /> 
+                            <?PHP }
+                            else{
+                            ?>
+                            <img src="admin/profile_images/<?php echo $r['avatar']; ?>" width=50 height=50 class="img-responsive rounded-circle" /> 
+                            
+                            <?php
+                            }
+                            ?>
+                            <a href="#" class="size17 b7 text-primary"><?php echo $r['username']; ?></a>
+                        </p>
+
                         <img src="admin/post_images/<?php echo $r['image']; ?>" class="img-fluid images" />
 
                         <div class="pt-5 text-dark">
 
-                            <p class="text-black-50 text-left font-weight-bold m-0 p-0">
-                                <span class="text-dark">Author: </span>
-                                <a href="#" class="size15 b7 text-primary"><?php echo $r['username']; ?></a>
-                            </p>
-
-                            <p class="text-black-50 text-left font-weight-bold mt-1 mb-3">
-                                <span class="text-dark">Published Date: </span>
-                                <span class="size15 b7">
-                                    <?php 
-                                    $arr = explode('-', $r['date']);
-                                    $post_date = $arr[2] . '-' . $arr[0] . '-' . $arr[1];
-                                    echo date("M d, Y", strtotime($post_date));
-                                    ?>
-                                </span>
-                            </p>
-
-                            <p class="blog_hov1 nav-link p-0">
-                                <h3 class="font_meri">
-                                    <?php echo $r['title']; ?>
-                                </h3>
-                            </p>
-
+                            
                             <p class="text-dark fontb text-left pt-2 ">
                                 <?php
                                 $post_content = $r['content'];
                                 // $post_content = strip_tags($r['content']);
                                 // $post_content = substr($post_content, 0, 240);
-                                echo "<p class='card-text text-secondary text-justify size16 decor' >$post_content...</p>";
+                                echo $post_content;
                                 ?>
                             </p>
 
@@ -203,18 +213,13 @@ $db = $database->connect_pdo();
                         </div>
 
                         
-                        
                         <div class="card  bg-white set_img shadow rounded-0 " style="display: table-cell;">
                         <p class="size22 font-weight-bold text-white p-3 mt-0 bg-primary">Recently Uploaded</p>
                             <div class="card-body text-dark">
 
-                                
                                 <?php
-
                             $query = "select * from posts order by 1 DESC LIMIT 0,5";
-
                             $stmt = $db->prepare($query);
-
                             if($stmt){
                                 $stmt->execute();
                                 if($stmt->rowCount()>0){
