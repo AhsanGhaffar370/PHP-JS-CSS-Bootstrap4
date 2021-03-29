@@ -1,4 +1,10 @@
 
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link href="https://code.jquery.com/ui/1.12.1/themes/blitzer/jquery-ui.css" rel="stylesheet"> -->
+
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -6,12 +12,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script>
-    // Disable form submissions if there are invalid fields
-    (function() {
-        "use strict";
+// CKEDITOR.replace('content12');
+// Disable form submissions if there are invalid fields
+(function($) {
+    $(document).ready(function() {
+
+        
+
         window.addEventListener(
             "load",
             function() {
@@ -36,27 +46,22 @@
             },
             false
         );
-    })();
 
-
-
-    (function($) {
-
-        "use strict";
 
         var fullHeight = function() {
 
             $('.js-fullheight').css('height', $(window).height());
-            $(window).resize(function(){
+            $(window).resize(function() {
                 $('.js-fullheight').css('height', $(window).height());
             });
 
         };
         fullHeight();
 
-        $('#sidebarCollapse').on('click', function () {
+        $('#sidebarCollapse').on('click', function() {
             $('#sidebar').toggleClass('active');
         });
 
-    })(jQuery);
+    });
+})(jQuery);
 </script>

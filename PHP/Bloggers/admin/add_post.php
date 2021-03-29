@@ -11,6 +11,8 @@
     <?php include "header_libs.php";?>
     <style>
     </style>
+    
+    <script src="ckeditor/ckeditor.js"></script>
 
 </head>
 
@@ -210,7 +212,7 @@ if(isset($_POST['updatepost'])){
 
                     <div class="p-5">
 
-                        <form id="form41" action="" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+                        <form id="form411" action="" method="POST" class="needs-validation form411" novalidate enctype="multipart/form-data">
 
                             <input type="hidden" name="post_id" value="<?php echo $id; ?>" /><!-- hidden id input -->
 
@@ -292,8 +294,8 @@ if(isset($_POST['updatepost'])){
 
                             <div class="form-group">
                                 <label class="size20 b7 pt-2 m-0">CONTENT</label>
-                                <textarea name="content" class="form-control rounded-0" id="content" cols="20" rows="10"
-                                    placeholder="Write Your Content Here" required><?php echo $content; ?></textarea>
+                                <textarea name="content" class="ckeditor form-control rounded-0" id="content" rows="10" cols="80" required><?php echo $content; ?></textarea>
+                                    
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
@@ -320,8 +322,10 @@ if(isset($_POST['updatepost'])){
 
     <?php //include("../footer.php"); ?>
 
-    <?php include("footer_libs.php"); ?>
+    
 
+
+    <?php include("footer_libs.php"); ?>
 
 
 </body>

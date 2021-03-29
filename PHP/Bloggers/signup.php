@@ -27,6 +27,8 @@ header('location: admin/dashboard.php');
 
     <?php include("head_libs.php"); ?>
 
+   
+
 
 </head>
 
@@ -89,12 +91,15 @@ if (isset($_POST['signup'])) {
                     <input type="text" class="form-control" id="uname1" name="uname" placeholder="Username" required />
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-at"></i></div>
                     </div>
                     <input type="email" class="form-control" id="email1" name="email" placeholder="Email" required />
+                    <br/>
+                   
                 </div>
+                <p class="text-left size13 text-danger b6 mt-1 mb-3"><span id="ema"></span></p>
 
                 <div class="input-group mb-4">
                     <div class="input-group-prepend">
@@ -108,7 +113,7 @@ if (isset($_POST['signup'])) {
                     <input type="submit" value="Sign up" name="signup" class="btn btn-primary btn-block btn-lg" />
                 </div>
             </form>
-            <p class="size11 text-dark text-center pb-2">Already have an account? <a href="login.php" class="b4 text-primary">Login</a></p>
+            <p class="size11 text-center pb-2" style="color: black;">Already have an account? <a href="login.php" class="b6 size13 text-primary">Login</a></p>
         </div>
 
         <!-- End of form -->
@@ -119,6 +124,25 @@ if (isset($_POST['signup'])) {
 
     <?php include("footer_libs.php"); ?>
 
-
+    <script>
+        function showUser(e) {
+            let str=e.target.value;
+            if (str == "") {
+                document.getElementById("ema").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("ema").innerHTML = this.responseText;
+                }
+                };
+                xmlhttp.open("GET","checkmail.php?q="+str,true);
+                xmlhttp.send();
+            }
+        }
+        document.getElementById('email1').addEventListener('blur',function(e){showUser(e)},false);
+    
+    </script>
 </body>
 </html>

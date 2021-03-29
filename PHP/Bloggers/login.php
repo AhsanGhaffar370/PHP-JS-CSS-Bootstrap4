@@ -104,13 +104,13 @@ if (isset($_POST['login'])) {
 
                 </div>
                 <div class="text-right mt-0 mb-3">
-                    <a href="#" class="b6 size13 text-right text-primary">Forgot Passowrd</a>
+                    <a href="#" class="b4 size13 text-right text-primary">Forgot Passowrd?</a>
                 </div>
                 <div class="">
                     <input type="submit" value="Log in" name="login" class="btn btn-primary btn-block btn-lg" />
                 </div>
             </form>
-            <p class="size11 text-dark text-center pb-2">New to Bloggers? <a href="signup.php" class="b4 text-primary">Create an account</a></p>
+            <p class="size11 text-center pb-2" style="color: black;">New to Bloggers? <a href="signup.php" class="b6 size13 text-primary">Create Account</a></p>
         </div>
 
         <!-- End of form -->
