@@ -10,6 +10,19 @@
 
     <?php include "header_libs.php";?>
     <style>
+    
+    #countrydata 
+    {
+        position: absolute;
+        /* top: 27px; */
+        /* display: block; */
+        width: 54.9%;
+    }
+    #countrydata li:hover
+    {
+        background-color: #dbe9ff;
+    }
+
     </style>
 
 </head>
@@ -182,6 +195,7 @@ if(isset($_POST['update'])){
                                 <?PHP echo $_SESSION['country'] ?>
                             </span>
                         </p>
+                        
 
                         <a class="btn btn-primary"
                             href="profile.php?update_id=<?PHP echo $_SESSION['id'] ?>">Update</a>
@@ -189,8 +203,6 @@ if(isset($_POST['update'])){
                 }
                 else {
                 ?>
-
-
                         <!-- Form Starts -->
                         <form id="form1" method="POST" action=profile.php enctype="multipart/form-data">
                             <!--enctype="multipart/form-data" is used with post method -->
@@ -223,15 +235,17 @@ if(isset($_POST['update'])){
                             </div>
 
                             <div class="form-group">
-                                <label class="b7 size14" for="email1">Niche:</label>
+                                <label class="b7 size14" for="niche1">Niche:</label>
                                 <input type="text" class="form-control p-2" id="niche1" name="niche"
-                                    value="<?php echo $_SESSION['niche']; ?>" placeholder="Email" />
+                                    value="<?php echo $_SESSION['niche']; ?>" placeholder="Niche" />
                             </div>
 
-                            <div class="form-group">
-                                <label class="b7 size14" for="email1">Country:</label>
-                                <input type="text" class="form-control p-2" id="country1" name="country"
-                                    value="<?php echo $_SESSION['country']; ?>" placeholder="Email" />
+                            <div class="form-group d-block">
+                                <label class="b7 size14" for="country21">Country:</label>
+                                <input type="text" class="form-control rounded-0 p-2" id="country21" name="country"
+                                    value="<?php echo $_SESSION['country']; ?>" placeholder="Country" />
+                                    
+                                <ul class="text-left size13 list-group rounded-0 p-0 d-block" id='countrydata'></ul>
                             </div>
 
                             <div class="tc">
@@ -253,7 +267,37 @@ if(isset($_POST['update'])){
 
     <?php include("footer_libs.php"); ?>
 
+<script>
 
+    function itemDone(e) {
+        
+        var target = e.target;
+        // alert(target.childNode.value);
+        e.preventDefault();
+        document.getElementById("country21").value = target.innerHTML;
+        document.getElementById("countrydata").innerHTML="";
+    }
+    document.getElementById("countrydata").addEventListener('click', function(e) {itemDone(e);}, false);
+
+    function showUser(e) {
+        let str=e.target.value;
+        if (str == "") {
+            document.getElementById("countrydata").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("countrydata").innerHTML = this.responseText;
+            }
+
+            };
+            xmlhttp.open("GET","searchCountry.php?q="+str,true);
+            xmlhttp.send();
+        } 
+    }
+    document.getElementById('country21').addEventListener('keyup',function(e){showUser(e)},false);
+</script>
 
 
 

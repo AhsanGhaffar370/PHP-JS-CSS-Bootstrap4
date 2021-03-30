@@ -15,16 +15,18 @@ $db = $database->connect_pdo();
     <meta name="description" content="Hello bloggers">
 
     <?php include("head_libs.php"); ?>
+
+    
 </head>
 
 <body class="bg_212">
 <?php
 if (isset($_GET['q'])) {
-    
+
     $serval=$_GET['q'];
     $serval="%$serval%";
 
-    $query1="select * from location where country like :country"; 
+    $query1="select * from location where country like :country limit 0,5"; 
     $stmt1 = $db->prepare($query1);
     if ($stmt1) {
         $stmt1->bindParam(':country', $serval); 
