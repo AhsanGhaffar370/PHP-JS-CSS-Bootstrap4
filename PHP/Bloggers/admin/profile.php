@@ -23,12 +23,14 @@
 
     
     .table_col{ 
-        width: 40%;
+        width: 31%;
         margin: auto;
         }
         
-    .name_col{ width: 30%;}
-    .name2_col{ width: 20%;}
+    .name_col{ width: 50%;}
+    .name2_col{ 
+        width: 20%;
+    }
 
     </style>
 
@@ -191,25 +193,25 @@ if(isset($_POST['update'])){
                             </tr>
                             <tr>
                                 <td class="text-left size18 b7">Email:</td>
-                                <td class="text-left size17 "><?PHP echo $_SESSION['email'] ?></td>
+                                <td class="text-left size17 name2_col"><?PHP echo $_SESSION['email'] ?></td>
                             </tr>
                             <tr>
                                 <td class="text-left size18 b7">Niche:</td>
-                                <td class="text-left size17 "><?PHP echo $_SESSION['niche'] ?></td>
+                                <td class="text-left size17 name2_col"><?PHP echo $_SESSION['niche'] ?></td>
                             </tr>
                             <tr>
                                 <td class="text-left size18 b7">Country:</td>
-                                <td class="text-left size17 "><?PHP echo $_SESSION['country'] ?></td>
+                                <td class="text-left size17 name2_col"><?PHP echo $_SESSION['country'] ?></td>
                             </tr>
                         </table>
 
-                        <input type="button" value="Update" class="btn btn-primary btn-lg" onclick="window.location.href='profile.php?update_id=<?PHP echo $_SESSION['id'] ?>'" />
+                        <input type="button" value="Update" class="btn btn-primary btn-lg rounded-0 mt-5 pr-4 pl-4" onclick="window.location.href='profile.php?update_id=<?PHP echo $_SESSION['id'] ?>'" />
                         <?PHP
                 }
                 else {
                 ?>
                         <!-- Form Starts -->
-                        <form id="form1" method="POST" action=profile.php enctype="multipart/form-data">
+                        <form id="form1" method="POST" action=profile.php enctype="multipart/form-data" class="text-left">
                             <!--enctype="multipart/form-data" is used with post method -->
 
                             <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>" />
@@ -272,7 +274,7 @@ if(isset($_POST['update'])){
                             </div>
 
                             <div class="tc">
-                                <input type="submit" name="update" value="Update Profile" class="btn btn-primary" />
+                                <input type="submit" name="update" value="Update Profile" class="btn btn-primary rounded-0 mt-4" />
                             </div>
                         </form>
                         <!-- End of form -->
