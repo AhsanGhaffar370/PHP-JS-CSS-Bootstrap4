@@ -570,7 +570,7 @@ Add these properties in elements where we want animation on scroll
 */
 
 a {
-    color: #007bff!important;
+    color: #007bff !important;
     transition: all 0.2s 0s ease-out;
     text-decoration: none !important;
     text-decoration-color: rgb(16, 206, 32);

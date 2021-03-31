@@ -11,19 +11,29 @@
     <?php include "header_libs.php";?>
     <style>
     
-    #countrydata 
+    #countrydataPar
     {
-        position: absolute;
-        /* top: 27px; */
-        /* display: block; */
-        width: 54.9%;
+        position: absolute !important;
+        width: 100%;
     }
     #countrydata li:hover
     {
         background-color: #dbe9ff;
     }
 
+    
+    .table_col{ 
+        width: 40%;
+        margin: auto;
+        }
+        
+    .name_col{ width: 30%;}
+    .name2_col{ width: 20%;}
+
     </style>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 
@@ -154,10 +164,10 @@ if(isset($_POST['update'])){
                     <h1 class="bg-primary text-white text-center b8 p-3 rounded-top">UPDATE PROFILE</h1>
 
 
-                    <div class="p-5">
+                    <div class="p-5 text-center">
 
                         <?PHP if ($update_flag==false) {?>
-                        <p class="size20 text-dark b7">Profile Pic:</p> 
+                        <!-- <p class="size20 text-dark b7">Profile Pic:</p>  -->
                         <?PHP
                         if(strlen($_SESSION['avatar'])==0)
                         {
@@ -168,37 +178,32 @@ if(isset($_POST['update'])){
                         <?PHP }
                             else{
                         ?>
+
                         <img src="profile_images/<?PHP echo $_SESSION['avatar'] ?>" class="img-responsive mb-3" width="200" height="200"
                             alt="<?PHP echo $_SESSION['avatar'] ?>" style="border-radius: 6.25rem!important;">
                             
                         <?PHP } ?>
-                        <p class="size20 text-dark b7 pb-2">User Name: &nbsp;
-                            <span class="size17 text-secondary b4">
-                                <?PHP echo $_SESSION['username'] ?>
-                            </span>
-                        </p>
 
-                        <p class="size20 text-dark b7 pb-2">Email: &nbsp;
-                            <span class="size17 text-secondary b4">
-                                <?PHP echo $_SESSION['email'] ?>
-                            </span>
-                        </p>
+                        <table  class="table table_col table-borderless">
+                            <tr>
+                                <td class="text-left size18 b7 name_col">User Name:</td>
+                                <td class="text-left size17 name2_col"><?PHP echo $_SESSION['username'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left size18 b7">Email:</td>
+                                <td class="text-left size17 "><?PHP echo $_SESSION['email'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left size18 b7">Niche:</td>
+                                <td class="text-left size17 "><?PHP echo $_SESSION['niche'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left size18 b7">Country:</td>
+                                <td class="text-left size17 "><?PHP echo $_SESSION['country'] ?></td>
+                            </tr>
+                        </table>
 
-                        <p class="size20 text-dark b7 pb-2">Niche: &nbsp;
-                            <span class="size17 text-secondary b4">
-                                <?PHP echo $_SESSION['niche'] ?>
-                            </span>
-                        </p>
-
-                        <p class="size20 text-dark b7 pb-3">Country: &nbsp;
-                            <span class="size17 text-secondary b4">
-                                <?PHP echo $_SESSION['country'] ?>
-                            </span>
-                        </p>
-                        
-
-                        <a class="btn btn-primary"
-                            href="profile.php?update_id=<?PHP echo $_SESSION['id'] ?>">Update</a>
+                        <input type="button" value="Update" class="btn btn-primary btn-lg" onclick="window.location.href='profile.php?update_id=<?PHP echo $_SESSION['id'] ?>'" />
                         <?PHP
                 }
                 else {
@@ -219,33 +224,51 @@ if(isset($_POST['update'])){
                                 <br /><br />
                                 <!-- <input type="file" class="form-control p-2" id="image" name="image" /> -->
                                 <input type="file" class="form-control p-2" id="image1" name="image"
-                                    value="profile_images/<?php echo $_SESSION['avatar']  ?>" placeholder="image" />
+                                    value="profile_images/<?php echo $_SESSION['avatar']  ?>" placeholder="image" required />
                             </div>
 
                             <div class="form-group">
                                 <label class="b7 size14" for="username1">Name:</label>
                                 <input type="text" class="form-control p-2" id="username" name="username"
-                                    value="<?php echo $_SESSION['username']; ?>" placeholder="Full Name" />
+                                    value="<?php echo $_SESSION['username']; ?>" placeholder="Full Name" required />
                             </div>
 
                             <div class="form-group">
                                 <label class="b7 size14" for="email1">Email:</label>
                                 <input type="email" class="form-control p-2" id="email1" name="email"
-                                    value="<?php echo $_SESSION['email']; ?>" placeholder="Email" />
+                                    value="<?php echo $_SESSION['email']; ?>" placeholder="Email" required />
                             </div>
+
+                            <!-- <div class="form-group">
+                                <label class="b7 size14" for="niche1">Niche:</label>
+                                <input type="text" class="form-control p-2" id="niche1" name="niche"
+                                    value="<?php //echo $_SESSION['niche']; ?>" placeholder="Niche" required />
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="b7 size14" for="niche1">Niche:</label>
-                                <input type="text" class="form-control p-2" id="niche1" name="niche"
-                                    value="<?php echo $_SESSION['niche']; ?>" placeholder="Niche" />
+                                <select class="form-control" id="niche1"  name="niche" required >
+                                    <option value="-1" disabled >Select Niche</option>
+                                    <option value="Food" <?php if($_SESSION['niche']=="Food") {echo "selected";} ?> >Food</option>
+                                    <option value="Technology" <?php if($_SESSION['niche']=="Technology") {echo "selected";}  ?> >Technology</option>
+                                    <option value="Fashion" <?php  if($_SESSION['niche']=="Fashion") {echo "selected";} ?>>Fashion</option>
+                                    <option value="Programming" <?php  if($_SESSION['niche']=="Programming") {echo "selected";} ?>>Programming</option>
+                                    <option value="Digital Marketing"> <?php  if($_SESSION['niche']=="Digital Marketing") {echo "selected";} ?>Digital Marketing</option>
+                                    <option value="News" <?php  if($_SESSION['niche']=="News") {echo "selected";} ?>>News</option>
+                                    <option value="Sports" <?php  if($_SESSION['niche']=="Sports") {echo "selected";} ?>>Sports</option>
+                                    <option value="Movies" <?php  if($_SESSION['niche']=="Movies") {echo "selected";} ?>>Movies</option>
+                                </select>
                             </div>
 
-                            <div class="form-group d-block">
+                            
+
+                            <div class="form-group d-block col-12 p-0">
                                 <label class="b7 size14" for="country21">Country:</label>
                                 <input type="text" class="form-control rounded-0 p-2" id="country21" name="country"
-                                    value="<?php echo $_SESSION['country']; ?>" placeholder="Country" />
-                                    
-                                <ul class="text-left size13 list-group rounded-0 p-0 d-block" id='countrydata'></ul>
+                                    value="<?php echo $_SESSION['country']; ?>" placeholder="Country" required />
+                                    <div id="countrydataPar">
+                                        <ul class="text-left size13 list-group rounded-0 p-0 d-block" id='countrydata'></ul>
+                                    </div>
                             </div>
 
                             <div class="tc">
@@ -253,7 +276,6 @@ if(isset($_POST['update'])){
                             </div>
                         </form>
                         <!-- End of form -->
-
 
                         <?PHP } ?>
                     </div>
@@ -269,8 +291,12 @@ if(isset($_POST['update'])){
 
 <script>
 
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+
     function itemDone(e) {
-        
         var target = e.target;
         // alert(target.childNode.value);
         e.preventDefault();

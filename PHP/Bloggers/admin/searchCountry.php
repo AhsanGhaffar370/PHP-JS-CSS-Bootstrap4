@@ -19,11 +19,17 @@ $db = $database->connect_pdo();
             transition: all 0.2s 0s ease-out;
             text-decoration: none !important;
             text-decoration-color: rgb(16, 206, 32);
+            display: block;
+            padding: .75rem 1.25rem;
         }
 
         #countrydata li a:hover {
             color: #0073aa !important;
         }
+
+        /* #countrydata li a:hover {
+            color: #0073aa !important;
+        } */
     </style>
 </head>
 
@@ -42,7 +48,7 @@ if (isset($_GET['q'])) {
         if ($stmt1->rowCount() > 0)  // PDO 
         {
             while($row=$stmt1->fetch(PDO::FETCH_ASSOC)){
-            echo '<li class="list-group-item"><a href="#">'.$row['country'].'</a></li>';
+            echo '<li class="list-group-item p-0"><a href="#">'.$row['country'].'</a></li>';
             }
         } else {
             echo "<script>alert('Something went wrong during fetching data')</script>";
