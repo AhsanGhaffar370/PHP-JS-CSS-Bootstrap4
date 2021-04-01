@@ -8,22 +8,42 @@ $db=$database->connect_pdo();
 ////////////////
 // Example3:
 ////////////////
-sleep(3);
+sleep(1);
 $name=$_POST['name'];
 $email=$_POST['email'];
+// $image=$_POST['image'];
 
-$query='insert into users set name=:name,email=:email';
+// print_r($_FILES);
 
-$stmt=$db->prepare($query);
+// image insertion process
+$image = $_FILES['image']['name'];
+$fileext = pathinfo($image, PATHINFO_EXTENSION);
 
-if($stmt){
-    $stmt->bindParam(':name',$name);
-    $stmt->bindParam(':email',$email);
-    $stmt->execute();
+if (!($fileext == 'jpg' || $fileext == 'jpeg' || $fileext == 'png' || $fileext == 'PNG')) {
+    echo "Incorrect File Format";
+} 
+else if($_FILES['image']['size']>1000000){ //1000000 => 1MB
+    echo "file size is too big";
+}
+else {
 
-    if($stmt->rowCount() == 1){
-        // print_r($_POST);
-        echo "Data Submitted";
+    $query='insert into users set name=:name,email=:email,profile=:image';
+
+    $stmt=$db->prepare($query);
+
+    if($stmt){
+        $stmt->bindParam(':name',$name);
+        $stmt->bindParam(':email',$email);
+        $stmt->bindParam(':image',$image);
+        $stmt->execute();
+
+        $id=$db->lastInsertId();
+
+        if($stmt->rowCount() == 1){
+            // print_r($_POST);
+            move_uploaded_file($_FILES['image']['tmp_name'],'user_pics/'.$image);
+            echo $id;
+        }
     }
 }
 
