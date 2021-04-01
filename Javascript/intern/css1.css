@@ -1,0 +1,154 @@
+/* 
+        ================
+        center
+        ================
+        */
+
+.centre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.centre2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.tl2c {
+    text-align: left !important;
+}
+
+.verCen {
+    margin: auto;
+}
+
+.verAuto {
+    vertical-align: baseline !important;
+}
+
+
+/* 
+        ================
+        background and text color 
+        ================
+        */
+
+.cl_g {
+    color: #E9ECEF !important;
+}
+
+.bg_g {
+    background-color: #E9ECEF;
+}
+
+
+/*
+        ================ 
+        font sizes 
+        ================
+        */
+
+.size30 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.size28 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.size26 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.size25 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.size24 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.size22 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.size20 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.size18 {
+    font-size: 18px;
+}
+
+.size17 {
+    font-size: 17px;
+}
+
+.size16 {
+    font-size: 16px;
+}
+
+.size15 {
+    font-size: 15px;
+}
+
+.size14 {
+    font-size: 14px;
+}
+
+.size13 {
+    font-size: 13px;
+}
+
+.img_fluid {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Prevent the image from stretching. So it crops the image to prevent from awkward stretching */
+}
+
+* {
+    /* border: 4px solid rgba(221, 16, 43, 0.2) !important; */
+}
+
+body {
+    background-color: #EFF0F1;
+}
+
+.sec1 {
+    margin-top: 50px;
+    /* width: 405px; */
+}
+
+.logo {
+    width: 73px;
+    /* height: 65px; */
+}
+
+.logo2 {
+    width: 103px;
+}
+
+.mar-ve {
+    margin-bottom: -35px;
+}
+
+
+.question .qq{
+    display: none;
+}
+
+.question .active{
+    display: block;
+}

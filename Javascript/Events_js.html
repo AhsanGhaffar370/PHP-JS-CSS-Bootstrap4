@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>First PHP Program</title>
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes" />
+    <!-- Always put in header For ajax and jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="css_prac1.css" type="text/css" rel="stylesheet" media="screen" />
+    <!-- Bootstrap CSS (Latest compiled and minified CSS)-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script>
+
+    <!-- ################## CSS ###################  -->
+    <style rel="stylesheet">
+        .largeMe {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    </style>
+
+</head>
+
+<body class="m-5">
+
+
+    <img src="Imp_imgs/github_action1.PNG" id="swap11" width="500" height="200" onmouseover="afterImg(id, 'Imp_imgs/github_action2.PNG');" onmouseout="beforeImg(id, 'Imp_imgs/github_action1.PNG');">
+
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example1</h4>
+
+
+    <a href="JavaScript:void(0)" onclick="alert('Hi');">Click</a>
+
+    <input type="button" value="Click" onclick="popup('Hello world!');">
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example2</h4>
+
+    <img src="Imp_imgs/github_action1.PNG" id="swap" width="500" height="200" onmouseover="afterImg(id, 'Imp_imgs/github_action2.PNG');" onmouseout="beforeImg(id, 'Imp_imgs/github_action1.PNG');">
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example3</h4>
+
+    <p onmouseover="this.style.color='red';">Hover me</p>
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example4</h4>
+
+    <span>Name</span>
+    <input type="text" size="30" onfocus="this.style.backgroundColor='yellow';" onblur="this.style.backgroundColor='white';">
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example5</h4>
+
+    <form>
+        <h3>Form1</h3>
+        <label for="zip">zipcode:</label>
+        <input type="text" id="zip" onkeyup="fillCity();"><br>
+        <label for="city">City:</label>
+        <input type="text" id="city"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <form>
+        <h3>Form2</h3>
+        <label for="name">Name:</label>
+        <input type="text" id="name" onkeyup="fillGender();">
+        <label for="gender">Gender:</label>
+        <input type="radio" name="gender" id="male" value="male">Male &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="gender" id="female" value="female">Female<br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example6</h4>
+
+    <p id="slowLoris">
+        Slow loris | Fast loris | Just-right loris
+        <a href="javascript:void(0);" onclick="expandLoris();"><em>Make it a list</em></a>
+    </p>
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example7</h4>
+
+    <p class="cl_w bg_bp" id="ugly" onclick="makeLarge();">Click this text to make it large</p>
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example8</h4>
+
+    <p id="sty" class="bg_bp" onmouseover="changeStyle(id)">Hover this text to change it's style</p>
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example9</h4>
+
+    <div id="div1" class="bg_bp" onclick="doom()">
+        <p id="p5">first paragraph</p>
+        <p id="p6">second paragraph</p>
+    </div>
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example10</h4>
+
+    <p id="p11" class="cl_bd bg_c" onclick="dom_attribute()">Click this text</p>
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example11</h4>
+
+    <p id="p12" class="cl_bd bg_r size30 " onclick="delete_attribute()">Click this text</p>
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example12</h4>
+
+    <input type="button" value="Add paragraph node" onclick="add_node()">
+
+    <div id="div12">
+        <p class="bg_c">old paragraph1</p>
+        <p class="bg_c">old paragraph2</p>
+        <p class="bg_c">old paragraph3</p>
+    </div>
+
+
+    <h4 class="btn_block bg_g cl_b mb-4 ">Example13</h4>
+
+    <ul id="shoppinglist">
+        <li class="complete"> Apple [<a href="#">Delete</a>] </li>
+        <li class="complete"> banana [<a href="#">Delete</a>]</li>
+        <li class="complete"> mango [<a href="#">Delete</a>]</li>
+        <li class="complete"> guava [<a href="#">Delete</a>]</li>
+    </ul>
+
+
+    <!-- ################## JavaScript ###################  -->
+    <script src="Events_js.js" type="text/javascript"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+</body>
+
+</html>

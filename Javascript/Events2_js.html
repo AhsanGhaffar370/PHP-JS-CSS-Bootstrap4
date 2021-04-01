@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>First PHP Program</title>
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes" />
+    <!-- Always put in header For ajax and jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="css_prac1.css" type="text/css" rel="stylesheet" media="screen" />
+    <!-- Bootstrap CSS (Latest compiled and minified CSS)-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script>
+
+    <!-- ################## CSS ###################  -->
+    <style rel="stylesheet">
+        * {
+            /* border: 2px solid gray; */
+        }
+    </style>
+
+</head>
+
+<body class="mt-2 mb-4">
+
+
+    <section class="con70 col-lg-4 col-md-8 col-sm-12 verCen" id="contact_1">
+
+        <p class="size38 cl_w b8 centre bg_bl mb_0 pt-3 pb-3">Customer Support</p>
+        <div class=" bg_c pt-3">
+
+            <!-- Form Starts -->
+            <form class="needs-validation1" name="form52" id="form1" method="POST" action="">
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 verCen p-0" for="name1">Name:</label>
+                    <input type="text" class="form-control p-4 col-10" id="name1" name="name1" placeholder="Name" />
+                    <span class="size14 bg_r" id="feedback"></span>
+                </div>
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 verCen p-0" for="email1">Email:</label>
+                    <input type="email" class="form-control p-4 col-10" id="email1" name="email" placeholder="Email" />
+                </div>
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 mt-2 p-0" for="male1 female1">Gender:</label> &nbsp;&nbsp;
+                    <div class="form-check-inline">
+                        <input type="radio" class="form-check-input" id="male1" name="gender" value="male" />
+                        <label class="form-check-label b7 cl_g" for="male1"> Male </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input type="radio" class="form-check-input" id="female1" name="gender" value="female" />
+                        <label class="form-check-label b7 cl_g" for="female1"> Female </label>
+                    </div>
+                </div>
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 verCen p-0" for="state1">State:</label>
+                    <div class="col-10">
+                        <select class="form-control" id="state1" name="state">
+                            <option value="-1" disabled selected>Select State</option>
+                            <option value="Sindh">Sindh</option>
+                            <option value="Panjab">Panjab</option>
+                            <option value="KPK">KPK</option>
+                        </select>
+                        <span id="choice" class="b6 cl_bl size13"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 p-0">Reason:</label>
+                    <div class="col-10">
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="checkbox" id="Reason11" name="reason1" value="Reason1" />
+                            <label class="form-check-label b7 cl_g" for="Reason11"> Reason1 </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="checkbox" id="Reason21" name="reason2" value="Reason2" />
+                            <label class="form-check-label b7 cl_g" for="Reason21"> Reason2</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input mt-2" type="checkbox" id="Reason31" name="reason3" value="Reason3" />
+                            <label class="form-check-label b7 cl_g" for="Reason31"> Reason3 </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row border_g">
+                    <label class="b8 col-2 p-0" for="comp1">Complain:</label>
+                    <div class="col-10">
+                        <textarea name="complain" id="comp1" class="form-control" placeholder="Write your Complain" cols="30" rows="10"></textarea>
+                        <span id="countchar" class="b6 cl_r size13"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row ">
+                    <div class="form-check col-lg-10 col-sm-12 offset-lg-2 offset-sm-0">
+                        <div class="border_g pl-4">
+                            <input class="form-check-input mt-2" type="checkbox" id="terms1" name="terms" value="terms" />
+                            <label class="form-check-label b7 cl_g size15" for="terms1"> Agree with our <a href="#" onclick="this.preventDefault()">terms and conditions</a> </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group m-0 ">
+                    <input type="submit" value="SUBMIT" class="button btn_block b7 p-3 size20 b8" />
+                </div>
+            </form>
+        </div>
+        <!-- End of form -->
+    </section>
+    <!-- <p id="stock">ahsan bhai</p> -->
+
+    <!-- ################## JavaScript ###################  -->
+    <script type="text/javascript">
+        let form = document.getElementById("form1");
+        let comp = document.getElementById("comp1");
+        let name = document.getElementById("name1");
+        let state = document.getElementById('state1');
+
+        function setup() {
+            document.getElementById("name1").focus();
+        }
+        window.addEventListener('load', setup, false);
+
+
+        function charCount() {
+            let count = this.value.length;
+            let remain = 10 - count;
+
+            if (remain < 0) {
+                document.getElementById("countchar").innerHTML = "Limit exceed, message above limit is not acceptable";
+
+            } else {
+
+                document.getElementById("countchar").innerHTML = remain + " characters left";
+            }
+        }
+        comp.addEventListener("keypress", charCount, "false");
+
+
+
+        function checkTerm(event) {
+            if (!document.getElementById('terms1').checked) {
+                alert("accept terms and conditions to submit form");
+                event.preventDefault();
+            }
+        }
+        form.addEventListener("submit", checkTerm, false);
+
+
+        function onStateSelect() {
+            let state = this.options[this.selectedIndex].value;
+            if (state == "Sindh") {
+                document.getElementById("choice").innerHTML = "Your name suggest, that you're from Panjab";
+            } else if (state == "Panjab") {
+                document.getElementById("choice").innerHTML = "Your name suggest, that you're from Sindh";
+            } else if (state == "KPK") {
+                document.getElementById("choice").innerHTML = "Your name suggest, that you're from Balochistan";
+            }
+        }
+        state.addEventListener("change", onStateSelect, "false");
+
+
+        // function validate() {
+        //     // let name = document.getElementById("name1");
+        //     if (name.value.length > 5) {
+
+        //     }
+        // }
+        // name.addEventListener('blur', , false)
+    </script>
+
+    <script src="Events2_js.js" type="text/javascript"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+</body>
+
+</html>

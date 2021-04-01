@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern JS</title>
+
+</head>
+
+<body>
+    <h1>Hello JavaScript</h1>
+
+    <p id="demo" class="demo_class"></p>
+
+
+    <h2>Ways to call Events</h2>
+
+    <h3>HTML EVENT HANDLERS (Don't use these ways)</h3>
+    <button onclick="document.getElementById('demo2').innerHTML = Date()">The time is?</button><br>
+    <p id="demo2"></p>
+    <button onclick="this.innerHTML = Date()">The time is?</button><br>
+    <button onclick="current_date('demo1')">The time is?</button>
+    <p id="demo1"></p>
+
+    <h3>TRADITIONAL DOM EVENT HANDLERS (very old)</h3>
+
+    <button id="btn1">The time is?</button>
+    <p id="demo3"></p>
+
+
+    <h3>DOM Level 2 Event Listener (Advanced technique to call an event)</h3>
+
+    <button id="btn2">The time is?</button>
+    <p id="demo4"></p>
+
+
+
+
+
+
+
+
+    <p id="arrow"></p>
+
+    <p id="class1"></p>
+
+    Array
+    <p id="arr1"></p>
+
+
+
+    <br><br><br>
+    <h1>Console JavaScript</h1>
+
+    <script src="Basics_js.js"></script>
+</body>
+
+</html>
