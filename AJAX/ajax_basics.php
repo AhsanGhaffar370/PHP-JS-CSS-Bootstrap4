@@ -148,31 +148,45 @@ $db=$database->connect_pdo();
     <script>
     document.getElementById("submit22").style.display="none";
 
-    // document.getElementById('submit22').
-
+    
+    
+    
+    
+    
+    
     $(document).ready(function() {
 
-        // $('#submit22').hide();
-
+        $('#set_img').attr('src', "user_pics/default_pic.jpg");
         /////////////////////////////
         // Example3:
         /////////////////////////////
 
-        $('.update21').click(function(e){
-            e.preventDefault();
-            let el= e.target;
+        // $('.update21').click(function(e){
+        //     e.preventDefault();
+        //     let el= e.target;
             
-            $('#submit22').show();
-            $('#submit21').hide();
-
-        });
+        //     $('#submit22').show();
+        //     $('#submit21').hide();
+        // });
 
         $(document).on('click','.update21',function(e){
             e.preventDefault();
             let el= e.target;
-            $(el).hide();
+            let el_par= $(el).parent();
+
             $('#submit22').show();
             $('#submit21').hide();
+            $("#form21").attr('id','update_form21');
+
+            required_html = $(el_par).prevUntil(el_par, 0);
+            let image=$(required_html[0]).children().attr('src');
+            console.log(image);
+
+            let email=$(required_html[1]).html();
+            console.log(email);
+
+            let name=$(required_html[2]).html();
+            console.log(name);
         });
 
 
@@ -264,6 +278,7 @@ $db=$database->connect_pdo();
                         $('#name').val("");
                         $('#email').val("");
                         $('#image').val("");
+                        $('#set_img').attr('src', "user_pics/default_pic.jpg");
                     }
                 })
             }
