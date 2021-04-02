@@ -95,7 +95,8 @@ $db=$database->connect_pdo();
             <input type="text" name="email" id="email" placeholder="Email" class="form-control mt-3" />
             <img src="user_pics/law9.jpg" id="set_img" class="img-responsive d-flex mt-3 rounded-circle" width="150" height="140">
             <input type="file" name="image" id="image" placeholder="Image" class="form-control mt-3" />
-            <input type="submit" name="submit" id="submit21" value="Add User" class="btn btn-danger mt-3" />
+            <input type="submit" name="submit" id="submit21" value="Add User" class="btn btn-success mt-3" />
+            <input type="submit" name="submit" id="submit22" value="Update User" class="btn btn-warning mt-3" />
         </form>
 
         <!-- View Data List -->
@@ -123,8 +124,8 @@ $db=$database->connect_pdo();
                         <td class="size13 pl_0 pr_0 pb_0"><?php echo $r['email']  ?></td>
                         <td class="size13 pl_0 pr_0 pb_0"><img src="user_pics/<?php echo $r['profile']  ?>" class="rounded-circle" width="75" height="70"></td>
                         <td><?php 
-                            echo '<button id="update21" data-id='.$r['id'].' class="btn btn-warning cl_w">Update</button>&nbsp;&nbsp;';
-                            echo '<button id="delete21" data-id='.$r['id'].' class="btn btn-danger cl_w">Delete</button>';
+                            echo '<button id='.$r['id'].' class="update21 btn btn-warning cl_w">Update</button>&nbsp;&nbsp;';
+                            echo '<button id='.$r['id'].' class="delete21 btn btn-danger cl_w">Delete</button>';
                             ?>
                         </td>
                     </tr>
@@ -145,17 +146,47 @@ $db=$database->connect_pdo();
 
 
     <script>
+    document.getElementById("submit22").style.display="none";
+
+    // document.getElementById('submit22').
 
     $(document).ready(function() {
 
+        // $('#submit22').hide();
 
-        $("#delete21").click(function(e){
+        /////////////////////////////
+        // Example3:
+        /////////////////////////////
+
+        $('.update21').click(function(e){
             e.preventDefault();
-            var el = this;
-            var deleteid = $(this).data('id');
+            let el= e.target;
+            
+            $('#submit22').show();
+            $('#submit21').hide();
+
+        });
+
+        $(document).on('click','.update21',function(e){
+            e.preventDefault();
+            let el= e.target;
+            $(el).hide();
+            $('#submit22').show();
+            $('#submit21').hide();
+        });
 
 
-            var confirmalert = confirm("Are you sure?");
+
+        $(document).on('click','.delete21',function(e){
+        // $(".delete21").click(function(e){
+            e.preventDefault();
+            let el = e.target;
+            let table_row=$(el).parent().parent();
+            let deleteid = e.target.getAttribute('id');
+            
+            // alert(deleteid);
+
+            let confirmalert = confirm("Are you sure?");
             if (confirmalert == true) 
             {
                 // AJAX Request
@@ -164,15 +195,15 @@ $db=$database->connect_pdo();
                     type: 'POST',
                     data: { id:deleteid },
                     success: function(response){
-                        alert(response);
+                        // alert(response);
                         // if(response == 1){
-                        //     // Remove row from HTML Table
-                        //     $(el).closest('tr').css('background','tomato');
-                        //     $(el).closest('tr').fadeOut(800,function(){
-                        //     $(this).remove();
-                        // });
+                            // Remove row from HTML Table
+                            table_row.css('background','tomato');
+                            table_row.fadeOut(800,function(){
+                            table_row.remove();
+                        });
                         // }else{
-                        //     alert('Invalid ID.');
+                            // alert('Invalid ID.');
                         // }
 
                     }
@@ -182,12 +213,6 @@ $db=$database->connect_pdo();
 
 
 
-
-
-
-
-
-        // Example3:
         function readURL(input) {
             if (input.files && input.files[0]) {
                 // var geekss = e.target.files[0].name;
@@ -228,11 +253,11 @@ $db=$database->connect_pdo();
                         $('#submit21').removeAttr('disabled');
                         
                         let insertRow="";
-                        insertRow+='<td class="size13 pl_0 pr_0 pb_0">'+name+'</td>';
+                        insertRow+='<tr><td class="size13 pl_0 pr_0 pb_0">'+name+'</td>';
                         insertRow+='<td class="size13 pl_0 pr_0 pb_0">'+email+'</td>';
                         insertRow+='<td class="size13 p-0"><img src="user_pics/'+img_name+'" class="rounded-circle" width="100" height="70"></td>';
-                        insertRow+='<td class="size13"><a href="ajax_basics.php?update_id='+result+'" class="btn btn-warning cl_w">Update</a>&nbsp;&nbsp;';
-                        insertRow+='<a href="ajax_basics.php?delete_id='+result+'" class="btn btn-danger cl_w">Delete</a></td>';
+                        insertRow+='<td><button id='+result+' class="update21 btn btn-warning cl_w">Update</button>&nbsp;&nbsp;';
+                        insertRow+='<button id='+result+' class="delete21 btn btn-danger cl_w">Delete</button></td>';
                         insertRow+="</tr>"
                         $("#tabledata").prepend(insertRow);
 
@@ -243,7 +268,6 @@ $db=$database->connect_pdo();
                 })
             }
         });
-
 
 
         //Example2:
