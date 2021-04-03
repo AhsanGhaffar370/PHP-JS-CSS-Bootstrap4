@@ -91,12 +91,13 @@ $db=$database->connect_pdo();
 
         <form id="form21" method="post" action="#" class="container col-5 shadow p-5 mt-3 mb-3" enctype="multipart/form-data" >
         <h1 class="pb-3 font-weight-bold">Add User</h1>
-            <input type="text" name="name" id="name" placeholder="Name" class="form-control mtop-3" />
-            <input type="text" name="email" id="email" placeholder="Email" class="form-control mt-3" />
-            <img src="user_pics/law9.jpg" id="set_img" class="img-responsive d-flex mt-3 rounded-circle" width="150" height="140">
+            <input type="hidden" name="id" id="id" value=""/>
+            <input type="text" name="name" id="name" value="" placeholder="Name" class="form-control mtop-3" />
+            <input type="text" name="email" id="email" value="" placeholder="Email" class="form-control mt-3" />
+            <img src="user_pics/default_pic.jpg" id="set_img" value="" class="img-responsive d-flex mt-3 rounded-circle" width="150" height="140">
             <input type="file" name="image" id="image" placeholder="Image" class="form-control mt-3" />
             <input type="submit" name="submit" id="submit21" value="Add User" class="btn btn-success mt-3" />
-            <input type="submit" name="submit" id="submit22" value="Update User" class="btn btn-warning mt-3" />
+            <input type="submit" name="submit" id="submit22" value="Update User" class="btn btn-warning mt-3" style="display:none;"/>
         </form>
 
         <!-- View Data List -->
@@ -146,14 +147,7 @@ $db=$database->connect_pdo();
 
 
     <script>
-    document.getElementById("submit22").style.display="none";
 
-    
-    
-    
-    
-    
-    
     $(document).ready(function() {
 
         $('#set_img').attr('src', "user_pics/default_pic.jpg");
@@ -168,7 +162,8 @@ $db=$database->connect_pdo();
         //     $('#submit22').show();
         //     $('#submit21').hide();
         // });
-
+        
+        // update data example3
         $(document).on('click','.update21',function(e){
             e.preventDefault();
             let el= e.target;
@@ -179,18 +174,70 @@ $db=$database->connect_pdo();
             $("#form21").attr('id','update_form21');
 
             required_html = $(el_par).prevUntil(el_par, 0);
-            let image=$(required_html[0]).children().attr('src');
-            console.log(image);
 
+            // let image=$(required_html[0]).children().attr('src');
+            // image=image.split("/");
             let email=$(required_html[1]).html();
-            console.log(email);
-
             let name=$(required_html[2]).html();
-            console.log(name);
+
+            $("#id").val($(el).attr('id'));
+            $("#name").val(name);
+            $("#email").val(email);
+            // $("#image").val(image[1]);
+        });
+
+        $(document).on('submit','#update_form21',function(e){
+        // $("#update_form21").submit(function(e) {
+            e.preventDefault();
+            let id = $('#id').val();
+            let name = $('#name').val();
+            let email = $('#email').val();
+            let img_name=$('#image').val().replace(/^.*[\\\/]/, '');
+
+            if (name == "" || email == "" || $('#image').get(0).files.length === 0) {
+                alert("Please fill out all fields");
+            } else {
+                $('#submit22').attr('value', 'Please Wait...');
+                $('#submit22').attr('disabled', 'disabled');
+                $.ajax({
+                    url: 'ajax_update.php',
+                    type: 'post',
+                    // data: "name=" + name + "&email=" + email+ "&image="+image_obj,
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    success: function(result) {
+                        alert("Record Updated");
+                        $('#submit22').attr('value', 'Update User');
+                        $('#submit22').removeAttr('disabled');
+
+                        let el=$("#"+id);
+                        // alert(id);
+                        alert(el.html());
+                        let el_par= el.parent();
+                        required_html = $(el_par).prevUntil(el_par, 0);
+
+                        $(required_html[0]).children().attr('src',"user_pics/"+img_name);
+                        // image=image.split("/");
+                        $(required_html[1]).html(email);
+                        $(required_html[2]).html(name);
+
+
+                        $("#update_form21").attr('id','form21');
+                        $('#submit21').show();
+                        $('#submit22').hide();
+                        $('#id').val("");
+                        $('#name').val("");
+                        $('#email').val("");
+                        $('#image').val("");
+                        $('#set_img').attr('src', "user_pics/default_pic.jpg");
+                    }
+                })
+            }
         });
 
 
-
+        //delete data example3
         $(document).on('click','.delete21',function(e){
         // $(".delete21").click(function(e){
             e.preventDefault();
@@ -242,8 +289,9 @@ $db=$database->connect_pdo();
         $("#image").change(function(){readURL(this);});
 
 
-        // Example3:
-        $("#form21").submit(function(e) {
+        // insert and view data example3:
+        $(document).on('submit','#form21',function(e){
+        // $("#form21").submit(function(e) {
             e.preventDefault();
             let name = $('#name').val();
             let email = $('#email').val();
@@ -262,7 +310,7 @@ $db=$database->connect_pdo();
                     contentType: false,
                     processData: false,
                     success: function(result) {
-                        // alert(result);
+                        alert("Record Inserted");
                         $('#submit21').attr('value', 'Add User');
                         $('#submit21').removeAttr('disabled');
                         
@@ -285,7 +333,11 @@ $db=$database->connect_pdo();
         });
 
 
-        //Example2:
+
+
+        /////////////////////////////
+        // Example2:
+        /////////////////////////////
         $('#usertable').hide();
 
         $('#username').change(function() {
@@ -308,13 +360,28 @@ $db=$database->connect_pdo();
                     $('#user_sex').html(json_data.sex);
                     $('#user_profile').attr('src', 'user_pics/' + json_data.profile);
                     $('#user_service').html(json_data.service);
+
+                    
+                    // If num of records are more than 1:
+                    // var len = result.length;
+                    // for(var i=0; i<len; i++){
+                    //     var id = response[i].id;
+                    //     var name = response[i].name;
+                    //     var email = response[i].email;
+                    //     var tr_str = "<tr>" + "<td align='center'>" + (i+1) + "</td>" +
+                    //                           "<td align='center'>" + name + "</td>" +
+                    //                           "<td align='center'>" + email + "</td>" + "</tr>";
+                    //     $("#usertable tbody").append(tr_str);
+                    // }
                 }
             });
         });
 
 
 
-        //Example1:
+        /////////////////////////////
+        // Example1:
+        /////////////////////////////
         $('#click_me').click(function(e) {
 
             e.preventDefault();
