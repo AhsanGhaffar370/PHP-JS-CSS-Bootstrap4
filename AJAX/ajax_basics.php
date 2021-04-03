@@ -100,8 +100,13 @@ $db=$database->connect_pdo();
             <input type="submit" name="submit" id="submit22" value="Update User" class="btn btn-warning mt-3" style="display:none;"/>
         </form>
 
+
         <!-- View Data List -->
         <div class="container col-6 table-responsive">
+
+        <h6 class="mt-3 text-left" >Search</h6>
+        <input type="text" name="search_record" id="ser_rec" class="form-control mb-3 " placeholder="Search Record" />
+
             <table class="table bg-white table-bordered">
                 <tr class="thead-light">
                     <!-- <th class="b8">#</th> -->
@@ -150,6 +155,52 @@ $db=$database->connect_pdo();
 
     $(document).ready(function() {
 
+        /////////////////////////////
+        // Example4:
+        /////////////////////////////
+        $("#ser_rec").keyup(function(){
+            let ser = $('#ser_rec').val();
+            // alert(username);
+
+            $.ajax({
+                url: 'ajax_search.php',
+                type: 'post',
+                data: 'ser_val=' + ser,
+                success: function(result) {
+                    let json_data = $.parseJSON(result);
+                    // console.log(json_data.id);
+                    $('#usertable').show();
+
+                    $('#user_id').html(json_data.id);
+                    $('#user_name').html(json_data.name);
+                    $('#user_email').html(json_data.email);
+                    $('#user_sex').html(json_data.sex);
+                    $('#user_profile').attr('src', 'user_pics/' + json_data.profile);
+                    $('#user_service').html(json_data.service);
+
+
+                    // If num of records are more than 1:
+                    // var len = result.length;
+                    // for(var i=0; i<len; i++){
+                    //     var id = response[i].id;
+                    //     var name = response[i].name;
+                    //     var email = response[i].email;
+                    //     var tr_str = "<tr>" + "<td align='center'>" + (i+1) + "</td>" +
+                    //                           "<td align='center'>" + name + "</td>" +
+                    //                           "<td align='center'>" + email + "</td>" + "</tr>";
+                    //     $("#usertable tbody").append(tr_str);
+                    // }
+                }
+            });
+        });
+
+
+
+
+
+
+        
+
         $('#set_img').attr('src', "user_pics/default_pic.jpg");
         /////////////////////////////
         // Example3:
@@ -162,7 +213,7 @@ $db=$database->connect_pdo();
         //     $('#submit22').show();
         //     $('#submit21').hide();
         // });
-        
+
         // update data example3
         $(document).on('click','.update21',function(e){
             e.preventDefault();
@@ -212,8 +263,6 @@ $db=$database->connect_pdo();
                         $('#submit22').removeAttr('disabled');
 
                         let el=$("#"+id);
-                        // alert(id);
-                        alert(el.html());
                         let el_par= el.parent();
                         required_html = $(el_par).prevUntil(el_par, 0);
 
@@ -221,7 +270,6 @@ $db=$database->connect_pdo();
                         // image=image.split("/");
                         $(required_html[1]).html(email);
                         $(required_html[2]).html(name);
-
 
                         $("#update_form21").attr('id','form21');
                         $('#submit21').show();
@@ -231,6 +279,7 @@ $db=$database->connect_pdo();
                         $('#email').val("");
                         $('#image').val("");
                         $('#set_img').attr('src', "user_pics/default_pic.jpg");
+
                     }
                 })
             }
@@ -244,7 +293,7 @@ $db=$database->connect_pdo();
             let el = e.target;
             let table_row=$(el).parent().parent();
             let deleteid = e.target.getAttribute('id');
-            
+
             // alert(deleteid);
 
             let confirmalert = confirm("Are you sure?");
@@ -303,7 +352,7 @@ $db=$database->connect_pdo();
                 $('#submit21').attr('value', 'Please Wait...');
                 $('#submit21').attr('disabled', 'disabled');
                 $.ajax({
-                    url: 'ajax_get.php',
+                    url: 'ajax_insert.php',
                     type: 'post',
                     // data: "name=" + name + "&email=" + email+ "&image="+image_obj,
                     data: new FormData(this),
@@ -313,7 +362,7 @@ $db=$database->connect_pdo();
                         alert("Record Inserted");
                         $('#submit21').attr('value', 'Add User');
                         $('#submit21').removeAttr('disabled');
-                        
+
                         let insertRow="";
                         insertRow+='<tr><td class="size13 pl_0 pr_0 pb_0">'+name+'</td>';
                         insertRow+='<td class="size13 pl_0 pr_0 pb_0">'+email+'</td>';
@@ -332,6 +381,38 @@ $db=$database->connect_pdo();
             }
         });
 
+        // view record:
+        // $(window).load(function() {
+        //     $.ajax({
+        //         url: 'ajax_view.php',
+        //         type: 'post',
+        //         // data: "name=" + name + "&email=" + email+ "&image="+image_obj,
+        //         data: new FormData(this),
+        //         contentType: false,
+        //         processData: false,
+        //         success: function(result) {
+        //             alert("Record Inserted");
+        //             $('#submit21').attr('value', 'Add User');
+        //             $('#submit21').removeAttr('disabled');
+
+        //             let insertRow="";
+        //             insertRow+='<tr><td class="size13 pl_0 pr_0 pb_0">'+name+'</td>';
+        //             insertRow+='<td class="size13 pl_0 pr_0 pb_0">'+email+'</td>';
+        //             insertRow+='<td class="size13 p-0"><img src="user_pics/'+img_name+'" class="rounded-circle" width="100" height="70"></td>';
+        //             insertRow+='<td><button id='+result+' class="update21 btn btn-warning cl_w">Update</button>&nbsp;&nbsp;';
+        //             insertRow+='<button id='+result+' class="delete21 btn btn-danger cl_w">Delete</button></td>';
+        //             insertRow+="</tr>"
+        //             $("#tabledata").prepend(insertRow);
+
+        //             $('#name').val("");
+        //             $('#email').val("");
+        //             $('#image').val("");
+        //             $('#set_img').attr('src', "user_pics/default_pic.jpg");
+        //         }
+        //     })
+        // });
+ 
+
 
 
 
@@ -346,7 +427,7 @@ $db=$database->connect_pdo();
             // alert(username);
 
             $.ajax({
-                url: 'ajax_get.php',
+                url: 'ajax_insert.php',
                 type: 'post',
                 data: 'userid=' + username,
                 success: function(result) {
@@ -361,7 +442,7 @@ $db=$database->connect_pdo();
                     $('#user_profile').attr('src', 'user_pics/' + json_data.profile);
                     $('#user_service').html(json_data.service);
 
-                    
+
                     // If num of records are more than 1:
                     // var len = result.length;
                     // for(var i=0; i<len; i++){
@@ -388,11 +469,11 @@ $db=$database->connect_pdo();
             let name = $('#name1').val();
 
             $.ajax({
-                url: 'ajax_get.php', //url of page which we want to hit
+                url: 'ajax_insert.php', //url of page which we want to hit
                 type: 'post', // request type
                 // async: false,
-                data: 'name=' + name, //data we send to ajax_get.php
-                success: function(result) { // when data receive from ajax_get.php page, it stores in result variable
+                data: 'name=' + name, //data we send to ajax_insert.php
+                success: function(result) { // when data receive from ajax_insert.php page, it stores in result variable
                     alert(result);
                 }
             });

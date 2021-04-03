@@ -53,30 +53,30 @@ else {
 ////////////////
 // Example2:
 ////////////////
-$id=$_POST['userid'];
+// $id=$_POST['userid'];
 
-$query='select * from users where id=:id';
-$stmt=$db->prepare($query);
+// $query='select * from users where id=:id';
+// $stmt=$db->prepare($query);
 
-if($stmt){
-    $stmt->bindParam(':id',$id);
-    $stmt->execute();
+// if($stmt){
+//     $stmt->bindParam(':id',$id);
+//     $stmt->execute();
 
-    if($stmt->rowCount()==1){
-        $row=$stmt->fetch(PDO::FETCH_OBJ);
+//     if($stmt->rowCount()==1){
+//         $row=$stmt->fetch(PDO::FETCH_OBJ);
 
-        echo json_encode($row);
+//         echo json_encode($row);
 
-        // If num of records are more than 1
-        // while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        //     $id = $row['id'];
-        //     $username = $row['name'];
-        //     $email = $row['email'];
-        //     $return_arr[] = array("id" => $id, "name" => $name, "email" => $email);
-        // }
-        // echo json_encode($return_arr);
-    }
-}
+//         // If num of records are more than 1
+//         // while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+//         //     $id = $row['id'];
+//         //     $username = $row['name'];
+//         //     $email = $row['email'];
+//         //     $return_arr[] = array("id" => $id, "name" => $name, "email" => $email);
+//         // }
+//         // echo json_encode($return_arr);
+//     }
+// }
 
 
 

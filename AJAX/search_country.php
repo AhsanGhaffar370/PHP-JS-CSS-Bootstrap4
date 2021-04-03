@@ -1,0 +1,1 @@
+<!-- In bloggers project, inside profile.php is used search country feature using ajax -->
