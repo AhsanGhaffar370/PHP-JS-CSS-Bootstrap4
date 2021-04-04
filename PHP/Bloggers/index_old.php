@@ -47,7 +47,7 @@ $db = $database->connect_pdo();
         <div class="container p-0">
             <div class="row">
 
-                <div id="all_post" class="col-xl-8 col-lg-8 col-md-8  col-sm-12 col-12 pt-4 mb-3">
+                <div class="col-xl-8 col-lg-8 col-md-8  col-sm-12 col-12 pt-4 mb-3">
 
                     <?PHP 
 
@@ -149,8 +149,10 @@ $db = $database->connect_pdo();
                             while($r= $stmt->fetch(PDO::FETCH_ASSOC)){
                     ?>
 
-                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 card bg-white mb-5 card shadow rounded-0 p-0">
+                    <div
+                        class="col-xl-10 col-lg-10 col-md-10 col-sm-12 card bg-white mb-5 card shadow rounded-0 p-0">
                         
+
                         <img src="admin/post_images/<?php echo $r['image']; ?>" class="img-fluid images" />
 
                         <div class="card-body p-5 text-dark">
@@ -171,7 +173,7 @@ $db = $database->connect_pdo();
                                 </span>
                             </p>
 
-                            <a href="index.php?sp=<?php echo $r['permalink']; ?>" class="blog_hov1 nav-link p-0">
+                            <a href="/<?php //echo $post_url; ?>" class="blog_hov1 nav-link p-0">
                                 <h3 class="font_meri">
                                     <?php echo $r['title']; ?>
                                 </h3>
@@ -212,12 +214,12 @@ $db = $database->connect_pdo();
                             <div class="card-body pt-4 pb-4">
                                 <h6 class="font-weight-bold pl-1">Search Article</h6>
 
-                                <!-- <form method="post" action="#" enctype="multipart/form-data"> -->
-                                <div class="row">
-                                    <input type="text" class="form-control col-7  ml-3 rounded-0" id="sertitle" placeholder="Search" size="25">
-                                    <input type="button" id="ser_post" name="serbtn"  class="btn btn-primary col-3 size13 font-weight-bold  rounded-0" value="Search">
-                                </div>
-                                <!-- </form> -->
+                                <form method="post" action="search_post.php" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <input type="text" class="form-control col-7  ml-3 rounded-0" name="sertitle" placeholder="Search" size="25">
+                                        <input type="submit" name="serbtn" class="btn btn-primary col-3 size13 font-weight-bold  rounded-0" value="Search">
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
@@ -289,67 +291,6 @@ $db = $database->connect_pdo();
     <script>
 
         $(document).ready(function(){
-
-            $("#sertitle").keyup(function(e){
-                // e.preventDefault();
-                let ser_val=$(e.target).val();
-                // alert(ser_val);
-
-                $.ajax({
-                    url: "Ajax_SearchPost.php",
-                    type: 'post',
-                    data: "ser_val="+ser_val,
-                    success: function(response){
-                        // console.log(response);
-                        if (response=="no records found"){
-                            // $("#ser_status").html("No records found");
-                            $("#all_post").html('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button>No Record Found</div>');
-                        }
-                        else{
-                            let json_data = $.parseJSON(response);
-                            var len = json_data.length;
-                            var post_str="";
-                          
-                            for(var i=0; i<len; i++){
-                                var permalink = json_data[i].permalink;
-                                var title = json_data[i].title;
-                                var image = json_data[i].image;
-                                var date = json_data[i].date;
-                                var content = json_data[i].content;
-                                post_str+= '<div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 card bg-white mb-5 card shadow rounded-0 p-0">' 
-                                + '<img src="admin/post_images/'+image+'" class="img-fluid images" />'
-                                + '<div class="card-body p-5 text-dark">'
-                                + '<p class="text-black-50 text-left font-weight-bold m-0 p-0">'
-                                + '<span class="text-dark">Author: </span>'
-                                + '<a href="#" class="size15 b7 text-primary">abc</a>'
-                                + ' </p>'
-                                + '<p class="text-black-50 text-left font-weight-bold mt-1 mb-3">'
-                                + '<span class="text-dark">Published Date: </span>'
-                                + '<span class="size15 b7">'+date+'</span>'
-                                + '</p>'
-                                + '<a href="index.php?sp='+permalink+'" class="blog_hov1 nav-link p-0">'
-                                + '<h3 class="font_meri">'+title+'</h3>'
-                                + '</a>'
-                                + '<p class="text-dark fontb text-left pt-2 ">'
-                                + '<p class="card-text text-secondary text-justify size16 decor" >'+content.substr(0, 240)+'</p>'
-                                + '</p>'
-                                + '<a href="index.php?sp='+permalink+'" class="nav-link size14 text-primary font-weight-bold mt-2 p-0">'
-                                + 'Read More <i class="fas fa-angle-double-right fa-1x"></i>'
-                                + '</a>'
-                                + '</div>'
-                                + '</div>';
-                            }      
-                            $("#all_post").html(post_str);
-                        }
-                    }
-                });
-
-
-            })
-
-
-
-
             $("#like21").click(function(e){
                 e.preventDefault();
                 let like_val=parseInt($("#like_counter").text())+1;

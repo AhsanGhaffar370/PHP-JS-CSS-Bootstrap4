@@ -37,6 +37,20 @@ $db=$database->connect_pdo();
     <!-- <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script> -->
     <!-- <link  href="style.css" type="text/css" rel="stylesheet" media="screen"> -->
 
+    <style>
+    
+    #ser_rec {
+        width: 200px;
+        transition: 0.7s ease-in-out;
+    }
+
+    #ser_rec:focus {
+        /* transform: scale(1.02); */
+        width: 100%;
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -105,7 +119,8 @@ $db=$database->connect_pdo();
         <div class="container col-6 table-responsive">
 
         <h6 class="mt-3 text-left" >Search</h6>
-        <input type="text" name="search_record" id="ser_rec" class="form-control mb-3 " placeholder="Search Record" />
+        <input type="text" name="search_record" id="ser_rec" class="form-control mb-3 pt-4 pb-4 rounded-0" placeholder="Search Record" />
+        <p id="ser_status" class="font-italic text-left text-danger"></p>
 
             <table class="table bg-white table-bordered">
                 <tr class="thead-light">
@@ -147,7 +162,6 @@ $db=$database->connect_pdo();
             </table>
         </div>
         <!-- End of View Data List -->
-
     </div>
 
 
@@ -165,31 +179,56 @@ $db=$database->connect_pdo();
             $.ajax({
                 url: 'ajax_search.php',
                 type: 'post',
+                // dataType: 'json',
                 data: 'ser_val=' + ser,
                 success: function(result) {
-                    let json_data = $.parseJSON(result);
+                    // console.log(json_data.length);
+                    if (result=="no records found"){
+                        $("#ser_status").html("No records found");
+                        $("#tabledata").html("");
+                    }
+                    else{
+                        let json_data = $.parseJSON(result);
+                        var len = json_data.length;
+                        var tr_str="";
+                    
+                            
+                        for(var i=0; i<len; i++){
+                            var id = json_data[i].id;
+                            var name = json_data[i].name;
+                            var email = json_data[i].email;
+                            var profile = json_data[i].profile;
+                            tr_str+= '<tr>' + '<td class="size13 pl_0 pr_0 pb_0">' + name + '</td>' +
+                                                '<td class="size13 pl_0 pr_0 pb_0">' + email + '</td>' +
+                                                '<td class="size13 pl_0 pr_0 pb_0">' + '<img src="user_pics/'+profile+'" class="rounded-circle" width="75" height="70">' + '</td>' + 
+                                                '<td class="size13 pl_0 pr_0 pb_0">' 
+                                                        + '<button id="'+id+'" class="update21 btn btn-warning cl_w mr-2">Update</button>'+
+                                                        '<button id="'+id+'" class="delete21 btn btn-danger cl_w">Delete</button>'+ 
+                                                '</td>' + 
+                                                
+                                        '</tr>';
+                        }
+                        
+                        $("#tabledata").html(tr_str);
+                    }
+                    
                     // console.log(json_data.id);
-                    $('#usertable').show();
+                    
+                    
 
-                    $('#user_id').html(json_data.id);
-                    $('#user_name').html(json_data.name);
-                    $('#user_email').html(json_data.email);
-                    $('#user_sex').html(json_data.sex);
-                    $('#user_profile').attr('src', 'user_pics/' + json_data.profile);
-                    $('#user_service').html(json_data.service);
+                    // $('#usertable').show();
+                    // $('#user_id').html(json_data.id);
+                    // $('#user_name').html(json_data.name);
+                    // $('#user_email').html(json_data.email);
+                    // $('#user_sex').html(json_data.sex);
+                    // $('#user_profile').attr('src', 'user_pics/' + json_data.profile);
+                    // $('#user_service').html(json_data.service);
 
 
                     // If num of records are more than 1:
-                    // var len = result.length;
-                    // for(var i=0; i<len; i++){
-                    //     var id = response[i].id;
-                    //     var name = response[i].name;
-                    //     var email = response[i].email;
-                    //     var tr_str = "<tr>" + "<td align='center'>" + (i+1) + "</td>" +
-                    //                           "<td align='center'>" + name + "</td>" +
-                    //                           "<td align='center'>" + email + "</td>" + "</tr>";
-                    //     $("#usertable tbody").append(tr_str);
-                    // }
+                        
+                        
+                    
                 }
             });
         });
@@ -380,37 +419,6 @@ $db=$database->connect_pdo();
                 })
             }
         });
-
-        // view record:
-        // $(window).load(function() {
-        //     $.ajax({
-        //         url: 'ajax_view.php',
-        //         type: 'post',
-        //         // data: "name=" + name + "&email=" + email+ "&image="+image_obj,
-        //         data: new FormData(this),
-        //         contentType: false,
-        //         processData: false,
-        //         success: function(result) {
-        //             alert("Record Inserted");
-        //             $('#submit21').attr('value', 'Add User');
-        //             $('#submit21').removeAttr('disabled');
-
-        //             let insertRow="";
-        //             insertRow+='<tr><td class="size13 pl_0 pr_0 pb_0">'+name+'</td>';
-        //             insertRow+='<td class="size13 pl_0 pr_0 pb_0">'+email+'</td>';
-        //             insertRow+='<td class="size13 p-0"><img src="user_pics/'+img_name+'" class="rounded-circle" width="100" height="70"></td>';
-        //             insertRow+='<td><button id='+result+' class="update21 btn btn-warning cl_w">Update</button>&nbsp;&nbsp;';
-        //             insertRow+='<button id='+result+' class="delete21 btn btn-danger cl_w">Delete</button></td>';
-        //             insertRow+="</tr>"
-        //             $("#tabledata").prepend(insertRow);
-
-        //             $('#name').val("");
-        //             $('#email').val("");
-        //             $('#image').val("");
-        //             $('#set_img').attr('src', "user_pics/default_pic.jpg");
-        //         }
-        //     })
-        // });
  
 
 

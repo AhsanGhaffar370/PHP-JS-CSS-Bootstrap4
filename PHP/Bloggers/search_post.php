@@ -126,7 +126,7 @@ $db = $database->connect_pdo();
                             <div class="card-body pt-4 pb-4">
                                 <h6 class="font-weight-bold pl-1">Search Article</h6>
 
-                                <form method="post" action="index.php" enctype="multipart/form-data">
+                                <form method="post" action="search_post.php" enctype="multipart/form-data">
                                     <div class="row">
                                         <input type="text" class="form-control col-7  ml-3 rounded-0" name="sertitle"
                                             placeholder="Search" size="25">
