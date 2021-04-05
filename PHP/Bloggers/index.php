@@ -208,16 +208,11 @@ $db = $database->connect_pdo();
                 <div class="col-xl-4 col-lg-4 col-md-4 mb-5 col-sm-12 col-12">
 
                     <div class="pt-4" style="position:sticky; top:0;">
-                        <div id="searchbox" class="card shadow rounded-0 mb-5">
-                            <div class="card-body pt-4 pb-4">
-                                <h6 class="font-weight-bold pl-1">Search Article</h6>
 
-                                <!-- <form method="post" action="#" enctype="multipart/form-data"> -->
-                                <div class="row">
-                                    <input type="text" class="form-control col-7  ml-3 rounded-0" id="sertitle" placeholder="Search" size="25">
-                                    <input type="button" id="ser_post" name="serbtn"  class="btn btn-primary col-3 size13 font-weight-bold  rounded-0" value="Search">
-                                </div>
-                                <!-- </form> -->
+                        <div id="searchbox" class="card shadow rounded-0 mb-5">
+                            <p class="size22 font-weight-bold text-white pt-2 pb-2 pl-3 mt-0 bg-primary">Search Articles</p>
+                            <div class="card-body pt-4 pb-4">
+                                <input type="text" class="form-control pt-4 pb-4 mb-3 rounded-0" id="sertitle" placeholder="Search" size="25">
                             </div>
                         </div>
 

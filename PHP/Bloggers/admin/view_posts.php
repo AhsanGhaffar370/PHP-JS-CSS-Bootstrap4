@@ -23,8 +23,13 @@
     .tag_col{ width: 15%;}
     .act_col{ width: 10%;}
 
+
     </style>
 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  
+  
 </head>
 
 <body class="fontb bg33">
@@ -100,7 +105,8 @@ if(isset($_GET['delete_id'])){
 
                 <!-- View Data List -->
                 <div class="container-fluid table-responsive">
-                    <table class="table bg-white shadow-sm">
+                    <table id="table_id" class="table">
+                    <thead>
                         <tr class="thead-dark">
                             <!-- <th class="b8">#</th> -->
                             <th class="size15 b6 id_col pt-4 pb-4">ID</th>
@@ -110,8 +116,10 @@ if(isset($_GET['delete_id'])){
                             <th class="size15 b6 date_col pt-4 pb-4">Published Date</th>
                             <th class="size15 b6 img_col pt-4 pb-4">Post Image</th>
                             <th class="size15 b6 tag_col pt-4 pb-4">Tags</th>
+                            <th class="size15 b6 tag_col pt-4 pb-4">User Reviews</th>
                             <th class="size15 b6 act_col pt-4 pb-4">Action</th>
                         </tr>
+                    </thead>
                         <tbody>
                             <?php
                 // select *, count(*) from users having count(*)>1
@@ -122,7 +130,7 @@ if(isset($_GET['delete_id'])){
 
                 // $query='SELECT * FROM posts where author_id=:author_id';
                 // $query2='SELECT news.id AS newsId, user.id AS userId FROM posts JOIN user ON posts.user = user.id';
-                $query='SELECT posts.id AS post_id,user.id AS user_id,posts.title,user.username,posts.categories,posts.date,posts.image,posts.tags,posts.author_id FROM posts inner join user on posts.author_id=user.id and posts.author_id=:author_id';
+                $query='SELECT posts.id AS post_id,user.id AS user_id,posts.title,user.username,posts.categories,posts.date,posts.image,posts.tags,posts.likes,posts.dislikes,posts.author_id FROM posts inner join user on posts.author_id=user.id and posts.author_id=:author_id';
                 $stmt2=$db->prepare($query);
 
                 if($stmt2)
@@ -147,12 +155,16 @@ if(isset($_GET['delete_id'])){
                                         class="img-responsive" width="100" height="70"></td>
                                 <?PHP // if fatch type is (PDO::FETCH_OBJ) then we have to access values, something like this $r->name ?>
                                 <td class="size13 text-left"><?php echo $r['tags']  ?></td>
+                                <td class="size13 text-center">
+                                        <p id="like_counter" class="alert alert-info pt-2 pb-2 text-primary"><i class="fas fa-thumbs-up fa-1x mr-1"></i> <?PHP echo $r['likes'] ?></p>
+                                        <p id="dislike_counter" class="alert alert-info pt-2 pb-2 text-primary"><i class="fas fa-thumbs-down fa-1x mr-1"></i> <?PHP echo $r['dislikes'] ?></p>
+                                </td>
                                 <!-- <td class="size13 text-left"><?php //echo $r['status']  ?></td> -->
                                 <td>
                                     <?php 
-                            echo '<a href="add_post.php?update_id='.$r['post_id'].'"" class="btn btn-warning btn-block cl_w rem_b">Update</a>';
-                            echo '<a href="view_posts.php?delete_id='.$r['post_id'].'" class="btn btn-danger btn-block cl_w rem_b">Delete</a>';
-                        ?>
+                                        echo '<a href="add_post.php?update_id='.$r['post_id'].'"" class="btn btn-warning btn-block cl_w rem_b mt-3">Update</a>';
+                                        echo '<a href="view_posts.php?delete_id='.$r['post_id'].'" class="btn btn-danger btn-block cl_w rem_b">Delete</a>';
+                                    ?>
                                 </td>
                             </tr>
                             <?php  
@@ -183,10 +195,36 @@ if(isset($_GET['delete_id'])){
 
 
 
-
     <?php include("footer_libs.php"); ?>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
 
+
+<script>
+
+$(document).ready( function () {
+    $('#table_id').DataTable({
+        "paging": true,
+		"pagingType":"full_numbers",
+        "lengthMenu":[[5,10,25],[5,10,25]],
+		// "lengthMenu":[[-1,15,25,50],['All',15,25,50]],
+		responsive:true,
+		stateSave: true
+	});
+} );
+// $(document).ready(function() {
+//     $('#zctb').DataTable({
+//         "paging": false,
+// 		"pagingType":"full_numbers",
+//         "lengthMenu":[[5,10,25],[5,10,25]],
+// 		// "lengthMenu":[[-1,15,25,50],['All',15,25,50]],
+// 		responsive:true,
+//         type: 'date'
+// 		// stateSave: true
+// 	});
+// });
+
+</script>
 
 </body>
 

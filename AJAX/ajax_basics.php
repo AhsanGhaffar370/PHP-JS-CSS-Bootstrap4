@@ -191,8 +191,7 @@ $db=$database->connect_pdo();
                         let json_data = $.parseJSON(result);
                         var len = json_data.length;
                         var tr_str="";
-                    
-                            
+
                         for(var i=0; i<len; i++){
                             var id = json_data[i].id;
                             var name = json_data[i].name;

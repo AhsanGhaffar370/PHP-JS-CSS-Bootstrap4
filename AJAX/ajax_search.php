@@ -33,7 +33,7 @@ if($stmt){
         // print_r($return_arr);
         echo json_encode($return_arr);
         // echo $add_val;
-    }
+    } 
     else{
         echo "no records found";
     }
