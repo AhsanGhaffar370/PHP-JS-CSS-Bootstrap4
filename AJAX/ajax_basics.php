@@ -48,6 +48,41 @@ $db=$database->connect_pdo();
         /* transform: scale(1.02); */
         width: 100%;
     }
+
+
+
+
+
+    /* .rowfy-deleterow,
+.rowfy-addrow{
+  font-size: 18px;
+  cursor: pointer;
+  min-width: 34px;
+  margin: 0 10px;
+  line-height: 42px;
+  height: 42px;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #5B9144;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.rowfy-deleterow{
+  background: #c70c0f;
+}
+.rowfy-deleterow{
+  font-size: 26px;
+} */
+
+
+
+
+
+
+
     </style>
 
 
@@ -105,11 +140,28 @@ $db=$database->connect_pdo();
 
         <form id="form21" method="post" action="#" class="container col-5 shadow p-5 mt-3 mb-3" enctype="multipart/form-data" >
         <h1 class="pb-3 font-weight-bold">Add User</h1>
+
             <input type="hidden" name="id" id="id" value=""/>
             <input type="text" name="name" id="name" value="" placeholder="Name" class="form-control mtop-3" />
             <input type="text" name="email" id="email" value="" placeholder="Email" class="form-control mt-3" />
             <img src="user_pics/default_pic.jpg" id="set_img" value="" class="img-responsive d-flex mt-3 rounded-circle" width="150" height="140">
-            <input type="file" name="image" id="image" placeholder="Image" class="form-control mt-3" />
+            <input type="file" name="image" id="image" placeholder="Image" class="form-control mt-3 mb-3" />
+
+
+            <div class="table rowfy">
+                <div class="tbody">
+                    <div class="row tr-row mt-2">
+                        <div class="col-10 pr-0">
+                            <input required="" type="text" min="1" name="skill[]" id="weight" class="form-control rounded" placeholder="skill">
+                        </div>
+                        <div class="col-2 pr-3 text-right">
+                            <div class=" rowfy-addrow btn btn-success btn-block">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <input type="submit" name="submit" id="submit21" value="Add User" class="btn btn-success mt-3" />
             <input type="submit" name="submit" id="submit22" value="Update User" class="btn btn-warning mt-3" style="display:none;"/>
         </form>
@@ -168,6 +220,39 @@ $db=$database->connect_pdo();
     <script>
 
     $(document).ready(function() {
+                
+        /*Add row event*/
+        $(document).on('click', '.rowfy-addrow', function(){
+            // var totalAdd = $('.tr-row').length;
+            // if(totalAdd > 0)
+            //     $('.finish-btn a').css({'display': 'inline-block'});
+
+            rowfyable = $(this).closest('.table');
+            lastRow = $('.tbody .tr-row:last', rowfyable).clone();
+            $('input', lastRow).val('');
+            $('.tbody', rowfyable).append(lastRow);
+            $(this).removeClass('rowfy-addrow btn-success').addClass('rowfy-deleterow btn-danger').text('-');
+        });
+
+        /*Delete row event*/
+        $(document).on('click', '.rowfy-deleterow', function(){
+            $(this).closest('.tr-row').remove();
+        });
+
+        /*Initialize all rowfy tables*/
+        // $('.rowfy').each(function(){
+        //     $('.tbody', this).find('.tr-row').each(function(){
+        //         $(this).append('<div class="p-0 text-center pt-1 px-2 '
+        //         + ($(this).is(":last-child") ?
+        //             '' :
+        //             'rowfy-deleterow ">-')
+        //         +'</div>');
+        //     });
+        // });
+
+
+
+
 
         /////////////////////////////
         // Example4:

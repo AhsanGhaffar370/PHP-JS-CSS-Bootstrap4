@@ -1,0 +1,71 @@
+*MASHB*
+
+*WEBSITE:* http://mashb.co.uk
+
+*EMAIL ACCOUNT:*
+==============
+*WEB-LINK:* http://mashb.co.uk/mail
+*EMAIL-ID:* info@mashb.co.uk
+*PASSWORD:* Key#IG14DU
+
+*WEBSITE ADMIN:*
+==========
+*ADMINURL:* http://mashb.co.uk/wp-admin
+*USERNAME:* admin@mashb.co.uk
+*PASSWORD:* Super#IG14DU
+
+CONTROL PANEL:
+==============
+HOST-URL: http://185.67.1.42:2082
+USERNAME: mashbcouk
+PASSWORD: M{b$E#SE(H!rxB£r
+
+*Mail Client Outlook Settings:*
+====================
+*Email-ID:* info@mashb.co.uk
+*Username:* info@mashb.co.uk
+*Password:* Key#IG14DU
+*Incoming Server:* mail.mashb.co.uk
+*IMAP Port:* 993
+*Outgoing Server:* mail.mashb.co.uk
+*SMTP Port:* 465
+
+Note: Please tick (Check) on "My outgoing server (SMTP) requires authenticaion"
+
+
+
+*To Change Password:*
+====================
+After Login, Click on "Webmail Home"
+Click on "Password & Security"
+Enter "New Password" & "Confirm Password"
+Press "Save" button.
+Click on "Home" link
+Click on "Open" button of roundcube box.
+
+
+
+LANDLINE: 020 3633 6959
+
+MOBILE: 079 4209 9910
+
+ADDRESS: Broadway Chambers, 1 Cranbrook Road, Ilford IG1 4DU
+
+GOOGLE MAP:
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.5203676307974!2d0.06772065093383861!3d51.55869341467322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a6f53734ea23%3A0x2cf207037840047f!2s1%20Cranbrook%20Rd%2C%20Ilford%20IG1%204DU%2C%20UK!5e0!3m2!1sen!2sae!4v1616479691056!5m2!1sen!2sae" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+TIMINGS:
+==========
+Mon: 9:00 am – 6:00 pm
+Tue: 9:00 am – 6:00 pm
+Wed: 9:00 am – 6:00 pm
+Thu: 9:00 am – 6:00 pm
+Fri: 9:00 am – 6:00 pm
+Sat: 9:00 am – 6:00 pm
+Sun: Closed
+
+
+
+
+

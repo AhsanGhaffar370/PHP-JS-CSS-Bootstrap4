@@ -1,0 +1,23 @@
+PROJECT NAME: Ship Search
+
+MAIN WEBSITE: http://businesscardsprinting.co.uk
+
+FRONTEND:
+==========
+WEB-LINK: http://businesscardsprinting.co.uk/
+USERNAME: webist.uk@gmail.com
+PASSWORD: shipsearch147
+
+
+BACKEND:
+==========
+WEB-LINK: http://businesscardsprinting.co.uk/admin/login
+USERNAME: admin@shipsearch.com
+PASSWORD: WebAdmin2468
+
+
+C-PANEL:
+==========
+WEB-LINK: http://185.67.1.42:2082
+USERNAME: bizcardsprinters
+PASSWORD: B!7#S9%6{@N#3{S%7^C7}

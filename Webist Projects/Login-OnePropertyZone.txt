@@ -1,0 +1,75 @@
+*One Property Zone*
+
+*WEBSITE:* http://onepropertyzone.com
+
+*EMAIL ACCOUNT:*
+==============
+*WEB-LINK:* http://onepropertyzone.com/mail
+*EMAIL-ID:* info@onepropertyzone.com
+*PASSWORD:* Key#97531
+
+*WEBSITE ADMIN:*
+==========
+*ADMINURL:* http://onepropertyzone.com/wp-admin
+*USERNAME:* admin@onepropertyzone.com
+*PASSWORD:* Super#97531
+
+CONTROL PANEL:
+==============
+HOST-URL: http://185.67.1.42:2082
+USERNAME: onepropertyzone
+PASSWORD: O{P$E#EE(Z!rxD£r
+
+*Mail Client Outlook Settings:*
+====================
+*Email-ID:* info@onepropertyzone.com
+*Username:* info@onepropertyzone.com
+*Password:* Key#97531
+*Incoming Server:* mail.onepropertyzone.com
+*IMAP Port:* 993
+*Outgoing Server:* mail.onepropertyzone.com
+*SMTP Port:* 465
+
+Note: Please tick (Check) on "My outgoing server (SMTP) requires authenticaion"
+
+
+
+*To Change Password:*
+====================
+After Login, Click on "Webmail Home"
+Click on "Password & Security"
+Enter "New Password" & "Confirm Password"
+Press "Save" button.
+Click on "Home" link
+Click on "Open" button of roundcube box.
+
+
+
+LANDLINE: 020 3500 3490
+
+MOBILE: 074 6219 3939
+
+ADDRESS: 
+Olympic House
+28-42 Clements Road 
+Ilford IG1 1BA
+Essex 
+
+GOOGLE MAP:
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2480.5914565857665!2d0.06973845093381074!3d51.55739001476856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a68aa21e4517%3A0xb873cdf1dbd50149!2sOLYMPIC%20HOUSE!5e0!3m2!1sen!2sae!4v1616071307471!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+
+TIMINGS:
+==========
+Mon: 9:00 am – 6:00 pm
+Tue: 9:00 am – 6:00 pm
+Wed: 9:00 am – 6:00 pm
+Thu: 9:00 am – 6:00 pm
+Fri: 9:00 am – 6:00 pm
+Sat: 9:00 am – 6:00 pm
+Sun: Closed
+
+
+
+
+
