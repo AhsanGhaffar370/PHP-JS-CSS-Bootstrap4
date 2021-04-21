@@ -755,13 +755,10 @@ add_shortcode( 'TRACKCODE', 'im_get_trackcode' );
 
 
 function im_parcel_form(){
-	// session_start();
-	if (!session_id()) {
-		session_start();
-	}
 	// if(is_user_logged_in()){
 	// $current_user_id = get_current_user_id();
 	?>
+	<section class="parcel-folrm-holder">
 		<?php 
 			if(isset($_POST['send_quote'])){
 				//print_r($_POST); //ahsan comment it
@@ -774,21 +771,9 @@ function im_parcel_form(){
 				$receiver_contact = sanitize_text_field($_POST['receiver_contact']);
 				$receiver_mobile = sanitize_text_field($_POST['receiver_mobile']);
 				$receiver_country = sanitize_text_field($_POST['to']);
-				if($receiver_country=="india"){
-					$receiver_city = sanitize_text_field($_POST['receiver_city_in']);
-				}
-				if($receiver_country=="pakistan"){
-					$receiver_city = sanitize_text_field($_POST['receiver_city_pk']);
-				}
+				$receiver_city = sanitize_text_field($_POST['receiver_city']);
 				$receiver_address = sanitize_text_field($_POST['receiver_address']);
 				$type = sanitize_text_field($_POST['type']);
-
-
-				$_SESSION['sender_name']=$full_name;
-				$_SESSION['sender_email']=$email_address;
-				$_SESSION['receiver_name']=$receiver_name;
-				$_SESSION['receiver_mobile']=$receiver_mobile;
-
 				if($type == 'air'){
 					$type_str = 'Air Cargo';
 				}
@@ -945,226 +930,27 @@ function im_parcel_form(){
 						
 						// echo submit message ahsan
 						echo '<script>alert("Your order has been received and our representative will contact you shortly. The order details has been emailed to provided Sender’s email address. Thank you for visiting our website. Anytime Delivery")</script>';
-						// wp_redirect("location:http://localhost/anytimedelivery/view-parcel-details/"); 
 						// alert("Your message has been sent successfully."); 
-
-						$_SESSION['sender_name']=$full_name;
-						$_SESSION['sender_email']=$email_address;
-						$_SESSION['sender_contact']=$contact;
-						$_SESSION['sender_mobile']=$mobile;
-						$_SESSION['from']=$from; //country
-						$_SESSION['from_postcode']=$from_postcode; 
-						$_SESSION['sender_address']=$address;
-
-						$_SESSION['receiver_name']=$receiver_name;
-						$_SESSION['receiver_email']=$receiver_email;
-						$_SESSION['receiver_contact']=$receiver_contact;
-						$_SESSION['receiver_mobile']=$receiver_mobile;
-						$_SESSION['to']=$receiver_country;
-						$_SESSION['receiver_city']=$receiver_city;
-						$_SESSION['receiver_address']=$receiver_address;
-
-						$_SESSION['type']=$type_str;
-						$_SESSION['courier_service']=$courier_service_str;
-						
-						$_SESSION['order_data']=$order_data_row;
 						?>
 	
 		<!-- <div class="alert alert-success alert-dismissible text-center">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Success!</strong> Your message has been sent successfully.
 		</div> -->
-
+	
 		<?php
 					}
 				}
 			}
-			
-		if(isset($_SESSION['sender_name']))
-		{
 			?>
-
-			<table cellpadding="10" cellspacing="10" border="0" width="700">
-				<tr>
-					<td bgcolor="#5B9144" colspan="2" align="center"><font face="arial" size="7" color="#FFFFFF">
-						<h1 class="" style="color: white !important; font-size: 44px !important;">ORDER SUMMARY</h1>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#eeeeee" colspan="2" align="center"><font face="arial" size="5" color="#000000">SENDER DETAILS</td>
-				</tr>
-				
-
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Full Name: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_name']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Email Address:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_email']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Contact:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_contact']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Mobile: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_mobile']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Country:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['from']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Postcode: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['from_postcode']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Address:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_address']; ?></font>
-					</td>
-				</tr>
-				
-				<tr>
-					<td bgcolor="#eeeeee" colspan="2" align="center"><font face="arial" size="5" color="#000000">RECEIVER DETAILS</td>
-				</tr>
-
-
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Full Name: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_name']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Email Address:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_email']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Contact:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_contact']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Mobile: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_mobile']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Country:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['to']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">City: </font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_city']; ?></font>
-					</td>
-				</tr>
-				<tr>
-					<td bgcolor="#5B9144" width="200">
-						<font face="arial" size="2" color="#FFFFFF">Address:</font>
-					</td>
-					<td bgcolor="#CCCCCC" width="400">
-						<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_address']; ?></font>
-					</td>
-				</tr>
-				
-			</table>
-
-			<table cellpadding="10" cellspacing="10" border="0" width="700">
-				<tr>
-					<td bgcolor="#eeeeee" colspan="6" align="center"><font face="arial" size="5" color="#000000">ORDER DETAILS</font></td>
-				</tr>
-				<tr>
-
-					<th style="text-align: left;">Weight</th>
-					<th style="text-align: left;">Length</th>
-					<th style="text-align: left;">Width</th>
-					<th style="text-align: left;">Height</th>
-					<th style="text-align: left;">Box(es)</th>
-					<th style="text-align: left;">Cost</th>
-				</tr>
-				<?PHP echo $_SESSION['order_data']; ?>
-				
-
-			</table>
-
-			<table cellpadding="10" cellspacing="10" border="0" width="700" style="border: none !important;">
-				
-				<tr >
-					<td width="20%" style="border: none !important;">Type:</td>
-					<td width="80%" style="border: none !important;"><?PHP echo $_SESSION['type']; ?></td>
-				</tr>
-				<tr >
-					<td style="border: none !important;">Courier Service:</td>
-					<td style="border: none !important;"><?PHP echo $_SESSION['courier_service']; ?></td>
-				</tr>
-
-			</table>
-
-		
-		<?PHP
-		
-			session_destroy(); 
-		}
-		else{
-			?>
-			
-		<section class="parcel-folrm-holder">
-		<!-- <form  method="post" action="/anytimedelivery/view-parcel-details" class="w-100" id="purchase-order-create"> -->
-		<form  method="post" action="" class="w-100" id="purchase-order-create">
+		<form action="" method="post" class="w-100" id="purchase-order-create">
 			<div class="mx-auto">
 				<div class="col-xs-12">
 					<div class="main-row">
 						<h2>GET FREE QUOTE</h2>
 					</div>
 				</div>
-
+	
 				<!-- pricing details ahsan -->
 				<div id="show_price1" class="hidden123">
 					<h3 class="order21">Order Details</h3>
@@ -1172,6 +958,8 @@ function im_parcel_form(){
 					
 					</div>
 				</div>
+				
+
 
 
 				<div id="hide_parcel_desc">
@@ -1269,7 +1057,8 @@ function im_parcel_form(){
 						</div>
 					</div>
 					<div id="hide_sender" style="display:none;">
-
+	
+	
 						<div class="col-xs-12">
 							<div class="main-row table rowfy">
 								<div class="city-input">
@@ -1319,48 +1108,15 @@ function im_parcel_form(){
 									</select>
 								</div>
 							</div>
-							<!-- <div class="def">
-									<select required name="receiver_city" id="receiver_city21" class="city-input form-control sources"
-										placeholder="Select Country" >
-									</select>
-							</div> -->
-							<div id="paki">
-									<select required name="receiver_city_pk" id="receiver_city21" class="city-input form-control sources" placeholder="Select Country" >
-										<option value="Lahore">Lahore</option>
-										<option value="Karachi">Karachi</option>
-										<option value="Faisalabad">Faisalabad</option>
-										<option value="Islamabad">Islamabad</option>
-										<option value="Multan">Multan</option>
-										<option value="Peshawar">Peshawar</option>
-										<option value="Quetta">Quetta</option>
-										<option value="Hyderabad">Hyderabad</option>
-										<option value="Rawalpindi">Rawalpindi</option>
-									</select>
+							<div>
+								<input required type="text" name="receiver_city"
+									class="form-control font rounded w-100 input-height" placeholder="City">
 							</div>
-							<div id="ind">
-								<!-- <input required type="text" name="receiver_city"
-									class="form-control font rounded w-100 input-height" placeholder="City"> -->
-									<select required name="receiver_city_in" id="receiver_city21" class="city-input form-control sources" placeholder="Select Country" >
-										<option value="Mumbai">Mumbai</option>
-										<option value="Bangalore">Bangalore</option>
-										<option value="Chennai">Chennai</option>
-										<option value="Pune">Pune</option>
-										<option value="Ahmedabad">Ahmedabad</option>
-										<option value="Hyderabad">Hyderabad</option>
-										<option value="New Delhi">New Delhi</option>
-										<option value="Kolkata">Kolkata</option>
-										<option value="Surat">Surat</option>
-										<option value="Jaipur">Jaipur</option>
-										<option value="Indore">Indore</option>
-										<option value="Lucknow">Lucknow</option>
-										<option value="Chandigarh">Chandigarh</option>
-									</select>
-							</div>
-							
 						</div>
 					</div>
 					<div id="hide_receiver" style="display:none;">
-
+	
+	
 						<div class="col-xs-12">
 							<div class="main-row">
 								<div>
@@ -1371,7 +1127,7 @@ function im_parcel_form(){
 								</div>
 							</div>
 						</div>
-
+	
 						<div class="col-xs-12">
 							<div class="main-row table rowfy">
 								<div class="city-input">
@@ -1413,16 +1169,14 @@ function im_parcel_form(){
 				</div>
 			</div>
 		</form>
-
+		
 <!-- 		<div id="dialog21" title="Basic dialog" style="display:none">
 				<p class="text-center">Your order has been received and our representative will contact you shortly. The order details has been emailed to provided Sender’s email address. Thank you for visiting our website. <br/><b>Anytime Delivery</b></p>
 		</div> -->
 	</section>
-
-
+	
+	
 	<?php 
-
-	}
 	// } 
 	// 	else {
 	//         	echo do_shortcode('[xoo_el_inline_form active="login"]');
@@ -1431,433 +1185,3 @@ function im_parcel_form(){
 	<?php
 	}
 	add_shortcode( 'PARCELFORM', 'im_parcel_form' );
-
-
-
-
-function view_details(){
-	// session_start();
-	if (!session_id()) {
-		session_start();
-	}
-	
-	// if(is_user_logged_in()){
-	// $current_user_id = get_current_user_id();
-	?>
-		<?php 
-			if(isset($_POST['send_quote'])){
-				//print_r($_POST); //ahsan comment it
-				$full_name = sanitize_text_field($_POST['sender_name']);
-				$email_address = sanitize_text_field($_POST['sender_email']);
-				$contact = sanitize_text_field($_POST['sender_contact']);
-				$mobile = sanitize_text_field($_POST['sender_mobile']);
-				$receiver_name = sanitize_text_field($_POST['receiver_name']);
-				$receiver_email = sanitize_text_field($_POST['receiver_email']);
-				$receiver_contact = sanitize_text_field($_POST['receiver_contact']);
-				$receiver_mobile = sanitize_text_field($_POST['receiver_mobile']);
-				$receiver_country = sanitize_text_field($_POST['to']);
-				if($receiver_country=="india"){
-					$receiver_city = sanitize_text_field($_POST['receiver_city_in']);
-				}
-				if($receiver_country=="pakistan"){
-					$receiver_city = sanitize_text_field($_POST['receiver_city_pk']);
-				}
-				
-				$receiver_address = sanitize_text_field($_POST['receiver_address']);
-				$type = sanitize_text_field($_POST['type']);
-
-
-				
-
-				if($type == 'air'){
-					$type_str = 'Air Cargo';
-				}
-				if($type == 'sea'){
-					$type_str = 'Sea Cargo';
-				} 
-				$from = sanitize_text_field($_POST['from']);
-				$from_postcode = sanitize_text_field($_POST['from_postcode']);
-				$to = sanitize_text_field($_POST['to']);
-				$city = sanitize_text_field($_POST['city']);
-				$address = sanitize_text_field($_POST['sender_address']);
-				$courier_service = sanitize_text_field($_POST['courier_service']);
-				if($courier_service == 'collected'){
-					$courier_service_str = 'The parcel will be collected by Courier Company from Sender Address';
-				} else {
-					$courier_service_str = 'The parcel will be delivered to Courier Company Office';
-				}
-
-
-
-				$weight = $_POST['weight'];
-				$width = $_POST['width'];
-				$height = $_POST['height'];
-				$lenght = $_POST['lenght'];
-				$fee = 0;
-				$total_fee=0;
-				$order_data_row=""; //ahsan add it
-				if($type == 'sea' && $to == 'india' || empty($weight)){
-					echo '<p>Unable to proceed. Please try again.</p>';
-				} else{
-					if(!empty($weight)){
-						$count = 0;
-						$total_boxes = 0;
-						foreach($weight as $wght){
-							if($type == 'air' && $to == 'india'){
-								$fee = '6.50';
-							} else if($type == 'air' && $to == 'pakistan'){
-								$fee = '5.00';
-							} else if($type == 'sea' && $to == 'pakistan'){
-								$fee = '1.50';
-							}
-							$fee = $fee*$wght;
-							$total_fee+=$fee;
-							$box = ceil($wght / 20);
-							$total_boxes = $total_boxes + $box;
-							if($box == 1){
-								$box_str = 'Box';
-							} else {
-								$box_str = 'Boxes';
-							}
-							$order_data_row .= '<tr><td>'.$wght.'kg</td><td>'.$lenght[$count].'cm</td><td>'.$width[$count].'cm</td><td>'.$height[$count].'cm</td><td>Use '.$box.' x 20 kg '.$box_str.'</td><td>&pound;'.$fee.'</td></tr>';
-						$count++;
-						}
-	
-						$order_table_header = '<table class="table" width="700">';
-						$order_row_heading = '<tr><th style="text-align: left;">Weight</th><th style="text-align: left;">Length</th><th style="text-align: left;">Width</th><th style="text-align: left;">Height</th><th style="text-align: left;">Box(es)</th><th style="text-align: left;">Cost</th></tr>';
-						$order_table_footer = '</table>';
-						// $total_fee_str='<h2 class="text-right text-white p-2" style="color: white !important; padding-right: 15px;">Total Amount: &pound;'.$total_fee.' </h2>';
-
-						$order_data_row .='<tr><td></td><td></td><td></td><td></td><td><b>Total Amount: </b></td><td><b>&pound;'.$total_fee.'</b></td></tr>';
-						$order_table = $order_table_header.$order_row_heading.$order_data_row.$order_table_footer;
-						
-						$user_table_header = '<table class="table" width="700">';
-						$user_row_heading = '<tr><th>Name</th><th>Contact</th><th>Email</th></tr>';
-						$user_data_row = '<tr><td>'.$full_name.'</td><td>'.$contact.'</td><td>'.$email_address.'</td></tr>';
-						$user_table_footer = '</table>';
-						$user_table = $user_table_header.$user_row_heading.$user_data_row.$user_table_footer;
-	
-						$content = '<div class="table-responsive">'.$user_table.$order_table.'</table>';
-						$wp_error=""; //ahsan add it
-	
-						//email part ahsan
-						$my_post = array(
-							'post_title'    => '',
-							'post_content'    => $content,
-							'post_status'   => 'publish',
-							'post_type' => 'im_orders',
-	//                         'author' => $current_user_id, //ahsan comment
-						);
-						$post_id = wp_insert_post( $my_post, $wp_error );
-						$booking_id = 'AT-'.$post_id;
-						add_post_meta($post_id, 'im_booking_id', $booking_id, true);
-						add_post_meta($post_id, 'im_customer', $full_name, true);
-						add_post_meta($post_id, 'im_email', $email_address, true);
-						add_post_meta($post_id, 'im_contact', $contact, true);
-						add_post_meta($post_id, 'im_mobile', $mobile, true);
-						add_post_meta($post_id, 'im_receiver_name', $receiver_name, true);
-						add_post_meta($post_id, 'im_receiver_email', $receiver_email, true);
-						add_post_meta($post_id, 'im_receiver_country', $to, true);
-						add_post_meta($post_id, 'im_receiver_city', $receiver_city, true);
-						add_post_meta($post_id, 'im_receiver_contact', $receiver_contact, true);
-						add_post_meta($post_id, 'im_receiver_mobile', $receiver_mobile, true);
-						add_post_meta($post_id, 'im_receiver_address', $receiver_address, true);
-						add_post_meta($post_id, 'im_type', $type, true);
-						add_post_meta($post_id, 'im_from', $from, true);
-						add_post_meta($post_id, 'im_from_postcode', $from_postcode, true);
-						add_post_meta($post_id, 'im_to', $to, true);
-						add_post_meta($post_id, 'im_city', $city, true);
-						add_post_meta($post_id, 'im_address', $address, true);
-						add_post_meta($post_id, 'im_weight', $weight, true);
-						add_post_meta($post_id, 'im_lenght', $lenght, true);
-						add_post_meta($post_id, 'im_width', $width, true);
-						add_post_meta($post_id, 'im_height', $height, true);
-						add_post_meta($post_id, 'im_fee', $fee, true);
-						add_post_meta($post_id, 'im_box', $total_boxes, true);
-						add_post_meta($post_id, 'im_courier_service', $courier_service, true);
-	
-						// Update post title
-						$update_booking = get_post($post_id);
-						$update_booking->post_title = $booking_id;
-						wp_update_post( $update_booking );
-	
-						$site_name =  get_bloginfo('name');
-						$primary_color = '#5B9144';
-						$mailadmin = get_bloginfo('admin_email');
-						$subject = get_bloginfo('name').' New Order Booking';
-						$headers  = 'MIME-Version: 1.0' . "\r\n";
-						$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";     
-						$headers .= 'From: '.$site_name.' <noreply@domain.com>' . "\r\n";
-						
-						$message = '<html>';
-						$message .= '<body bgcolor="#FFFFFF" marginwidth="10" marginheight="10" topmargin="10" leftmargin="10">';
-						$message .= '<table cellpadding="10" cellspacing="10" border="0" width="700">';
-	
-						$message .= '<tr><td bgcolor="'.$primary_color.'" colspan="2" align="center"><font face="arial" size="7" color="#FFFFFF">'.$site_name.'</td></tr>';
-						$message .= '<tr><td bgcolor="#eeeeee" colspan="2" align="center"><font face="arial" size="5" color="#000000">SENDER DETAILS</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Full Name: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$full_name.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Email Address: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$email_address.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Contact: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$contact.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Mobile: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$mobile.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Country: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$from.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Postcode: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$from_postcode.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Address: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$address.'</td></tr>';
-						$message .= '<tr><td bgcolor="#eeeeee" colspan="6" align="center"><font face="arial" size="5" color="#000000">RECEIVER DETAILS</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Full Name: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_name.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Email Address: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_email.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Contact: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_contact.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Mobile: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_mobile.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Country: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$to.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">City: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_city.'</td></tr>';
-						$message .= '<tr><td bgcolor="'.$primary_color.'" width="200"><font face="arial" size="2" color="#FFFFFF">Address: </font></td><td bgcolor="#CCCCCC" width="400"><font face="arial" size="2" color="#000000">'.$receiver_address.'</td></tr>';
-						$message .= '</table>';
-						$message .= '<table cellpadding="10" cellspacing="10" border="0" width="700">';
-						$message .= '<tr><td bgcolor="#eeeeee" colspan="6" align="center"><font face="arial" size="4" color="#000000">Order Details</td></tr>';
-						$message .= $order_row_heading;
-						$message .= $order_data_row;
-						$message .= '</table>';
-						$message .= '<table cellpadding="10" cellspacing="10" border="0" width="700">';
-						$message .= '<tr><td><font face="arial" size="2" color="#000000">Type: </font></td><td width="400"><font face="arial" size="2" color="#000000">'.$type_str.'</td></tr>';
-						$message .= '<tr><td><font face="arial" size="2" color="#000000">Courier Service: </font></td><td width="400"><font face="arial" size="2" color="#000000">'.$courier_service_str.'</td></tr>';
-						$message .= '</table>';
-						$message .= '</body>';
-						$message .= '</html>';
-						
-						wp_mail( $mailadmin, $subject, $message, $headers );
-						wp_mail( $email_address, $subject, $message, $headers );
-						
-						// echo submit message ahsan
-						echo '<script>alert("Your order has been received and our representative will contact you shortly. The order details has been emailed to provided Sender’s email address. Thank you for visiting our website. Anytime Delivery")</script>';
-						// wp_redirect("location:http://localhost/anytimedelivery/view-parcel-details/"); 
-						// alert("Your message has been sent successfully."); 
-						
-						
-						
-						$_SESSION['sender_name']=$full_name;
-						$_SESSION['sender_email']=$email_address;
-						$_SESSION['sender_contact']=$contact;
-						$_SESSION['sender_mobile']=$mobile;
-						$_SESSION['from']=$from; //country
-						$_SESSION['from_postcode']=$from_postcode; 
-						$_SESSION['sender_address']=$address;
-
-						$_SESSION['receiver_name']=$receiver_name;
-						$_SESSION['receiver_email']=$receiver_email;
-						$_SESSION['receiver_contact']=$receiver_contact;
-						$_SESSION['receiver_mobile']=$receiver_mobile;
-						$_SESSION['to']=$receiver_country;
-						$_SESSION['receiver_city']=$receiver_city;
-						$_SESSION['receiver_address']=$receiver_address;
-
-						$_SESSION['type']=$type_str;
-						$_SESSION['courier_service']=$courier_service_str;
-						
-						$_SESSION['order_data']=$order_data_row;
-								
-						
-						?>
-	
-		<!-- <div class="alert alert-success alert-dismissible text-center">
-			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>Success!</strong> Your message has been sent successfully.
-		</div> -->
-
-		<?php
-					}
-				}
-			}
-				
-			?>
-
-
-	<table cellpadding="10" cellspacing="10" border="0" width="700">
-		<tr>
-			<td bgcolor="#5B9144" colspan="2" align="center"><font face="arial" size="7" color="#FFFFFF">
-				<h1 class="" style="color: white !important; font-size: 44px !important;">ORDER SUMMARY</h1>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#eeeeee" colspan="2" align="center"><font face="arial" size="5" color="#000000">SENDER DETAILS</td>
-		</tr>
-		
-
-
-
-
-
-
-
-
-
-
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Full Name: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_name']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Email Address:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_email']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Contact:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_contact']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Mobile: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_mobile']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Country:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['from']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Postcode: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['from_postcode']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Address:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['sender_address']; ?></font>
-			</td>
-		</tr>
-		
-		<tr>
-			<td bgcolor="#eeeeee" colspan="2" align="center"><font face="arial" size="5" color="#000000">RECEIVER DETAILS</td>
-		</tr>
-
-
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Full Name: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_name']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Email Address:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_email']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Contact:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_contact']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Mobile: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_mobile']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Country:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['to']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">City: </font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_city']; ?></font>
-			</td>
-		</tr>
-		<tr>
-			<td bgcolor="#5B9144" width="200">
-				<font face="arial" size="2" color="#FFFFFF">Address:</font>
-			</td>
-			<td bgcolor="#CCCCCC" width="400">
-				<font face="arial" size="2" color="#000000"><?PHP echo $_SESSION['receiver_address']; ?></font>
-			</td>
-		</tr>
-		
-	</table>
-
-	<table cellpadding="10" cellspacing="10" border="0" width="700">
-		<tr>
-			<td bgcolor="#eeeeee" colspan="6" align="center"><font face="arial" size="5" color="#000000">ORDER DETAILS</font></td>
-		</tr>
-		<tr>
-
-			<th style="text-align: left;">Weight</th>
-			<th style="text-align: left;">Length</th>
-			<th style="text-align: left;">Width</th>
-			<th style="text-align: left;">Height</th>
-			<th style="text-align: left;">Box(es)</th>
-			<th style="text-align: left;">Cost</th>
-		</tr>
-		<?PHP echo $_SESSION['order_data']; ?>
-		
-
-	</table>
-
-	<table cellpadding="10" cellspacing="10" border="0" width="700" style="border: none !important;">
-		
-		<tr >
-			<td width="20%" style="border: none !important;">Type:</td>
-			<td width="80%" style="border: none !important;"><?PHP echo $_SESSION['type']; ?></td>
-		</tr>
-		<tr >
-			<td style="border: none !important;">Courier Service:</td>
-			<td style="border: none !important;"><?PHP echo $_SESSION['courier_service']; ?></td>
-		</tr>
-
-	</table>
-
-<?php
-
-			// }else{
-// wp_safe_redirect("http://localhost/anytimedelivery/parcel-form");
-				// $location = "http://localhost/anytimedelivery/parcel-form";
-				// wp_redirect( $location, 302 );
-				// exit; 
-				// header('location: http://localhost/anytimedelivery/parcel-form/');
-				// wp_redirect("http://localhost/anytimedelivery/parcel-form/"); 
-				// exit;
-				// wp_redirect("http://localhost/anytimedelivery/parcel-form/"); 
-			// }
-
-	// unset($_SESSION['sender_name']);
-	// unset($_SESSION['sender_email']);
-	// unset($_SESSION['receiver_name']);
-	// unset($_SESSION['receiver_mobile']);
-}
-add_shortcode( 'VIEWDETAIL21', 'view_details' );

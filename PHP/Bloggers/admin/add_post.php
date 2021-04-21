@@ -118,7 +118,6 @@ if(isset($_GET['update_id']))
         else{
             echo "something went wrong";
         }
-
         unset($stmt);
     }
     else{
@@ -155,11 +154,11 @@ if(isset($_POST['updatepost'])){
     else {
         $query1 = "UPDATE posts SET title=:title, permalink=:permalink, categories=:category, date=:date, image=:image, tags=:tags, content=:content WHERE id=:id";  //MYSQLI
         $stmt1 = $db->prepare($query1);
-        
+
         if ($stmt1) {
             //MYSQLI
             // $stmt1->bind_param('sssssssi', $name, $email, $password, $sex, $image, $date,$service, $id); 
-            
+
             // PDO
             $stmt1->bindParam(':title',$title);
             $stmt1->bindParam(':permalink',$permalink);
@@ -171,7 +170,7 @@ if(isset($_POST['updatepost'])){
             $stmt1->bindParam(':id', $post_id); 
 
             $stmt1->execute();
-            
+
             // if ($stmt1->affected_rows == 1)  //MYSQLI
             if ($stmt1->rowCount() == 1)  // PDO 
             {
@@ -186,7 +185,6 @@ if(isset($_POST['updatepost'])){
             // $stmt1->close(); // MYSQLI
             unset($stmt1); //PDO
 
-            
         }else{
             //oops something went wrong
         }

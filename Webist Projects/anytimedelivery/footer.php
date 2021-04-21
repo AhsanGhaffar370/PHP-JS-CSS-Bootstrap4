@@ -84,10 +84,30 @@
 // }
 
 // document.getElementById("generate_quote").addEventListener("click",show_sender,'false');
-
+document.getElementById("paki").style.display = "none";
 
 (function($) {
     $(document).ready(function() {
+		
+		$('#to').change(function(){
+            var val=$("#to").val();
+            
+            if(val=="pakistan"){
+                $("#paki").css({
+                    'display': 'block'
+                });
+                $("#ind").css({
+                    'display': 'none'
+                });
+            }else{
+                $("#ind").css({
+                    'display': 'block'
+                });
+                $("#paki").css({
+                    'display': 'none'
+                });
+            }
+        });
 
 // $( "#dialog21" ).dialog();
         // window.addEventListener('load', function(){
@@ -112,9 +132,9 @@
             val_height();
             val_width();
             val_sender_postcode();
-            val_receiver_city();
+//             val_receiver_city();
 
-            if (val_weight() === true && val_length() === true && val_width() === true && val_height() === true && val_sender_postcode() === true && val_receiver_city() === true) 
+            if (val_weight() === true && val_length() === true && val_width() === true && val_height() === true && val_sender_postcode() === true) 
             {
                 // return;
                 var type = $('input[name="type"]:checked').val();
