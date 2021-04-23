@@ -1065,13 +1065,105 @@ if ( ! function_exists( 'owp_fs' ) ) {
 
 
 
+function send_email($name, $user_email, $phone, $date, $time, $note, $total,  $waxing, $threading, $eyelashes, $nails, $massage, $dissolving, $vitamin, $filler ){
+					
+	$waxing_para='<hr><p class="h21">Waxing</p>';
+	foreach($waxing as $i) {
+		$waxing_para.="<p>".$i.'</p>';
+	}
+	if($waxing_para=='<hr><p class="h21">Waxing</p>')
+		$waxing_para=" ";
+
+	$threading_para='<hr><p class="h21">Threading</p>';
+	foreach($threading as $i) {
+		$threading_para.="<p>".$i.'</p>';
+	}
+	if($threading_para=='<hr><p class="h21">Threading</p>')
+		$threading_para=" ";
+
+	$eyelashes_para='<hr><p class="h21">Eyelashes</p>';
+	foreach($eyelashes as $i) {
+		$eyelashes_para.="<p>".$i.'</p>';
+	}
+	if($eyelashes_para=='<hr><p class="h21">Eyelashes</p>')
+		$eyelashes_para=" ";
+
+	$nails_para='<hr><p class="h21">Nails</p>';
+	foreach($nails as $i) {
+		$nails_para.="<p>".$i.'</p>';
+	}
+	if($nails_para=='<hr><p class="h21">Nails</p>')
+		$nails_para=" ";
+
+	$massage_para='<hr><p class="h21">Massage</p>';
+	foreach($massage as $i) {
+		$massage_para.="<p>".$i.'</p>';
+	}
+	if($massage_para=='<hr><p class="h21">Massage</p>')
+		$massage_para=" ";
+
+	$dissolving_para='<hr><p class="h21">Fat Dissolving</p>';
+	foreach($dissolving as $i) {
+		$dissolving_para.="<p>".$i.'</p>';
+	}
+	if($dissolving_para=='<hr><p class="h21">Fat Dissolving</p>')
+		$dissolving_para=" ";
+
+	$vitamin_para='<hr><p class="h21">Vitamin-B12</p>';
+	foreach($vitamin as $i) {
+		$vitamin_para.="<p>".$i.'</p>';
+	}
+	if($vitamin_para=='<hr><p class="h21">Vitamin-B12</p>')
+		$vitamin_para=" ";
+
+	$filler_para='<hr><p class="h21">Lip Filler</p>';
+	foreach($filler as $i) {
+		$filler_para.="<p>".$i.'</p>';
+	}
+	if($filler_para=='<hr><p class="h21">Lip Filler</p>')
+		$filler_para=" ";
 
 
 
+	$site_name =  get_bloginfo('name');
 
+	$mailadmin = get_bloginfo('admin_email');
 
+	$subject = $site_name.' New Order Booking';
 
+	$headers  = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";     
+	$headers .= 'From:'.$site_name.'<'.$mailadmin.'>' . "\r\n";
 
+	$message = '<html>';
+	$message .= '<head>
+							<style>
+							.bg_color{background-color: #E9EAEC;padding: 50px 0px 50px 0px;}
+							.sec_bg{padding: 50px;background-color: white;width: 600px;margin: auto;border: 1px solid #bab7b7;}
+							.h21{font-weight: 700;}
+							hr{margin: 20px 0px 20px 0px !important;}
+							.l_color{color: #bbbbbb;text-align: center;margin-top: 20px;font-size: 13px;}
+							</style>
+						</head>';
+	$message .= '<body>';
+
+	$message .= '<div class="bg_color">
+							<div class="sec_bg">
+								<p class="h21">Full Name</p><p class="abc">'.$name.'</p><hr>
+								<p class="h21">Email Address</p><p class="abc">'.$user_email.'</p><hr>
+								<p class="h21">Phone Number</p><p class="abc">'.$phone.'</p><hr>
+								<p class="h21">Appointment Date</p><p class="abc">'.$date.'</p><hr>
+								<p class="h21">Appointment Time</p><p class="abc">'.$time.'</p><hr>
+								<p class="h21">Brief Notes & Instructions</p><p class="abc">'.$note.'</p>' .$waxing_para.$threading_para.$eyelashes_para.$nails_para.$massage_para.$dissolving_para.$vitamin_para.$filler_para.
+		'<hr> <p class="h21">Total</p><p class="abc">£ '.$total.'</p>
+							</div>
+							<p class="l_color">Sent from <a href="https://simplebeautylashes.co.uk/" class="l_color">Simple Beauty Lashes</a></p>
+						</div>';
+
+	wp_mail( $mailadmin, $subject, $message, $headers );
+	wp_mail( $user_email, $subject, $message, $headers );
+
+}
 
 
 
@@ -1091,38 +1183,160 @@ function my_form21(){
         $time = $_POST['time21'];
         $note = $_POST['note21'];
         $total = $_POST['total21'];
+		
+		if(!isset($_POST['waxing'])){
+			$waxing = "";
+		}
+		else{
+			foreach($_POST['waxing'] as $i) {
+				$waxing.=$i.'|';
+			}
+			$waxing=rtrim($waxing, "| ");
+		}
+		if(!isset($_POST['threading'])){
+			$threading = "";
+		}
+		else{
+			foreach($_POST['threading'] as $i) {
+				$threading.=$i.'|';
+			}
+			$threading=rtrim($threading, "| ");
+		}
+		if(!isset($_POST['eyelashes'])){
+			$eyelashes = "";
+		}
+		else{
+			foreach($_POST['eyelashes'] as $i) {
+				$eyelashes.=$i.'|';
+			}
+			$eyelashes=rtrim($eyelashes, "| ");
+		}
+		if(!isset($_POST['nails'])){
+			$nails = "";
+		}
+		else{
+			foreach($_POST['nails'] as $i) {
+				$nails.=$i.'|';
+			}
+			$nails=rtrim($nails, "| ");
+		}
+		if(!isset($_POST['massage'])){
+			$massage = "";
+		}
+		else{
+			foreach($_POST['massage'] as $i) {
+				$massage.=$i.'|';
+			}
+			$massage=rtrim($massage, "| ");
+		}
+		if(!isset($_POST['dissolving'])){
+			$dissolving = "";
+		}
+		else{
+			foreach($_POST['dissolving'] as $i) {
+				$dissolving.=$i.'|';
+			}
+			$dissolving=rtrim($dissolving, "| ");
+		}
+		if(!isset($_POST['vitamin'])){
+			$vitamin = "";
+		}
+		else{
+			foreach($_POST['vitamin'] as $i) {
+				$vitamin.=$i.'|';
+			}
+			$vitamin=rtrim($vitamin, "| ");
+		}
+		if(!isset($_POST['filler'])){
+			$filler = "";
+		}
+		else{
+			foreach($_POST['filler'] as $i) {
+				$filler.=$i.'|';
+			}
+			$filler=rtrim($filler, "| ");
+		}
+			
+		
 
-        foreach($_POST['waxing'] as $i) {
-            $waxing.=$i.' | ';
-        }
-		foreach($_POST['threading'] as $i) {
-            $threading.=$i.' | ';
-        }
-		
-		$services.=$waxing.$threading;
-		
-		
-		
-		
-		$waxing_para='<p class="">Waxing</p>';
-		 foreach($_POST['waxing'] as $i) {
-            $waxing_para.="<p>".$i.'</p>';
-        }
-		
-		$threading_para='<p class="">Threading</p>';
-		foreach($_POST['threading'] as $i) {
-            $threading_para.="<p>".$i.'</p>';
-        }
+        // $rowcount = $wpdb->get_var("SELECT COUNT(*) FROM wpfi_demo_form21 WHERE date = '$date' AND time = '$time'");
+		$result = $wpdb->get_results("SELECT * FROM $table_name where date = '$date' AND time = '$time'");
 
-        echo "<script>alert('Processing');</script>";
+		$find_ser="false";
 
-        $rowcount = $wpdb->get_var("SELECT COUNT(*) FROM wpfi_demo_form21 WHERE date = '$date' AND time = '$time'");
+        if(count($result)>0){
 
-        if($rowcount >0){
-
-            echo "<script>alert('Time slot not available');</script>";
+			$waxing1=explode("|", $waxing);
+			$threading1=explode("|", $threading);
+			$eyelashes1=explode("|", $eyelashes);
+			$nails1=explode("|", $nails);
+			$massage1=explode("|", $massage);
+			$dissolving1=explode("|", $dissolving);
+			$vitamin1=explode("|", $vitamin);
+			$filler1=explode("|", $filler);
+			
+// 			echo '<script type="text/javascript">alert("waxing array:'.print_r($waxing1).'");</script>';
+			
+			
+			foreach($result as $res1){
+				$waxing11= $res1->waxing;
+				$threading11= $res1->threading;
+				$eyelashes11= $res1->eyelashes;
+				$nails11= $res1->nails;
+				$massage11= $res1->massage;
+				$dissolving11= $res1->dissolving;
+				$vitamin11= $res1->vitamin;
+				$filler11= $res1->filler;
+				
+				foreach($waxing1 as $j){
+					$res12= strpos($waxing11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($threading1 as $j){
+					$res12= strpos($threading11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($eyelashes1 as $j){
+					$res12= strpos($eyelashes11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($nails1 as $j){
+					$res12= strpos($nails11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($massage1 as $j){
+					$res12= strpos($massage11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($dissolving1 as $j){
+					$res12= strpos($dissolving11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($vitamin1 as $j){
+					$res12= strpos($vitamin11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+				foreach($filler1 as $j){
+					$res12= strpos($filler11,$j);
+					if($res12 !== false){
+						$find_ser="true";
+						break;}}
+					
+			}
         }
-        else{
+		
+		
+        if($find_ser=="true"){
+			echo '<script type="text/javascript">alert("The requested time slot is not available, Please select another time slot for the required treatments.");</script>';
+		}
+		else{
             $wpdb->insert($table_name, 
                                     array(
                                         'name'=>$name,
@@ -1131,7 +1345,14 @@ function my_form21(){
                                         'date'=>$date,
                                         'time'=>$time,
                                         'note'=>$note,
-                                        'services'=>$services,
+                                        'waxing'=>$waxing,
+                                        'threading'=>$threading,
+                                        'eyelashes'=>$eyelashes,
+                                        'nails'=>$nails,
+                                        'massage'=>$massage,
+                                        'dissolving'=>$dissolving,
+                                        'vitamin'=>$vitamin,
+                                        'filler'=>$filler,
                                         'total'=>$total
                                     ),
                                     array(
@@ -1142,109 +1363,30 @@ function my_form21(){
                                         '%s',
                                         '%s',
                                         '%s',
+                                        '%s',
+                                        '%s',
+                                        '%s',
+                                        '%s',
+                                        '%s',
+                                        '%s',
+                                        '%s',
                                         '%s'
                                     )
             );
-            echo "<script>alert('Insert succesfully');</script>";
-			
-			$site_name =  get_bloginfo('name');
-// 			$primary_color = '#5B9144';
-// 			
-			$mailadmin = get_bloginfo('admin_email');
-			
-			$subject = $site_name.' New Order Booking';
-			
-			$headers  = 'MIME-Version: 1.0' . "\r\n";
-			$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";     
-			$headers .= 'From:'.$site_name.'<'.$mailadmin.'>' . "\r\n";
-			
-			$message = '<html>';
-			$message .= '<head>
-							<style>
-							.bg_color{background-color: #E9EAEC;padding: 50px 0px 50px 0px;}
-							.sec_bg{padding: 50px;background-color: white;width: 600px;margin: auto;border: 1px solid #bab7b7;}
-							.h21{font-weight: 700;}
-							hr{margin: 20px 0px 20px 0px !important;}
-							.l_color{color: #bbbbbb;text-align: center;margin-top: 20px;font-size: 13px;}
-							</style>
-						</head>';
-			$message .= '<body>';
-			
-// 			$message .= '<div class="bg_color">
-// 							<div class="sec_bg">
-// 								<p class="h21">Full Name</p><p class="abc">'.$name.'</p><hr>
-// 								<p class="h21">Email Address</p><p class="abc">'.$user_email.'</p><hr>
-// 								<p class="h21">Phone Number</p><p class="abc">'.$phone.'</p><hr>
-// 								<p class="h21">Appointment Date</p><p class="abc">'.$date.'</p><hr>
-// 								<p class="h21">Appointment Time</p><p class="abc">'.$time.'</p><hr>
-// 								<p class="h21">Brief Notes & Instructions</p><p class="abc">'.$note.'</p><hr>
-// 								<p class="h21">Services</p>'.$services_para.'<hr>
-// 								<p class="h21">Total</p><p class="abc">£ '.$total.'</p>
-// 							</div>
-// 							<p class="l_color">Sent from <a href="https://simplebeautylashes.co.uk/" class="l_color">Simple Beauty Lashes</a></p>
-// 						</div>';
-
-			$message .= '<div class="">
-							<div class="">
-								<p class="">Full Name</p><p class="abc">'.$name.'</p>
-								<p class="">Email Address</p><p class="abc">'.$user_email.'</p>
-								<p class="">Phone Number</p><p class="abc">'.$phone.'</p>
-								<p class="">Appointment Date</p><p class="abc">'.$date.'</p>
-								<p class="">Appointment Time</p><p class="abc">'.$time.'</p>
-								<p class="">Brief Notes & Instructions</p><p class="abc">'.$note.'</p>
-								'.$waxing_para.'<hr>'.$threading_para.'<hr>
-								<p class="">Total</p><p class="abc">£ '.$total.'</p>
-							</div>
-						</div>';
-			$message .= '</body>';
-			$message .= '</html>';
-
-// 			wp_mail( $mailadmin, $subject, $message, $headers );
-			wp_mail( $user_email, $subject, $message, $headers );
+// 			echo "<script>alert('data inserted');</script>";
 			
 			
-			echo '<script>(function($) {$(document).ready(function() {$("#dialog").dialog("open");});})(jQuery);</script>';
+			
+			send_email($name, $user_email, $phone, $date, $time, $note, $total, $_POST['waxing'], $_POST['threading'], $_POST['eyelashes'], $_POST['nails'], $_POST['massage'], $_POST['dissolving'], $_POST['vitamin'], $_POST['filler']);
+					
+			
+			echo '<script>(function($) {$(document).ready(function() {$("#dialog").dialog();});})(jQuery);</script>';
+			
 // 			header("location: https://simplebeautylashes.co.uk/about-us/");
-			
-			
-			
-        }
-
-
-        // $date = trim(date("Y-m-d"));
-        // $service="";
-        // foreach($_POST['service'] as $i) {
-        //     $service.=$i.', ';
-        // }
-    
-        
-        // $query1="insert into users set name=?,email=?,password=?,sex=?,profile=?,DoJ=?,service=?"; // MYSQLI
-        // $query1="insert into demo_form21 set name=:name,email=:email"; // PDO
-
-        // wp query
-
-        // $stmt1 = $db->prepare($query1);
-        
-        // if ($stmt1) {
-        //     $stmt1->bindParam(':name', $name); 
-        //     $stmt1->bindParam(':email', $email); 
-        //     $stmt1->execute();
-        //     if ($stmt1->rowCount() == 1) {
-        //         // $_SESSION['message']= "Record added successfully";
-        //         echo "<script>alert('Insert succesfully');</script>";
-        //     } else 
-        //         echo "<script>alert('Not Insert');</script>";
-        //     unset($stmt1); //PDO
-        //     // $_SESSION['message']= "Record added successfully";
-        //     // $_SESSION['msg_type']= "Success";
-        //     // header("location: crud_pdo.php");
-        // }
+		}
     }
 
 ?>
-
-
-
 
      <!-- Form Starts -->
     <form id="form1" method="post">
@@ -1254,53 +1396,65 @@ function my_form21(){
         <div class="form-row">
             <div class="form-group col-md-6">
                 <p class="font-weight-normal mb-1" for="name1">Full Name</p>
-                <input type="text" class="form-control rounded-0 p-4" id="name1" name="name21" placeholder="Full Name" required />
+                <input type="text" class="form-control rounded-0 p-4" id="name1" name="name21" placeholder="Full Name" required style="background-color: white;" />
             </div>
             <div class="form-group col-md-6">
                 <p class="font-weight-light mb-1" for="name1">Email Address</p>
-                <input type="email" class="form-control rounded-0 p-4" id="email1" name="email21" placeholder="Email" required />
+                <input type="email" class="form-control rounded-0 p-4" id="email1" name="email21" placeholder="Email" required style="background-color: white;" />
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <p class="font-weight-normal mb-1" for="name1">Phone Number</p>
-                <input type="tel" class="form-control rounded-0 p-4" id="phone1" name="phone21" placeholder="Phone" required />
+                <input type="tel" class="form-control rounded-0 p-4" id="phone1" name="phone21" placeholder="Phone" required style="background-color: white;" />
             </div>
             <div class="form-group col-md-3">
                 <p class="font-weight-normal mb-1" for="name1">Appointment Date</p>
-                <input type="date" class="form-control rounded-0 p-4" id="date1" name="date21" placeholder="Date" required />
+                <input type="date" class="form-control rounded-0 p-4" id="date1" name="date21" placeholder="Date" required style="background-color: white;" />
             </div>
 
             <div class="form-group col-md-3">
                 <p class="font-weight-normal mb-1" for="name1">Appointment Time</p>
                 <select name="time21" id="time1" class="form-control rounded-0 p-4" required >
                     <option value="-1" disabled>Select Time</option>
-                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="9:15 AM">9:15 AM</option>
+                    <option value="9:30 AM">9:30 AM</option>
+                    <option value="9:45 AM">9:45 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:15 AM">10:15 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="10:45 AM">10:45 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:15 AM">11:15 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="11:45 AM">11:45 AM</option>
+					<option value="12:00 PM">12:00 PM</option>
+                    <option value="12:15 PM">12:15 PM</option>
                     <option value="12:30 PM">12:30 PM</option>
+                    <option value="12:45 PM">12:45 PM</option>
                     <option value="1:00 PM">1:00 PM</option>
+                    <option value="1:15 PM">1:15 PM</option>
                     <option value="1:30 PM">1:30 PM</option>
+                    <option value="1:45 PM">1:45 PM</option>
                     <option value="2:00 PM">2:00 PM</option>
+                    <option value="2:15 PM">2:15 PM</option>
                     <option value="2:30 PM">2:30 PM</option>
+                    <option value="2:45 PM">2:45 PM</option>
                     <option value="3:00 PM">3:00 PM</option>
+                    <option value="3:15 PM">3:15 PM</option>
                     <option value="3:30 PM">3:30 PM</option>
+                    <option value="3:45 PM">3:45 PM</option>
                     <option value="4:00 PM">4:00 PM</option>
+                    <option value="4:15 PM">4:15 PM</option>
                     <option value="4:30 PM">4:30 PM</option>
-                    <option value="5:00 P">5:00 PM</option>
+                    <option value="4:45 PM">4:45 PM</option>
+                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="5:15 PM">5:15 PM</option>
                     <option value="5:30 PM">5:30 PM</option>
+                    <option value="5:45 PM">5:45 PM</option>
                     <option value="6:00 PM">6:00 PM</option>
-                    <option value="6:30 PM">6:30 PM</option>
-                    <option value="7:00 PM">7:00 PM</option>
-                    <option value="7:30 PM">7:30 PM</option>
-                    <option value="8:00 PM">8:00 PM</option>
-                    <option value="8:30 PM">8:30 PM</option>
-                    <option value="9:00 PM">9:00 PM</option>
-                    <option value="9:30 PM">9:30 PM</option>
-                    <option value="10:00 PM">10:00 PM</option>
-                    <option value="10:30 PM">10:30 PM</option>
-                    <option value="11:00 PM">11:00 PM</option>
-                    <option value="11:30 PM">11:30 PM</option>
-                    <option value="12:00 AM">12:00 AM</option>
                 </select>
             </div>
         </div>
@@ -1315,21 +1469,68 @@ function my_form21(){
 				<p class="chead">Waxing</p>
 				
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="waxing[]" value="Brow Waxing - £ 7.00" id="wax1">Brow Waxing - £ 7.00
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Brow Waxing - £ 7.00">Brow Waxing - £ 7.00
 				</div>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="waxing[]" value="Lip - £ 5.00" id="wax2">Lip - £ 5.00
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Lip - £ 5.00">Lip - £ 5.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Nose Wax - £ 10.00" >Nose Wax - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Full Face including Eyebrows - £ 25.00" >Full Face including Eyebrows - £ 25.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Half Legs - £ 13.00" >Half Legs - £ 13.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Full Body Wax - £ 50.00">Full Body Wax - £ 50.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Eyebrows for Men - £ 10.00">Eyebrows for Men - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Under Arms - £ 10.00">Under Arms - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Facial - £ 35.00">Facial - £ 35.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Spray Tant - £ 25.00">Spray Tant - £ 25.00
 				</div>
             </div>
             <div class="form-group col-md-6">
 				<p class="chead"></p>
-               <div class="margt">
-					<input class="form-check-input" type="checkbox" name="waxing[]" value="Chin - £ 5.00" id="wax3">Chin - £ 5.00
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Chin - £ 5.00">Chin - £ 5.00
 				</div>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="waxing[]" value="Lip and Chin - £ 9.00" id="wax4">Lip and Chin - £ 9.00
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Lip and Chin - £ 9.00">Lip and Chin - £ 9.00
 				</div>
-				
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Side of Face - £ 10.00">Side of Face - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Half Arms - £ 12.00">Half Arms - £ 12.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Full Legs - £ 20.00">Full Legs - £ 20.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Hollywood Waxing - £ 27.00">Hollywood Waxing - £ 27.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Bikini Lines - £ 12.00">Bikini Lines - £ 12.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Full Arms - £ 16.00">Full Arms - £ 16.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="waxing[]" value="Chemical Peel - £ 45.00">Chemical Peel - £ 45.00
+				</div>
+				<div class="margt" style="visibility: hidden;">
+					<input class="form-check-input" type="checkbox" name="hidden1[]" value="">
+				</div>
             </div>
         </div>
 		
@@ -1337,41 +1538,256 @@ function my_form21(){
             <div class="form-group col-md-6">
 				<p class="chead">Threading</p>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="threading[]" value="Eyebrow - £ 7.00" id="th1">Eyebrow - £ 7.00
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Eyebrow - £ 7.00">Eyebrow - £ 7.00
 				</div>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="threading[]" value="Chin - £ 5.00" id="th2">Chin - £ 5.00
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Chin - £ 5.00">Chin - £ 5.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Neck - £ 5.00">Neck - £ 5.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Eyebrow Tint - £ 8.00">Eyebrow Tint - £ 8.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Lash and Brow Tint - £ 16.00">Lash and Brow Tint - £ 16.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Hi Brow Shape - £ 15.00">Hi Brow Shape - £ 15.00
 				</div>
             </div>
             <div class="form-group col-md-6">
 				<p class="chead"></p>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="threading[]" value="Lip - £ 5.00" id="th3">Lip - £ 5.00
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Lip - £ 5.00">Lip - £ 5.00
 				</div>
 				<div class="margt">
-					<input class="form-check-input" type="checkbox" name="threading[]" value="Sides of Face - £ 10.00" id="th4">Sides of Face - £ 10.00
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Sides of Face - £ 10.00">Sides of Face - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Full Face - £ 20.00">Full Face - £ 20.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Eyelash Tint - £ 10.00">Eyelash Tint - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="threading[]" value="Brow, Thread, Shape and Tint - £ 14.00">Brow, Thread, Shape and Tint - £ 14.00
+				</div>
+				<div class="margt" style="visibility: hidden;">
+					<input class="form-check-input" type="checkbox" name="hidden1[]" value="">
 				</div>
             </div>
         </div>
 		
-		<h3>
+		<div class="form-row">
+            <div class="form-group col-md-6">
+				<p class="chead">Eyelashes</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Strip Lashes - £ 10.00">Strip Lashes - £ 10.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Individual Lashes - £ 45.00">Individual Lashes - £ 45.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Russian Lashes - £ 60.00">Russian Lashes - £ 60.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Cluster Lashes - £ 28.00">Cluster Lashes - £ 28.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Individual Glamorous - £ 50.00">Individual Glamorous - £ 50.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="eyelashes[]" value="Lash Lift - £ 35.00">Lash Lift - £ 35.00
+				</div>
+            </div>
+        </div>
+		
+		<div class="form-row">
+            <div class="form-group col-md-6">
+				<p class="chead">Nails</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Hands - £ 20.00">Gel Hands - £ 20.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Hand and Toes - £ 35.00">Gel Hand and Toes - £ 35.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Toes - £ 12.00">Toes - £ 12.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Manicure - £ 27.00">Gel Manicure - £ 27.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Toes - £ 20.00">Gel Toes - £ 20.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Normal Polish Hands - £ 12.00">Normal Polish Hands - £ 12.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Pedicure - £ 28.00">Gel Pedicure - £ 28.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="nails[]" value="Gel Pedi-Mani - £ 45.00">Gel Pedi-Mani - £ 45.00
+				</div>
+            </div>
+        </div>
+		
+		<div class="form-row">
+            <div class="form-group col-md-6">
+				<p class="chead">Massage</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="massage[]" value="Indian Massage (head, back, neck & shoulder 25 mins) - £ 30.00">Indian Massage (head, back, neck & shoulder 25 mins) - £ 30.00
+				</div>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="massage[]" value="Hot Stone Massage (45 mins) - £ 45.00">Hot Stone Massage (45 mins) - £ 45.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="massage[]" value="Deep Tissue (45 mins) - £ 40.00">Deep Tissue (45 mins) - £ 40.00
+				</div>
+				<div class="margt" style="visibility: hidden;">
+					<input class="form-check-input" type="checkbox" name="hidden1[]" value="">
+				</div>
+            </div>
+        </div>
+		
+		<div class="form-row">
+            <div class="form-group col-md-6">
+				<p class="chead">Fat Dissolving</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="dissolving[]" value="Chin - £ 80.00">Chin - £ 80.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="dissolving[]" value="Other areas - £ 99.00">Other areas - £ 99.00
+				</div>
+            </div>
+        </div>
+		
+		<div class="form-row">
+            <div class="form-group col-md-6">
+				<p class="chead">Vitamin-B12</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="vitamin[]" value="Vitamin-B12 1 Shot - £ 30.00">Vitamin-B12 1 Shot - £ 30.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt" style="visibility: hidden;">
+					<input class="form-check-input" type="checkbox" name="hidden1[]" value="">
+				</div>
+            </div>
+        </div>
+		
+		<div class="form-row mb-5">
+            <div class="form-group col-md-6">
+				<p class="chead">Lip Filler</p>
+				<div class="margt">
+					<input class="form-check-input" type="checkbox" name="filler[]" value="Lip Filler 1ml - £ 100.00">Lip Filler 1ml - £ 100.00
+				</div>
+            </div>
+            <div class="form-group col-md-6">
+				<p class="chead"></p>
+				<div class="margt" style="visibility: hidden;">
+					<input class="form-check-input" type="checkbox" name="hidden1[]" value="">
+				</div>
+            </div>
+        </div>
+		
+		<h3 class="font-weight-normal" style="margin: 50px 0px 30px 14px; ">
 			Total: &nbsp;<span id="t_price">£ 0</span>
 		</h3>
 
-        <div class="text-left">
-            <input type="submit" name="insert21" value="Save" class="button btn_xxs btn-info d_in b7" />
+        <div class="text-left ml-3">
+            <input type="submit" name="insert21" value="SUBMIT" class="btn btn-info btn-lg btn-block rounded-0" style="background-color: #03334A; border-radius: 0px; font-size: 15px;" />
         </div>
     </form>
     <!-- End of form -->
 
-<div id="dialog" class="ui-dialog-titlebar-close" title="Basic dialog">
-  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with icon.</p>
+<div id="dialog" class="text-right rounded" style="display: none;">
+	<p class="text-left" style="color: #EA6279; font-weight: 600; font-size: 21px; margin-top: 10px">Note:</p>
+	<hr>
+  <p class="text-left">In order to confirm your booking, please transfer the 50% of the Total Treatment Fee to the following bank account.</p>
+	<p class="text-left" style="color: #EA6279; font-weight: 600; font-size: 18px; margin-top: 30px">Account Details:</p>
+	
+	<p class="text-left"><span style="font-weight: 600;">Account Title: </span>S Babbar</p>
+	<p class="text-left"><span style="font-weight: 600;">Sort Code: </span>201997</p>
+	<p class="text-left"><span style="font-weight: 600;">Account Number: </span>00905801</p>
+	<p class="text-left"><span style="font-weight: 600;">Bank: </span>Barclays</p>
+	
+	<br>
+	<hr>
+	<button id="close_dialog" class="btn" style="background-color: #EA6279; color: white;">Close</button>
 	
 </div>
 
 <?PHP
 }
 add_shortcode( 'MYFORM212', 'my_form21' );
+
+function show_entries(){
+	
+	global $wpdb;
+    $table_name=$wpdb->prefix.'demo_form21';
+	
+	$result=$wpdb->get_results('select * from wpfi_demo_form21');
+// 	echo '<pre>';
+// 	print_r($row->name);
+
+	?>
+	<table class="table table-bordered table-striped">
+	  <thead class="thead-dark bg-dark">
+		<tr  class="thead-dark bg-dark text-center" style="background-color: #212529; color: white;">
+		  <th scope="col" style="width: 15%;">Name</th>
+		  <th scope="col" style="width: 15%;">Email</th>
+		  <th scope="col" style="width: 10%;">Phone</th>
+		  <th scope="col" style="width: 10%;">Date</th>
+		  <th scope="col" style="width: 10%;">Time</th>
+		  <th scope="col" style="width: 30%;">Note</th>
+<!-- 		  <th scope="col" style="width: 5%;">Waxing</th>
+		  <th scope="col" style="width: 5%;">Threading</th>
+		  <th scope="col" style="width: 5%;">Eyelashes</th>
+		  <th scope="col" style="width: 5%;">Nails</th>
+		  <th scope="col" style="width: 5%;">Massage</th>
+		  <th scope="col" style="width: 5%;">Fat Dissolving</th>
+		  <th scope="col" style="width: 5%;">Vitamin-B12</th>
+		  <th scope="col" style="width: 5%;">Lip Filler</th> -->
+		  <th scope="col" style="width: 10%;">Total</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		  <?PHP
+	foreach ( $result as $print )   {
+	?>
+		<tr>
+		  <td><?PHP echo $print->name ?></td>
+		  <td><?PHP echo $print->email ?></td>
+		  <td><?PHP echo $print->phone ?></td>
+		  <td><?PHP echo $print->date ?></td>
+		  <td><?PHP echo $print->time ?></td>
+		  <td><?PHP echo $print->note ?></td>
+<!-- 		  <td><?PHP //echo $print->waxing ?></td> -->
+		  <td><?PHP echo $print->total ?></td>
+		</tr>
+		  <?PHP } ?>
+	  </tbody>
+	</table>
+
+
+<?PHP
+}
+add_shortcode('SHOWENTRIES21','show_entries');
 
 
 

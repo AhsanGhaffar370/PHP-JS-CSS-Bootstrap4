@@ -84,14 +84,50 @@ if ( 'fullscreen' === oceanwp_mobile_menu_style() ) {
 
 <script>
 
-	
 (function($) {
 	
 	$(document).ready(function() {
+		
+		
+		
+		$("#dialog").dialog({
+			draggable: false,
+			resizable: false,
+			closeOnEscape: false,
+			autoOpen: false,
+			width: '50%',
+			modal: true
+		});
+		
+		$(".ui-dialog-titlebar").hide();
+		
+		$("#close_dialog").click(function(){
+			$("#dialog").dialog("close");
+		});
+		
 		$("input[name='waxing[]']").change(function(){
+// 			$("#dialog").dialog("open");
             update_price();
 		});
 		$("input[name='threading[]']").change(function(){
+            update_price();
+		});
+		$("input[name='eyelashes[]']").change(function(){
+            update_price();
+		});
+		$("input[name='nails[]']").change(function(){
+            update_price();
+		});
+		$("input[name='massage[]']").change(function(){
+            update_price();
+		});
+		$("input[name='dissolving[]']").change(function(){
+            update_price();
+		});
+		$("input[name='vitamin[]']").change(function(){
+            update_price();
+		});
+		$("input[name='filler[]']").change(function(){
             update_price();
 		});
 		
@@ -99,6 +135,12 @@ if ( 'fullscreen' === oceanwp_mobile_menu_style() ) {
 		function update_price(){
 			var waxing= $("input[name='waxing[]']:checked").map(function(){return $(this).val();}).get();
             var threading= $("input[name='threading[]']:checked").map(function(){return $(this).val();}).get();
+            var eyelashes= $("input[name='eyelashes[]']:checked").map(function(){return $(this).val();}).get();
+            var nails= $("input[name='nails[]']:checked").map(function(){return $(this).val();}).get();
+            var massage= $("input[name='massage[]']:checked").map(function(){return $(this).val();}).get();
+            var dissolving= $("input[name='dissolving[]']:checked").map(function(){return $(this).val();}).get();
+            var vitamin= $("input[name='vitamin[]']:checked").map(function(){return $(this).val();}).get();
+            var filler= $("input[name='filler[]']:checked").map(function(){return $(this).val();}).get();
 			
 			let ser_price =0;
 			let total_price=0;
@@ -111,20 +153,35 @@ if ( 'fullscreen' === oceanwp_mobile_menu_style() ) {
 				ser_price = threading[i].split("£");
 				total_price+=parseFloat(ser_price[1]);
 			}
+			for(var i=0; i<eyelashes.length; i++){
+				ser_price = eyelashes[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
+			for(var i=0; i<nails.length; i++){
+				ser_price = nails[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
+			for(var i=0; i<massage.length; i++){
+				ser_price = massage[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
+			for(var i=0; i<dissolving.length; i++){
+				ser_price = dissolving[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
+			for(var i=0; i<vitamin.length; i++){
+				ser_price = vitamin[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
+			for(var i=0; i<filler.length; i++){
+				ser_price = filler[i].split("£");
+				total_price+=parseFloat(ser_price[1]);
+			}
 			
             $("#total1").val(total_price);
 			$("#t_price").html("£ "+total_price.toString());
 		}
 		
-		
-		$("#dialog").dialog({
-			title: 'hello world',
-			draggable: false,
-			resizable: false,
-			closeOnEscape: false,
-			autoOpen: false,
-			modal: true
-		});
 		
 		
 // 		function val_weight() {
