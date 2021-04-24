@@ -172,7 +172,7 @@
     $str1= strlen($str0);
     $str2= str_word_count($str0);
     $str3= strrev($str0);
-    $str4= strpos($str0 , "bhai");
+    $str4= strpos($str0 , "asdfsda");
     $str5= str_replace("bhai", "Brother", $str0);
     $str6= "142"; //The is_numeric() returns true if the variable is a number or a numeric string, false otherwise.
     $float2 = 4.23;
@@ -189,6 +189,12 @@
 
     echo "<br/><br/><b>strpos()</b> function find the position of a word in a string ";
     echo "<br> The position of 'bhai' in str0 is: $str4";
+    
+    if($str4!==false){
+        echo "true";
+    }else{
+        echo 'false';
+    }
 
     echo "<br/><br/><b>str_replace()</b> function replace the  ";
     echo "<br> The replacement of 'bhai' in str0 is: $str5";
