@@ -79,7 +79,7 @@ if (isset($_POST['login'])) {
 
     <section class="container centre_sec21 pl-5 pr-5">
 
-        <div class="col-12 col-lg-3 col-md-4 col-sm-6 p-0 rounded bg-white text-center shadow">
+        <div class="col-12 col-lg-4 col-md-4 col-sm-6 p-0 rounded bg-white text-center shadow">
             <div class="border-bottom rounded-top bg-primary pt-3 pb-3">
             <a href="index.php"><i class="fab fa-blogger-b fa-4x text-white "></i></a>
                 <!-- <p class="size24 text-secondary text-center b4 pt-0">Sign in to Bloggers</p> -->

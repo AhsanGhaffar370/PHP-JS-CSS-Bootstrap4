@@ -40,6 +40,8 @@ class database{
     try{
       $this->conn = new PDO("mysql:host=".$this->host.";dbname=".$this->db_name, $this->username, $this->password);
 
+      date_default_timezone_set('Asia/Karachi');
+      
       return $this->conn;
     }
     catch(PDOException $ex){
