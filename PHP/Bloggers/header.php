@@ -31,7 +31,7 @@
                 </ul> -->
 
                 <input type="button" name="submitbtn" class="btn btn-light text-transparent shadow-lg  b7 mr-2" onclick="window.location.href='admin/dashboard.php'" value="Sign in">
-                <input type="button" name="submitbtn" class="btn btn-outline-light b7 shadow-lg" onclick="window.location.href='signup.php'" value="Sign up">
+                <input type="button" name="submitbtn" class="btn btn-outline-light b7 shadow-lg" onclick="window.location.href='admin/signup.php'" value="Sign up">
 
             </div>
         </nav>

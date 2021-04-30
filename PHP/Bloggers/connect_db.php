@@ -1,6 +1,9 @@
 <?php
 class database{
   private $host = "localhost";
+  // private $db_name = "eqannet_bloggers_php";
+  // private $username = "eqannet_bloggers_php";
+  // private $password = "w&OmDX.c6Bbl";
   private $db_name = "blogger";
   private $username = "root";
   private $password = "";

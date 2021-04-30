@@ -10,5 +10,5 @@
         unset( $_SESSION['pass']);
         unset( $_SESSION['country']);
         session_destroy(); // destroy session
-        header("location:../login.php"); 
+        header("location:login.php"); 
 ?>

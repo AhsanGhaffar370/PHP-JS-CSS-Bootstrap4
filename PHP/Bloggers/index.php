@@ -38,7 +38,7 @@ $db = $database->connect_pdo();
     <div class="jumbotron jumbotron-fluid bg1 blog_bg border-0">
         <div class="container paddings text-left">
             <p class="size55 text-white text-left b7 m-0" style="line-height: 1.3;">Start Your Blogging Journey <span class="text-primary b8">Now</span></p>
-            <button class="btn btn-primary text-white b8  pl-5 pr-5 pt-4 pb-4 mt-5 btn-lg text-center" style="border-radius: 38px;" onclick="window.location.href='signup.php'">Sign Up Now</button>
+            <button class="btn btn-primary text-white b8  pl-5 pr-5 pt-4 pb-4 mt-5 btn-lg text-center" style="border-radius: 38px;" onclick="window.location.href='admin/signup.php'">Sign Up Now</button>
         </div>
     </div>
 
