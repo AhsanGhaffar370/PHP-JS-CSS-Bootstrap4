@@ -71,51 +71,69 @@ if (isset($_SESSION['username'])) {
 
             if ($stmt1->rowCount() == 1)  // PDO 
             {
-                $to = $email;
-                $subject = "Email verification (Bloggers.com)";
-
-                // Always set content-type when sending HTML email
-                $headers = "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-                // More headers
-                $headers .= 'From:Bloggers.com | Ahsan Rao <eqannet@eqan.net>' . "\r\n";
-                $headers .= 'Cc: ahsanrao237@gmail.com' . "\r\n";
-
-                $message = '<html>';
-                $message .= '<head>
-							<style>
-							.bg_color {background-color: #E9EAEC;padding: 50px 0px 50px 0px;}
-                            .sec_bg {padding: 50px;background-color: white;margin: auto;border: 1px solid #e2e2e2;}
-                            .btn1{padding: 15px;background-color: #0e7eff;color: #FFFFFF !important;border: none; text-decoration: none;}
-                            .btn1:hover{background-color:#0567d8;}
-                            .h1 {font-size: 24px;font-weight: 700;}
-                            .p1 {font-size: 17px;font-weight: 400;margin: 10px 10px 40px 10px; }
-                            .p2 {margin-top: 40px; }
-                            .img1{margin:30px;}
-                            .section{ margin-top: 70px; margin-bottom: 70px;width: 500px;padding: 20px;margin: auto;text-align: center;}
-							</style>
-						</head>';
-                $message .= '<body >';
-
+                //////////// Send email through php mail() function ////////////////
+                // $to = $email;
+                // $subject = "Email verification (Bloggers.com)";
+                // $headers = "MIME-Version: 1.0" . "\r\n";
+                // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                // $headers .= 'From:Bloggers.com | Ahsan Rao <eqannet@eqan.net>' . "\r\n";
+                // $headers .= 'Cc: ahsanrao237@gmail.com' . "\r\n";
+                $message = '<html>
+                             <head>
+							    <style>
+                                .sec_bg {padding: 50px;background-color: white; width: 500px; margin: auto; border: 1px solid #e2e2e2; text-align: center;}
+                                .btn1{padding: 15px; background-color: #0e7eff; color: #FFFFFF !important; border: none; text-decoration: none;}
+                                .btn1:hover{background-color:#0567d8;}
+                                .h1 {font-size: 24px;font-weight: 700;}
+                                .p1 {font-size: 17px;font-weight: 400;margin: 10px 10px 40px 10px; }
+                                .p2 {margin-top: 40px; }
+                                .img1{margin:30px;}
+                                .section{ margin-top: 70px; margin-bottom: 70px; padding: 20px; text-align: center;}
+							    </style>
+						        </head>
+                             <body >';
                 $message .= '<section class="section ">
-                    <div><a href="http://www.eqan.net/bloggers_php/index.php">
-                    <img src="http://www.eqan.net/bloggers_php/Image/images.png" class="img1" height="80px" width="80px"  alt="logo">
-                    </a></div>
-                    <div class="sec_bg">
-                    <p class="h1">Let\'s confirm your email address. </p>
-                    <p class="p1">By clicking on the following link, you are confirming your email address.</p>
-                    <a href="http://www.eqan.net/bloggers_php/admin/email_verification.php?code=' . $activationcode . '" class="btn1">Confirm Email Address</a>
-                    <p class="p2">Powered by<a href="http://www.eqan.net/bloggers_php/index.php">Bloggers.com</a></p>
-                    </div>
-                </section></html>';
-
-                // echo "<script>window.location = 'login.php';</script>";
-                $retval = mail($to, $subject, $message, $headers);
-
-                if ($retval == true) {
-                    echo "Account created successfully";
-                } else {
-                    echo "Something went wrong during creating account, try again later";
+                                <div><a href="http://www.eqan.net/bloggers_php/index.php">
+                                <img src="http://www.eqan.net/bloggers_php/Image/images.png" class="img1" height="80px" width="80px"  alt="logo">
+                                </a></div>
+                                <div class="sec_bg">
+                                <p class="h1">Let\'s confirm your email address. </p>
+                                <p class="p1">By clicking on the following link, you are confirming your email address.</p>
+                                <a href="http://www.eqan.net/bloggers_php/admin/email_verification.php?code=' . $activationcode . '" class="btn1">Confirm Email Address</a>
+                                <p class="p2">Powered by<a href="http://www.eqan.net/bloggers_php/index.php">Bloggers.com</a></p>
+                                </div>
+                            </section>
+                            </body>
+                            </html>';
+                // $retval = mail($to, $subject, $message, $headers);
+                // if ($retval == true) {
+                //     echo "Account created successfully";
+                // } else {
+                //     echo "Something went wrong during creating account, try again later";
+                // }
+                include('smtp/PHPMailerAutoload.php');
+                $mail=new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host="smtp.gmail.com";
+                $mail->Port=587;
+                $mail->SMTPSecure="tls";
+                $mail->SMTPAuth=true;
+                $mail->Username="ahsanrao237@gmail.com";
+                $mail->Password="muhrao237rao";
+                $mail->SetFrom("ahsanrao237@gmail.com");
+                $mail->addAddress($email);
+                $mail->IsHTML(true);
+                $mail->Subject="Email verification | Bloggers.com";
+                $mail->Body=$message;
+                $mail->SMTPOptions=array('ssl'=>array(
+                    'verify_peer'=>false,
+                    'verify_peer_name'=>false,
+                    'allow_self_signed'=>false
+                ));
+                if($mail->send()){
+                    //echo "Mail send";
+                }else{
+                    //echo "Error occur";
                 }
 
                 $_SESSION['mail_reg'] = $email;
@@ -130,13 +148,14 @@ if (isset($_SESSION['username'])) {
     }
 
 
+
     ?>
 
     <section class="container centre_sec21 pl-5 pr-5">
 
         <div class="col-12 col-lg-4 col-md-4 col-sm-6 p-0 rounded bg-white text-center shadow">
             <div class="border-bottom rounded-top bg-primary pt-3 pb-3">
-                <a href="../index.php"><i class="fab fa-blogger-b fa-4x text-white "></i></a>
+                <!-- <a href="../index.php"><i class="fab fa-blogger-b fa-4x text-white "></i></a> -->
                 <!-- <p class="size24 text-secondary text-center b4 pt-0">Sign in to Bloggers</p> -->
             </div>
 
