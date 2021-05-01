@@ -44,42 +44,38 @@ $db = $database->connect_pdo();
             if ($stmt1->rowCount() > 0)  // PDO 
             {
     ?>
-    <section class="container centre_sec21 pl-5 pr-5">
+                <section class="container centre_sec21 pl-5 pr-5">
 
-        <div class="col-12 col-lg-5 col-md-5 col-sm-6 p-0 rounded-0 border border bg-white text-center ">
-            <div class=" bg-success pt-2 pb-2">
-                <a href="../index.php"><i class="fa fa-check-circle fa-5x text-white "></i></a>
-            </div>
+                    <div class="col-12 col-lg-5 col-md-5 col-sm-6 p-0 rounded-0 border border bg-white text-center ">
+                        <div class=" bg-success pt-2 pb-2">
+                            <a href="../index.php"><i class="fa fa-check-circle fa-5x text-white "></i></a>
+                        </div>
 
-            <div class="pt-2 pl-4 pr-4 pb-2">
-                <p class="size24 text-dark">Your email address has been verified</p>
-                <input type="button" name="submitbtn" class="btn btn-primary rounded-0 b6 pr-4 pl-4 pt-2 pb-2"
-                    onclick="window.location.href='login.php'" value="Continue to Login">
-            </div>
-            <p class="size11 text-center pb-2" style="color: black;">Powered by<a href="../index.php"
-                    class="b6 size13 text-primary">Bloggers.com</a></p>
-        </div>
-    </section>
-    <?PHP
+                        <div class="pt-2 pl-4 pr-4 pb-2">
+                            <p class="size24 text-dark">Your email address has been verified</p>
+                            <input type="button" name="submitbtn" class="btn btn-primary rounded-0 b6 pr-4 pl-4 pt-2 pb-2" onclick="window.location.href='login.php'" value="Continue to Login">
+                        </div>
+                        <p class="size11 text-center pb-2" style="color: black;">Powered by<a href="../index.php" class="b6 size13 text-primary">Bloggers.com</a></p>
+                    </div>
+                </section>
+            <?PHP
 
             } else {
             ?>
-    <section class="container centre_sec21 pl-5 pr-5">
-        <div class="col-12 col-lg-5 col-md-5 col-sm-6 p-0 rounded-0 border border bg-white text-center ">
-            <div class=" bg-danger pt-2 pb-2">
-                <a href="../index.php"><i class="fa fa-times-circle fa-5x text-white "></i></a>
-            </div>
+                <section class="container centre_sec21 pl-5 pr-5">
+                    <div class="col-12 col-lg-5 col-md-5 col-sm-6 p-0 rounded-0 border border bg-white text-center ">
+                        <div class=" bg-info pt-2 pb-2">
+                            <a href="../index.php"><i class="fa fa-info-circle fa-5x text-white "></i></a>
+                        </div>
 
-            <div class="pt-2 pl-4 pr-4 pb-2">
-                <p class="size24 text-dark">Verification Code Expired </p>
-                <p class="size17 text-dark">Sign Up again to get new verification code</p>
-                <input type="button" name="submitbtn" class="btn btn-primary rounded-0 b6 pr-4 pl-4 pt-2 pb-2"
-                    onclick="window.location.href='signup.php'" value="Continue to Sign up">
-            </div>
-            <p class="size11 text-center pb-2" style="color: black;">Powered by<a href="../index.php"
-                    class="b6 size13 text-primary">Bloggers.com</a></p>
-        </div>
-    </section>
+                        <div class="pt-2 pl-4 pr-4 pb-2">
+                            <p class="size24 text-dark">Email already verified </p>
+                            
+                            <input type="button" name="submitbtn" class="btn btn-primary rounded-0 b6 pr-4 pl-4 pt-2 pb-2" onclick="window.location.href='login.php'" value="Continue to Login">
+                        </div>
+                        <p class="size11 text-center pb-2" style="color: black;">Powered by<a href="../index.php" class="b6 size13 text-primary">Bloggers.com</a></p>
+                    </div>
+                </section>
 
     <?PHP
             }

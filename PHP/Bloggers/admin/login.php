@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
             header("location: dashboard.php");
         } else {
             // header("location: crud_pdo.php");
-            echo "<script>alert('Invalid Email Password combination or maybe your email is not verified')</script>";
+            echo "<script>alert('Invalid email & password combination or maybe your email is not verified')</script>";
         }
 
         unset($stmt1); //PDO

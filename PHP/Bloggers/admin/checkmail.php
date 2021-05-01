@@ -2,15 +2,18 @@
 session_start();
 error_reporting(0);
 
-include 'connect_db.php';
+include '../connect_db.php';
 $database=new database();
 $db = $database->connect_pdo();
 
-$query1="select * from user where email=:email";
+$check_status = 1;
+
+$query1="select * from user where email=:email and status=:status";
 $stmt1 = $db->prepare($query1);
 
 if ($stmt1) {
     $stmt1->bindParam(':email', $_POST['email']); 
+    $stmt1->bindParam(':status', $check_status);
     $stmt1->execute();
     if ($stmt1->rowCount() > 0)
     {

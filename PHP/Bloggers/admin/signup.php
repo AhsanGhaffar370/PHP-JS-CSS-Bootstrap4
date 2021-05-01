@@ -42,12 +42,15 @@ if (isset($_SESSION['username'])) {
         $email = $_POST['email'];
         $password = md5($_POST['pass']);
         $status = 0;
+        $check_status = 1;
         $activationcode = md5($email . time());
         $entry_date = date("Y-m-d");
 
-        $query0 = "select * from user where email=:email";
+        // $query0 = "select * from user where email=:email";
+        $query0 = "select * from user where email=:email and status=:status";
         $stmt0 = $db->prepare($query0);
         $stmt0->bindParam(':email', $email);
+        $stmt0->bindParam(':status', $check_status);
         $stmt0->execute();
 
 
@@ -82,22 +85,28 @@ if (isset($_SESSION['username'])) {
                 $message .= '<head>
 							<style>
 							.bg_color {background-color: #E9EAEC;padding: 50px 0px 50px 0px;}
-                            .sec_bg {padding: 50px;background-color: white;margin: auto;border: 1px solid #bab7b7;}
-                            .btn1{padding: 15px;background-color: #0e7eff;color: white;border: none;}
+                            .sec_bg {padding: 50px;background-color: white;margin: auto;border: 1px solid #e2e2e2;}
+                            .btn1{padding: 15px;background-color: #0e7eff;color: #FFFFFF !important;border: none; text-decoration: none;}
+                            .btn1:hover{background-color:#0567d8;}
                             .h1 {font-size: 24px;font-weight: 700;}
                             .p1 {font-size: 17px;font-weight: 400;margin: 10px 10px 40px 10px; }
                             .p2 {margin-top: 40px; }
-                            .section{ margin-top: 70px;width: 500px;padding: 20px;border: 1px solid grey;text-align: center;}
+                            .img1{margin:30px;}
+                            .section{ margin-top: 70px; margin-bottom: 70px;width: 500px;padding: 20px;margin: auto;text-align: center;}
 							</style>
 						</head>';
-                $message .= '<body>';
+                $message .= '<body >';
 
-                $message .= '<section class="section sec_bg">
-                    <div><a href="http://www.eqan.net/bloggers_php/index.php"><i class="fab fa-blogger-b fa-5x"></i></a></div>
+                $message .= '<section class="section ">
+                    <div><a href="http://www.eqan.net/bloggers_php/index.php">
+                    <img src="http://www.eqan.net/bloggers_php/Image/images.png" class="img1" height="80px" width="80px"  alt="logo">
+                    </a></div>
+                    <div class="sec_bg">
                     <p class="h1">Let\'s confirm your email address. </p>
                     <p class="p1">By clicking on the following link, you are confirming your email address.</p>
                     <a href="http://www.eqan.net/bloggers_php/admin/email_verification.php?code=' . $activationcode . '" class="btn1">Confirm Email Address</a>
                     <p class="p2">Powered by<a href="http://www.eqan.net/bloggers_php/index.php">Bloggers.com</a></p>
+                    </div>
                 </section></html>';
 
                 // echo "<script>window.location = 'login.php';</script>";
