@@ -86,6 +86,9 @@
 // document.getElementById("generate_quote").addEventListener("click",show_sender,'false');
 document.getElementById("paki").style.display = "none";
 
+
+
+
 (function($) {
     $(document).ready(function() {
 		

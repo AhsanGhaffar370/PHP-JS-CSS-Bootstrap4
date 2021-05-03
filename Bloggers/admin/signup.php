@@ -43,42 +43,47 @@ if (isset($_SESSION['username'])) {
         $password = md5($_POST['pass']);
         $status = 0;
         $check_status = 1;
-        $activationcode = md5($email . time());
+        $activationcode = md5($email.time());
         $entry_date = date("Y-m-d");
 
         // $query0 = "select * from user where email=:email";
         $query0 = "select * from user where email=:email and status=:status";
         $stmt0 = $db->prepare($query0);
-        $stmt0->bindParam(':email', $email);
-        $stmt0->bindParam(':status', $check_status);
-        $stmt0->execute();
+
+        if ($stmt0) {
 
 
-        if ($stmt0->rowCount() > 0) {
-            echo "<script>alert('Email already exist')</script>";
-        } else {
-            $query1 = "insert into user set username=:username, email=:email, pass=:pass, activationcode=:activationcode, status=:status, entry_date=:entry_date";
-            $stmt1 = $db->prepare($query1);
-            // PDO
-            $stmt1->bindParam(':username', $uname);
-            $stmt1->bindParam(':email', $email);
-            $stmt1->bindParam(':pass', $password);
-            $stmt1->bindParam(':status', $status);
-            $stmt1->bindParam(':activationcode', $activationcode);
-            $stmt1->bindParam(':entry_date', $entry_date);
-            // $stmt1->bindParam(':avatar', "law9.jpg"); 
-            $stmt1->execute();
+            $stmt0->bindParam(':email', $email);
+            $stmt0->bindParam(':status', $check_status);
+            $stmt0->execute();
 
-            if ($stmt1->rowCount() == 1)  // PDO 
-            {
-                //////////// Send email through php mail() function ////////////////
-                // $to = $email;
-                // $subject = "Email verification (Bloggers.com)";
-                // $headers = "MIME-Version: 1.0" . "\r\n";
-                // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-                // $headers .= 'From:Bloggers.com | Ahsan Rao <eqannet@eqan.net>' . "\r\n";
-                // $headers .= 'Cc: ahsanrao237@gmail.com' . "\r\n";
-                $message = '<html>
+
+            if ($stmt0->rowCount() > 0) {
+                echo "<script>alert('Email already exist')</script>";
+            } else {
+                $query1 = "insert into user set username=:username, email=:email, pass=:pass, activationcode=:activationcode, status=:status, entry_date=:entry_date";
+                $stmt1 = $db->prepare($query1);
+                if ($stmt1) {
+                // PDO
+                $stmt1->bindParam(':username', $uname);
+                $stmt1->bindParam(':email', $email);
+                $stmt1->bindParam(':pass', $password);
+                $stmt1->bindParam(':status', $status);
+                $stmt1->bindParam(':activationcode', $activationcode);
+                $stmt1->bindParam(':entry_date', $entry_date);
+                // $stmt1->bindParam(':avatar', "law9.jpg"); 
+                $stmt1->execute();
+
+                if ($stmt1->rowCount() == 1)  // PDO 
+                {
+                    //////////// Send email through php mail() function ////////////////
+                    // $to = $email;
+                    // $subject = "Email verification (Bloggers.com)";
+                    // $headers = "MIME-Version: 1.0" . "\r\n";
+                    // $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                    // $headers .= 'From:Bloggers.com | Ahsan Rao <eqannet@eqan.net>' . "\r\n";
+                    // $headers .= 'Cc: ahsanrao237@gmail.com' . "\r\n";
+                    $message = '<html>
                              <head>
 							    <style>
                                 .sec_bg {padding: 50px;background-color: white; width: 500px; margin: auto; border: 1px solid #e2e2e2; text-align: center;}
@@ -92,58 +97,65 @@ if (isset($_SESSION['username'])) {
 							    </style>
 						        </head>
                              <body >';
-                $message .= '<section class="section ">
+                    $message .= '<section class="section ">
                                 <div><a href="http://www.eqan.net/bloggers_php/index.php">
                                 <img src="http://www.eqan.net/bloggers_php/Image/images.png" class="img1" height="80px" width="80px"  alt="logo">
                                 </a></div>
                                 <div class="sec_bg">
                                 <p class="h1">Let\'s confirm your email address. </p>
                                 <p class="p1">By clicking on the following link, you are confirming your email address.</p>
-                                <a href="http://www.eqan.net/bloggers_php/admin/email_verification.php?code=' . $activationcode . '" class="btn1">Confirm Email Address</a>
+                                <a href="http://localhost/PHP-JS-CSS-Bootstrap4/Bloggers/admin/email_verification.php?code=' . $activationcode . '" class="btn1">Confirm Email Address</a>
                                 <p class="p2">Powered by<a href="http://www.eqan.net/bloggers_php/index.php">Bloggers.com</a></p>
                                 </div>
                             </section>
                             </body>
                             </html>';
-                // $retval = mail($to, $subject, $message, $headers);
-                // if ($retval == true) {
-                //     echo "Account created successfully";
-                // } else {
-                //     echo "Something went wrong during creating account, try again later";
-                // }
-                include('smtp/PHPMailerAutoload.php');
-                $mail=new PHPMailer(true);
-                $mail->isSMTP();
-                $mail->Host="smtp.gmail.com";
-                $mail->Port=587;
-                $mail->SMTPSecure="tls";
-                $mail->SMTPAuth=true;
-                $mail->Username="ahsanrao237@gmail.com";
-                $mail->Password="muhrao237rao";
-                $mail->SetFrom("ahsanrao237@gmail.com");
-                $mail->addAddress($email);
-                $mail->IsHTML(true);
-                $mail->Subject="Email verification | Bloggers.com";
-                $mail->Body=$message;
-                $mail->SMTPOptions=array('ssl'=>array(
-                    'verify_peer'=>false,
-                    'verify_peer_name'=>false,
-                    'allow_self_signed'=>false
-                ));
-                if($mail->send()){
-                    //echo "Mail send";
-                }else{
-                    //echo "Error occur";
+                    // $retval = mail($to, $subject, $message, $headers);
+                    // if ($retval == true) {
+                    //     echo "Account created successfully";
+                    // } else {
+                    //     echo "Something went wrong during creating account, try again later";
+                    // }
+                    include('smtp/PHPMailerAutoload.php');
+                    $mail = new PHPMailer(true);
+                    // $mail->SMTPDebug= 3; //enable for debugging
+                    $mail->isSMTP();
+                    $mail->Host = "smtp.gmail.com";
+                    $mail->Port = 587;
+                    $mail->SMTPSecure = "tls";
+                    $mail->SMTPAuth = true;
+                    $mail->Username = "ahsanrao237@gmail.com";
+                    $mail->Password = "muhrao237rao";
+                    $mail->SetFrom("ahsanrao237@gmail.com");
+                    $mail->addAddress($email);
+                    $mail->IsHTML(true);
+                    $mail->Subject = "Email verification | Bloggers.com";
+                    $mail->Body = $message;
+                    $mail->SMTPOptions = array('ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => false
+                    ));
+                    if ($mail->send()) {
+                        //echo "Mail send";
+                    } else {
+                        //echo "Error occur";
+                    }
+
+                    $_SESSION['mail_reg'] = $email;
+                    $_SESSION['succ_reg'] = "success";
+                    header("location: login.php");
+                } else {
+                    echo "<script>alert('Something went wrong most inner')</script>";
                 }
 
-                $_SESSION['mail_reg'] = $email;
-                $_SESSION['succ_reg'] = "success";
-                header("location: login.php");
-            } else {
-                echo "<script>alert('Something went wrong')</script>";
+                unset($stmt1); //PDO
+            }else{
+                echo "<script>alert('Something went wrong stmt1')</script>";
             }
-
-            unset($stmt1); //PDO
+        }
+        }else{
+            echo "<script>alert('Something went wrong stmt0')</script>";
         }
     }
 
@@ -219,7 +231,7 @@ if (isset($_SESSION['username'])) {
                     success: function(response) {
                         if (response == true) {
                             $("#msg21").html(
-                                '<div class="alert alert-warning"><i class="fas fa-info-circle"></i> Email Already Exist</div>'
+                                '<div class="size13 alert alert-warning"><i class="fas fa-info-circle"></i> Email Already Exist</div>'
                             );
                             $('#sign12').attr('disabled', 'disabled');
                         } else if (response == false) {
