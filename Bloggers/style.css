@@ -115,7 +115,7 @@ section {
 /*used to handle background image of search_city section*/
 
 .blog_bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Image/blog.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("Image/blog.jpg");
     background-attachment: fixed;
     width: 100%;
     height: auto;
