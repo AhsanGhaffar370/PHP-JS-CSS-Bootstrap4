@@ -166,7 +166,6 @@ if(isset($_GET['update_id'])){
                 <div class="tc">
                     <input type="reset" name="reset" value="Reset" class="button btn_xxs btn-secondary d_in b7" />
 
-
                     <?PHP if ($update_flag==true):?>
                     <input type="submit" name="update" value="Update" class="button btn_xxs btn-warning d_in b7" />
                     <?PHP else:?>

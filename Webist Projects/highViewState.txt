@@ -1,0 +1,5 @@
+CONTROL PANEL:
+==============
+HOST-URL: http://185.67.1.42:2082
+USERNAME: highviewestates
+PASSWORD: EF~IK3{LE#5-S}HD

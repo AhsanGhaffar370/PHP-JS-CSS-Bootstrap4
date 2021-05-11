@@ -1,6 +1,47 @@
 $(document).ready(function() {
 
 
+    // datepicker validation
+    var dates1 = ["20/05/2021", "21/05/2021", "22/05/2021"];
+
+    function DisableDates1(date1) {
+        var string = jQuery.datepicker.formatDate('dd/mm/yy', date1);
+        return [dates1.indexOf(string) == -1];
+    }
+
+    jQuery("#datepicker1").datepicker({
+        minDate: 2,
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        numberOfMonths: 1,
+        changeYear: true,
+
+        beforeShowDay: DisableDates1,
+
+        onClose: function(selectedDate, inst) {
+            var minDate = new Date(Date.parse(selectedDate));
+            minDate.setDate(minDate.getDate() + 2);
+            jQuery("#datepicker2").datepicker("option", "minDate", minDate);
+        }
+    });
+
+    jQuery("#datepicker2").datepicker({
+        minDate: "+1D",
+        dateFormat: "yy-mm-dd",
+        changeMonth: true,
+        numberOfMonths: 1,
+        changeYear: true,
+
+        beforeShowDay: DisableDates1,
+
+        onClose: function(selectedDate, inst) {
+            var maxDate = new Date(Date.parse(selectedDate));
+            maxDate.setDate(maxDate.getDate() - 1);
+            jQuery("#datepicker1").datepicker("option", "maxDate", maxDate);
+        }
+    });
+    // end of datepocker validation
+
 
     $(".img1").mouseenter(function() {
         $(".img1").css({ "border": "1px solid red" });
