@@ -1,0 +1,14 @@
+1=>Please provide API token
+2=>Please provide valid API token
+3=>API token deactivated
+4=>Data not found
+5=>Data Return
+6=>Provide id
+7=>Data deleted
+8=>Data Inserted
+9=>Provide valid column count
+10=>Data updated
+
+
+
+
