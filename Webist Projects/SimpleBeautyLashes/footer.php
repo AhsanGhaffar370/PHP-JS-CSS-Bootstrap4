@@ -84,6 +84,14 @@ if ( 'fullscreen' === oceanwp_mobile_menu_style() ) {
 
 <script>
 
+
+// (function($) {
+// 	$(document).ready(function() {
+		
+// 	});
+	
+// })(jQuery);
+
 (function($) {
 	
 	$(document).ready(function() {

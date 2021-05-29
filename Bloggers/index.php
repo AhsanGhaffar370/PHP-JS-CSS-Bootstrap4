@@ -274,7 +274,6 @@ $db = $database->connect_pdo();
 
 
 
-
     <?php include("footer.php"); ?>
 
 
@@ -383,7 +382,6 @@ $db = $database->connect_pdo();
         });
 
     </script>
-
 
 </body>
 
