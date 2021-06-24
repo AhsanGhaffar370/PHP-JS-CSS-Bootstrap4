@@ -29,7 +29,7 @@ document.getElementById("btn2").addEventListener('click', function() {
     current_date('demo4')
 }, false);
 //our third param of DOM Level 2 Event Listener
-// false = event trigger from bottom to top(bubbling phae
+// false = event trigger from bottom to top(bubbling phase)
 // true = event trigger from top to bottom (capturing phase)
 
 // var name = prompt("What is your name?", "Ahsan");
@@ -165,9 +165,9 @@ var str2 = "Hello World!";
 
 var len = txt.length;
 
-var ind1 = str.indexOf("locate"); // return location of first find value
-var ind2 = str.lastIndexOf("locate"); // return location of last find value
-var ind3 = str.indexOf("locate", 15); // start search from location 15 and then take first find value
+var ind1 = str.indexOf("locate"); // return location of first value which founded
+var ind2 = str.lastIndexOf("locate"); // return location of last value which founded
+var ind3 = str.indexOf("locate", 15); // start search from location 15 and then take first value which founded
 var ind4 = str.search("locate");
 //The search() method cannot take a second start position argument. 
 //The indexOf() method cannot take powerful search values (regular expressions).

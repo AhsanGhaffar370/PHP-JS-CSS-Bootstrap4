@@ -1365,7 +1365,8 @@ Spread of shadow:   Positive value will cause shadow to expand in all directions
 
 /*
                                                     ===============================
-                                                            Display Inline 
+                                                                Display 
+                                                                Inline 
                                                                 block
                                                             inline-block 
                                                                 none  
@@ -1384,7 +1385,13 @@ Spread of shadow:   Positive value will cause shadow to expand in all directions
 
 .d_in_b {
     display: inline-block;
-    /* This causes a block-level element to flow like an inline element */
+    /* This causes a block-level element to flow like an inline element 
+    
+    *Compared to display: inline, the major difference is that display: inline-block allows to set a 
+    width and height on the element.
+	*Also, with display: inline-block, the top and bottom margins/paddings are respected, but with display: inline 
+    they are not.
+      */
 }
 
 .d_n {
