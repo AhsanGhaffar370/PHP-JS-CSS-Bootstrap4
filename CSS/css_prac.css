@@ -478,12 +478,12 @@ animation-fill-mode:        forwards/backward;
     }
 }
 
-.animation {
+.animation341 {
     animation-name: "example";
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    /* animation-direction: reverse; */
+    animation-direction: reverse;
 }
 
 
