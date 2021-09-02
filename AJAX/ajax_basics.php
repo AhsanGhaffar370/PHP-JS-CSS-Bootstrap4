@@ -217,10 +217,20 @@ $db=$database->connect_pdo();
     </div>
 
 
+    <!-- <div class="table rowfy">
+        <div class="tbody">
+            <div class="row tr-row mt-2">
+                <div class="col-10 pr-0">
+                    <input required="" type="text" min="1" name="skill[]" id="weight" class="form-control rounded" placeholder="skill">
+                </div>
+                <div class="col-2 pr-3 text-right">
+                    <div class=" rowfy-addrow btn btn-success btn-block">+</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
     <script>
-
     $(document).ready(function() {
-                
         /*Add row event*/
         $(document).on('click', '.rowfy-addrow', function(){
             // var totalAdd = $('.tr-row').length;
@@ -229,7 +239,7 @@ $db=$database->connect_pdo();
 
             rowfyable = $(this).closest('.table');
             lastRow = $('.tbody .tr-row:last', rowfyable).clone();
-            $('input', lastRow).val('');
+            $('input', lastRow).val(''); //$('input', lastRow) -> this expression is equal to $( lastRow ).find( "input" )
             $('.tbody', rowfyable).append(lastRow);
             $(this).removeClass('rowfy-addrow btn-success').addClass('rowfy-deleterow btn-danger').text('-');
         });
@@ -250,7 +260,12 @@ $db=$database->connect_pdo();
         //     });
         // });
 
+        $(document).on('click', '.rowfy-addrow', function(){
 
+            rowfyable = $(this).closest('.table');
+            $('input', rowfyable).val(''); 
+            // $(this).removeClass('rowfy-addrow btn-success').addClass('rowfy-deleterow btn-danger').text('-');
+        });
 
 
 
