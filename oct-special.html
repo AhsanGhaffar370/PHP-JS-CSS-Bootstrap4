@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+
+<body>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+   <script src="https://kit.fontawesome.com/7516c4b4cc.js" crossorigin="anonymous"></script>
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&amp;display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+   
+<style>
+       h1 {
+           font-family: 'Fjalla One';
+       }
+       
+       .content-block {
+           padding: 0px !important;
+       }
+       
+       .third-section {
+           width: auto !important;
+           margin: 0px !important;
+       }
+       
+       .page-div {
+           background-image: url(https://cdn.shopify.com/s/files/1/0268/2126/3552/products/Untitled-1_720x.jpg?v=1633603133);
+           background-size: cover;
+           height: auto !important;
+       }
+       
+       .container-fluid {
+           margin: 0px;
+           padding: 0px;
+       }
+       
+       .top-heading {
+           background-color: #ffdd6f;
+           color: #190249;
+           padding: 10px;
+           text-transform: uppercase;
+           font-family: Fjalla One;
+           font-weight: 400;
+           font-size: 33.3px;
+           margin-top: 15px;
+       }
+       
+       .second-heading {
+           color: #ffdd6f;
+           text-transform: uppercase;
+           font-family: Fjalla One;
+           font-size: 22px;
+           font-weight: 500;
+           margin-top: 11px !important;
+       }
+       
+       #para-1 {
+           font-size: 25px;
+           color: white;
+           font-family: arial;
+       }
+       
+       .img_len {
+           /* width: 115px;
+           height: 380px; */
+           margin-bottom: 5px;
+       }
+       
+       .second-section {
+           border: 2px solid #FFDD6F;
+           margin: 20px 50px 10px 50px;
+           padding: 20px 0px 20px 0px;
+       }
+       
+       .img_second-section {
+           border: 2px solid #FFDD6F;
+           /* margin: 20px 50px 10px 50px;
+           padding: 20px; */
+       }
+       
+       .second-section-inner {
+           /* border: 2px solid #FFDD6F; */
+           /* padding: 20px; */
+           /* width: 310px; */
+           /* margin: 10px auto; */
+           /* border-radius: 0px 0px 36px 0px; */
+           text-align: center;
+       }
+       /* .second-section-img1 {
+           height: 325px;
+           width: 200px;
+           margin-left: 35px;
+       }
+       
+       .second-section-img2 {
+           height: 325px;
+           width: 200px;
+       } */
+       
+       .first-img {
+           margin-bottom: 20px;
+       }
+       
+       .second-img {
+           margin-bottom: 40px;
+       }
+       
+       .price-heading1 {
+           text-align: center !important;
+           margin-top: 20px;
+           font-family: Fjalla One !important;
+           font-size: 36px !important;
+           color: white !important;
+       }
+       
+       .price-heading1-first {
+           color: #FFDD6F !important;
+       }
+       
+       .price-heading2 {
+           text-align: center !important;
+           color: #190249;
+           background-color: #FFDD6F;
+           padding: 3px;
+           font-family: Fjalla One;
+           font-size: 36px;
+           width: 326px;
+           margin: 0px auto -40px auto !important;
+           /* margin-top: 0px !important; */
+       }
+       
+       .price-heading22 {
+           /* display: inline-block; */
+           text-align: center !important;
+           color: #190249;
+           background-color: #FFDD6F;
+           padding: 3px 10px 3px 10px;
+           font-family: 'Libre Franklin', sans-serif !important;
+           font-size: 20px;
+           font-weight: 700;
+           font-style: italic;
+           width: 190px;
+           margin: -14px auto 6px auto !important;
+           /* margin-top: 0px !important; */
+       }
+       
+       .price-button2 {
+           color: #190249;
+           background-color: #FFDD6F;
+           display: block;
+           padding: 8px 20px;
+           font-family: Fjalla One;
+           font-size: 19px;
+           margin: -50px -20px -21px auto !important;
+           text-decoration: none !important;
+           text-align: center;
+           width: 67px;
+           border: none !important;
+           border-radius: 50px;
+           font-weight: 500;
+       }
+       
+       .price-button2:hover {
+           background-color: #e4c55d;
+           text-decoration: none !important;
+       }
+       
+       #para-2 {
+           font-size: 22px;
+           font-family: arial;
+           color: white;
+       }
+       
+       .sale-time-section {
+           margin-top: -30px;
+           margin-bottom: 15px;
+       }
+       
+       .sales-tab {
+           margin: 40px 180px;
+       }
+       
+       .sales-tab-heading {
+           font-size: 28px;
+           font-family: Fjalla One;
+           color: #FBE188;
+           background-color: #190249;
+           padding: 5px;
+       }
+       
+       .third-section {
+           background-color: white;
+           padding: 10px 0px !important;
+       }
+       
+       #third-section-img2 {
+           float: right;
+           margin-top: 8px;
+       }
+       
+       .fourth-section-para {
+           font-size: 14px;
+           color: #ffdd6f;
+           font-family: tahoma;
+           /* margin-left: 30px; */
+           padding: 10px 0px;
+       }
+       
+       .last-section {
+           background: white;
+           padding-top: 5px;
+           padding-bottom: 20px;
+       }
+       
+       .last-heading-1 {
+           text-align: right;
+           font-family: Fjalla One;
+           font-size: 14px;
+           margin-left: 0px;
+           margin-top: -5px !important;
+           margin-bottom: 25px !important;
+       }
+       
+       .last_heading33 {
+           width: 200px;
+           font-family: Fjalla One;
+           background-color: #ffdd6f;
+           color: #190249;
+           text-align: center;
+           padding: 5px;
+           font-size: 22px;
+           font-weight: 500;
+           margin: 0px auto -20px auto !important;
+           text-transform: uppercase;
+           position: relative;
+       }
+       
+       .last-heading {
+           text-align: center;
+           background-color: #ffdd6f;
+           padding: 8px 50px 8px 50px !important;
+           font-family: Fjalla One;
+           font-size: 22px;
+           margin-left: 302px;
+           margin-right: 0;
+           margin-top: -25px !important;
+           margin-bottom: 20px !important;
+           box-shadow: 5px 5px 10px 0px #382768;
+           border-radius: 50px;
+       }
+       
+       .last-heading:hover {
+           transition: 1s ease !important;
+           background-color: #190249;
+           color: white !important;
+           box-shadow: none !important;
+       }
+       
+       .last-heading a {
+           color: black !important;
+       }
+       
+       .last-heading a:hover {
+           color: white !important;
+       }
+       
+       .last-section-tab1 a {
+           margin: 10px;
+           font-size: 15px;
+           font-family: tahoma;
+           font-weight: 600;
+           text-decoration: none;
+           color: #291364;
+       }
+       
+       .last-section-tab a {
+           margin: 10px;
+           font-size: 15px;
+           font-family: tahoma;
+           text-decoration: none;
+           color: #291364 !important;
+       }
+       
+       .fa {
+           background-color: #291364;
+           padding: 5px 6px;
+           border-radius: 50px;
+           color: #FFDD6F;
+           font-size: 15px;
+       }
+       
+       a {
+           color: #291364 !important;
+           text-decoration: none;
+       }
+       
+       .page-width {
+           max-width: 1180px;
+           margin: 0 auto;
+           padding: 0 10px;
+       }
+       
+       .li_st {
+           font-size: 16px !important;
+           color: white;
+           font-weight: 300 !important;
+           margin: 0px !important;
+           text-align: center;
+       }
+       
+       .fa-1x {
+           font-size: 0.7em !important;
+           color: #ffdd6f;
+           margin-right: 8px;
+       }
+       
+       .fa-4x {
+           font-size: 1.3em !important;
+       }
+       
+       .box_heading1 {
+           font-family: 'Arsenal', sans-serif;
+           background-color: #ffdd6f;
+           color: #190249;
+           font-size: 31px !important;
+           font-weight: 800 !important;
+           padding: 5px 8px 5px 8px;
+           display: inline-block;
+       }
+       
+       .box_heading2 {
+           font-family: 'Arsenal', sans-serif;
+           background-color: white;
+           color: #190249;
+           font-size: 26px !important;
+           font-weight: 800 !important;
+           padding: 3px 15px 7px 26px;
+           display: inline-block;
+           width: 227px;
+           text-align: start;
+           margin-left: -4px;
+       }
+       
+       .box_heading_footer1 {
+           background-color: #291364;
+           color: white;
+           font-family: Fjalla One;
+           font-size: 34px;
+           text-align: center;
+           border-radius: 30px;
+           /* border-bottom: 1px solid #291364; */
+       }
+       
+       .box_heading_footer2 {
+           background-color: white;
+           color: #291364;
+           font-family: sans-serif;
+           font-size: 17px;
+           text-align: center;
+       }
+       
+       .circle_heading {
+           border: 2px solid #211c57;
+           border-radius: 58px;
+           padding: 12px 14px;
+           background-color: white;
+       }
+       
+       .b4 {
+           font-weight: 400 !important;
+       }
+       
+       .purp {
+           color: #190249 !important;
+       }
+       
+       .yell {
+           color: #ffdd6f !important;
+       }
+       
+       .cols_pad {
+           padding: 0px 0px !important;
+       }
+       
+       .cent {
+           display: flex;
+           flex-direction: row;
+           align-items: center;
+           justify-content: center;
+       }
+       
+       .cent1 {
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+       }
+       
+       .col_marg {
+           margin: 0px 30px !important;
+       }
+       
+       .sale-heading {
+           font-family: Fjalla One;
+           font-size: 30px !important;
+           padding: 4px;
+           width: 427px;
+           /* display: flex; */
+           /* justify-content: center; */
+           background-color: #190249;
+           margin-bottom: 10px !important;
+           text-align: center;
+       }
+       
+       .franklin {
+           font-family: 'Libre Franklin', sans-serif !important;
+       }
+       
+       .marg100 {
+           /* margin: 40px 366px 40px 366px; */
+           /* width: 1170px;
+           margin: 40px auto; */
+       }
+       
+       .value_head {
+           display: inline-block;
+           background-color: #291364;
+           color: white;
+           padding: 13px;
+           font-family: 'Libre Franklin', sans-serif !important;
+           font-size: 25px;
+           font-weight: 700;
+           margin: 10px 0px !important;
+           width: 192px;
+           font-style: italic;
+       }
+       
+       .arsenal {
+           font-family: 'Arsenal', sans-serif;
+           font-size: 30px !important;
+           font-weight: 600;
+           font-style: italic;
+       }
+       
+       @media (min-width: 1200px) {
+           .col-lg-2 {
+               width: 18.66666667% !important;
+           }
+       }
+   
+</style>
+<div class="marg100">
+<div class="container page-div">
+<div class="container-fluid">
+<div class="first-section text-center">
+<h3 class="top-heading" style="margin: 19px -15px 10px -15px !important;">
+<span class="circle_heading">28</span> Years of personal service with orthodontists</h3>
+<h2 class="second-heading" style="font-size: 44px !important; padding-top: 15px;">PUNCH &amp; OPTIMIZE</h2>
+<h2 class="li_st text-white" style="font-size: 30px !important;">your Aligners with MAGNUM's Aligner Pliers</h2>
+</div>
+<div class="row container-fluid second-section mb-4" style="margin-bottom: 50px;">
+<div class="cent" style="margin-bottom: 10px;">
+<div class="col-12 col-lg-2 col-md-6 col-sm-12 cols_pad col_marg"><a href="https://magnumortho.com/products/aligner-plier-1-4-hole-punch"> <img class="img_len" src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/1st_720x.png?v=1633593185"> </a></div>
+<div class="col-12 col-lg-2 col-md-6 col-sm-12 cols_pad col_marg"><a href="https://magnumortho.com/products/aligner-plier-1-4-x-02-horizontal-hole"> <img class="img_len" src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/2nd_720x.png?v=1633593203"> </a></div>
+<div class="col-12 col-lg-2 col-md-6 col-sm-12 cols_pad col_marg"><a href="https://magnumortho.com/products/verticle-hole"> <img class="img_len" src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/3rd_720x.png?v=1633593203"> </a></div>
+<div class="col-12 col-lg-2 col-md-6 col-sm-12 cols_pad col_marg">
+<!-- style="margin-right: 80px !important;" --> <a href="https://magnumortho.com/products/tear-drop"> <img class="img_len" src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/4th_720x.png?v=1633593203"> </a>
+</div>
+</div>
+<h3 class="price-heading1">
+<span class="price-heading1-first ">LIST PRICE:</span> $99.00</h3>
+<h3 class="price-heading2">SALE PRICE: $79.00</h3>
+</div>
+<div class="row container-fluid second-section mb-4" style="margin-bottom: 50px; height: 410px;">
+<div class="cent" style="margin: 10px 50px 10px 90px;">
+<div class="col-12 col-lg-4 col-md-12 col-sm-12 img_second-section text-center" style="height: 160px;">
+<h3 class="price-heading22">Hole Punch Pliers</h3>
+<p id="para-1" class="text-white m-0" style="font-size: 12px; margin-bottom: -9px !important;">available in 1mm, 3mm and 6mm</p>
+<a class="" href="https://magnumortho.com/products/1mm-hole-punch"> <img class="img_len d-flex m-auto" src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/5th_720x.png?v=1633593203" style="display: flex; margin: auto;"> </a>
+</div>
+<div class="col-12 col-lg-8 col-md-12 col-sm-12 img_second-section text-center" style="margin: 0px 50px 0px 50px; height: 160px;">
+<h3 class="price-heading22">Dimple Pliers</h3>
+<p id="para-1" style="font-size: 12px; margin-bottom: -9px !important; visibility: hidden;">available in 1mm, 3mm and 6mm</p>
+<div class=" row ">
+<div class="col-6 col-lg-6 col-md-6 col-sm-6"><a class=" " href="https://magnumortho.com/products/dimple-forming-1mm"> <img class="img_len " src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/6th_720x.png?v=1633593202d"> </a></div>
+<div class="col-6 col-lg-6 col-md-6 col-sm-6"><a class=" " href="https://magnumortho.com/products/dimple-forming-3mm"> <img class="img_len " src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/7th_720x.png?v=1633593203"> </a></div>
+</div>
+</div>
+</div>
+<div style="margin-top: 145px;">
+<h3 class="price-heading1 ">
+<span class="price-heading1-first ">LIST PRICE:</span> $89.00</h3>
+<h3 class="price-heading2 ">SALE PRICE: $72.00</h3>
+</div>
+</div>
+<div class="container-fluid third-section " style="margin: 20px -15px 10px -15px !important;">
+<div style="background-color: #ffdd6f; padding: 25px 56px;">
+<div class="row " style="margin: 0px !important;">
+<div class="col-12 col-lg-7 col-md-10 col-sm-10 " style="margin: 0px; padding: 0px 0px 0px 10px;">
+<div class="" style="height: 227px; display: flex; flex-direction: column; justify-content: center;">
+<p class="second-heading purp arsenal " style="margin: 0px !important; text-transform: inherit !important;">Receive 2 Aligner scissors <br> for every 3 pliers purchased (mix &amp; match)</p>
+<h3 class="value_head">Value $36.00</h3>
+</div>
+</div>
+<div class="col-12 col-lg-5 col-md-2 col-sm-2 " style="margin: 0px; padding: 0px;"><img src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/Scissors_720x.png?v=1633593202"></div>
+</div>
+</div>
+<div class="row" style="margin: 0px !important; padding: 10px 67px 5px 63px;">
+<div class="col-lg-8 col-md-6 col-sm-12 " style="margin: 0px; padding: 0px;"><img src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/Button1_720x.png?v=1633593202"></div>
+<div class="col-lg-4 col-md-6 col-sm-12 " style="margin: 0px; padding: 0px;"><img src="https://cdn.shopify.com/s/files/1/0268/2126/3552/products/Button2_720x.png?v=1633593203"></div>
+</div>
+</div>
+<div class="row container-fluid ">
+<div class="" style="padding-left: 55px !important;">
+<p class="fourth-section-para text-left " style="background-color: #19024a; margin: -10px -15px -19px 0px;">If you are not happy, then we are not either. <br>Hassel free return* <br>(Check Our Website for Details)</p>
+</div>
+</div>
+<div class=" bg-white " style="background-color: #19024a;">
+<p class="last_heading33 "><a href="https://magnumortho.com/collections/aligner-pliers">Order Online:</a></p>
+</div>
+<div class="row last-section ">
+<div class="col-md-12 text-center " style="margin-top: 35px !important;">
+<span class="last-section-tab1 "><a href="tel:800.336.9710%20"><i class="fa fa-phone fa-4x "></i> 800.336.9710</a></span> <span class="last-section-tab
+                           "> <a href="mailto:ortho@magnummed.com%20"><i class="fa fa-envelope fa-4x "></i> ortho@magnummed.com</a></span> <span class="last-section-tab "><a href="www.magnumortho.com%20"><i class="fa fa-globe fa-4x "></i> www.magnumortho.com</a></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+</html>
