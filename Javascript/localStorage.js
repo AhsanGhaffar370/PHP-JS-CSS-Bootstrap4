@@ -1,3 +1,5 @@
+//https://stackoverflow.com/questions/5221397/why-do-associative-arrays-dont-work-in-localstorage
+
 (function($) {
     $(document).ready(function() {
         $(document).on("click", '.sw_services', function(e) {
